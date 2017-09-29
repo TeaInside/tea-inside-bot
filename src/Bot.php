@@ -7,13 +7,25 @@
  */
 final class Bot
 {
-	public function __construct()
-	{
+	/**
+	 * @var Handler\MainHandler
+	 */
+	private $main;
 
+	/**
+	 * Constructor.
+	 * @param string $input
+	 */
+	public function __construct($input)
+	{
+		$this->main = new MainHandler($input);
 	}
 	
+	/**
+	 * Run app.
+	 */
 	public function run()
 	{
-
+		$this->main->run();
 	}
 }

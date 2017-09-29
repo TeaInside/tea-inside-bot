@@ -7,5 +7,13 @@
  */
 final class Bot
 {
+	public function __construct()
+	{
+
+	}
 	
+	public function run()
+	{
+
+	}
 }

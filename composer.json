@@ -1,0 +1,17 @@
+{
+    "authors": [
+        {
+            "name": "Ammar Faizi",
+            "email": "ammarfaizi2@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+    	"psr-0": {
+    		"": "src/",
+    		"App": "src/",
+    		"Handler": "src/",
+    		"Plugins": "src/"
+    	}
+    }
+}

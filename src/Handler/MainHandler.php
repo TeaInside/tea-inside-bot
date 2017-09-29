@@ -13,12 +13,12 @@ final class MainHandler
 	/**
 	 * @var string
 	 */
-	private $chattype;
+	public $chattype;
 
 	/**
 	 * @var string
 	 */
-	private $text;
+	public $text;
 
 	/**
 	 * Constructor.
@@ -48,7 +48,7 @@ final class MainHandler
 	{
 		if (isset($this->input['message']['text'])) {
 			$this->chattype = "text";
-			$this->
+			$this->text		= $this->input['message']['text'];
 		}
 	}
 }

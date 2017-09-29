@@ -31,6 +31,6 @@ class Response
 
 	private function __run()
 	{
-
+		
 	}
 }

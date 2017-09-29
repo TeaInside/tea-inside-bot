@@ -1,4 +1,0 @@
-114.124.241.34 - - [29/Sep/2017:11:25:34 +0000] "GET / HTTP/1.1" 200 590 "-" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:46.0) Gecko/20100101 Firefox/46.0"
-114.124.241.34 - - [29/Sep/2017:11:25:35 +0000] "GET /icons/blank.gif HTTP/1.1" 200 431 "http://webhook.teainside.ga/" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:46.0) Gecko/20100101 Firefox/46.0"
-114.124.241.34 - - [29/Sep/2017:11:25:35 +0000] "GET /favicon.ico HTTP/1.1" 404 511 "-" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:46.0) Gecko/20100101 Firefox/46.0"
-114.124.241.34 - - [29/Sep/2017:11:25:35 +0000] "GET /favicon.ico HTTP/1.1" 404 511 "-" "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:46.0) Gecko/20100101 Firefox/46.0"

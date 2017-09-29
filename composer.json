@@ -11,7 +11,9 @@
     		"": "src/",
     		"App": "src/",
     		"Handler": "src/",
-    		"Plugins": "src/"
+            "Lang": "src/",
+    		"Plugins": "src/",
+            "System": "src/"
     	}
     }
 }

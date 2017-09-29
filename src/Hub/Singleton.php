@@ -8,8 +8,14 @@ namespace Hub;
  */
 trait Singleton
 {
+	/**
+	 * @var self
+	 */
 	private static $instance;
 
+	/**
+	 * Get class instance.
+	 */
 	public static function getInstance()
 	{
 		if (self::$instance === null) {
@@ -18,6 +24,9 @@ trait Singleton
 		return self::$instance;
 	}
 
+	/**
+	 * Prevent cloning instance.
+	 */
 	private function __clone()
 	{
 	}

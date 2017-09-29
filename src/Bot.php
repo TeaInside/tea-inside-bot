@@ -1,5 +1,7 @@
 <?php
 
+use Handler\MainHandler;
+
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @license MIT

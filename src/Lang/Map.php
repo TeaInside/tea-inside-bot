@@ -11,7 +11,7 @@ final class Map
 	/**
 	 * @var array
 	 */
-	public static $map = [
+	public static $lang = [
 		"id" => "\\Lang\\ID\\",
 		"en" => "\\Lang\\EN\\"
 	];

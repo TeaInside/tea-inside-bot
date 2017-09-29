@@ -25,6 +25,7 @@ define("GLOBAL_ADMIN", []);
 define("DB_HOST", "localhost");
 define("DB_USER", "debian-sys-maint");
 define("DB_PASS", "");
+define("DB_NAME", "pgice");
 define("DB_PORT", "3306");
 
 /**

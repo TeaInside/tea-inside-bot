@@ -2,6 +2,10 @@
 
 namespace Handler;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 final class MainHandler
 {
 	/**

@@ -1,24 +1,19 @@
 
-version: 2
-jobs:
-  build:
-    docker:
-      - image: circleci/php:7.1.5-browsers
+machine:
+  pre:
+    - sudo apt-get update; USE_PRECOMPILE=true sudo -E circleci-install php 7.1.0
+  timezone: 
+    Asia/Jakarta
+  php:
+    version: 7.1.0
 
-    working_directory: ~/repo
-
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          - v1-dependencies-
-
-      - run: composer install -n --prefer-dist
-
-      - save_cache:
-          paths:
-            - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
-        
-      - run: phpunit
+dependencies: 
+  pre:
+    - cp config.php.example config.php
+  override: 
+    - composer install --prefer-source --no-interaction -vvv
+  post: 
+    - php tests/manual/test1.php
+test: 
+  override: 
+    - phpunit

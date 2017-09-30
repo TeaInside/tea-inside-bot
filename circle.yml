@@ -9,11 +9,10 @@ machine:
 
 dependencies: 
   pre:
+    - php -r "file_put_contents(time(), 'flag_time.tmp');"
     - cp config.php.example config.php
   override: 
     - composer install --prefer-source --no-interaction -vvv
+    - phpunit
   post: 
     - php tests/manual/circle.php
-test: 
-  override: 
-    - phpunit

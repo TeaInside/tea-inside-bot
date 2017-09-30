@@ -12,7 +12,9 @@ dependencies:
     - cp config.php.example config.php
   override: 
     - composer install --prefer-source --no-interaction -vvv
+
+test:
+  post: 
     - phpunit
     - php build
-  post: 
     - php tests/manual/circle.php

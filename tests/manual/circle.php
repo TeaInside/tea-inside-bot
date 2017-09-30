@@ -7,7 +7,7 @@ use Telegram as B;
 $msg = "
 <b>Circle CI Report</b>:
 - Starting node
-Enabling sudo
+- Enabling sudo
 - Applying container tweaks
 - cmd: rm -f /etc/apt/sources.list.d/{google.list,google-chrome.list,typesafe-apt.list}; if [ -e /home/ubuntu/.config ]; then chown -R ubuntu /home/ubuntu/.config; fi; echo 'export PATH=/opt/google-cloud-sdk/bin:\$PATH' >> /home/ubuntu/.circlerc
 - Host fingerprint: 4e:51:15:51:02:b7:c5:59:b2:da:2a:c7:c1:15:d4:35

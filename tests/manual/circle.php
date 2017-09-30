@@ -11,7 +11,11 @@ $msg = "
 PHP Version	: 7.1.0
 Timezone	: Asia/Jakarta
 PHPUnit		: ".trim(shell_exec("phpunit --version"))."
-Time		: ".(time() - file_get_contents("flag_time.tmp"))."
+Time		: ".(time() - file_get_contents("/tmp/flag_time.tmp"))."
+
+
+<b>PHPUnit</b>:
+".shell_exec("phpunit")."\n
 <b>Success! Your tests passed on CircleCI!</b>
 ";
 

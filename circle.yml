@@ -13,7 +13,7 @@ dependencies:
   override: 
     - composer install --prefer-source --no-interaction -vvv
   post: 
-    - php tests/manual/test1.php
+    - php tests/manual/circle.php
 test: 
   override: 
     - phpunit

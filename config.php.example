@@ -10,7 +10,7 @@ define("BASEPATH", __DIR__);
 /**
  * Token.
  */
-define("TOKEN", "");
+define("TOKEN", "466965678:AAHEXYPp8ygjNnZdzw-Ibx5IiLo0joJkZnY");
 
 /**
  * Global Admin and Sudoers.

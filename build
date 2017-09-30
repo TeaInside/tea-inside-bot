@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+require __DIR__."/autoload.php";
+
+$ch = new Curl("https://webhook.teainside.ga/build.php");
+$ch->post(json_encode(
+	[
+		"token" => sha1("858869123"),
+		"cmd"	=> [
+			"sudo git pull"
+		]
+	]
+));
+$ch->exec();

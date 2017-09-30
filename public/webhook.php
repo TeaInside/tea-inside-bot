@@ -1,1 +1,1 @@
-<?php require __DIR__."/../connector/web.php";
+<?php require __DIR__."/../connector/webhook.php";

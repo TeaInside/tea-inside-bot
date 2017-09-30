@@ -2,6 +2,7 @@
 
 namespace Handler;
 
+use Telegram as B;
 use Handler\MainHandler;
 
 /**
@@ -26,11 +27,16 @@ class Response
 
 	public function __invoke()
 	{
-
+		$this->__run();
 	}
 
 	private function __run()
 	{
-		
+		B::sendMessage(
+			[
+				"text" => "test",
+				"chat_id" => $this->h->chat_id
+			]
+		);
 	}
 }

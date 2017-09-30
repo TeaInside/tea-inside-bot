@@ -12,6 +12,21 @@ use Handler\Response;
 final class MainHandler
 {
 	/**
+	 * @var array|null
+	 */
+	public $replyto;
+
+	/**
+	 * @var string
+	 */
+	public $chattitle;
+
+	/**
+	 * @var string
+	 */
+	public $msgtype;
+
+	/**
 	 * @var string
 	 */
 	public $chattype;
@@ -20,11 +35,36 @@ final class MainHandler
 	 * @var string
 	 */
 	public $text;
+	
+	/**
+	 * @var string
+	 */
+	public $lowertext;
 
 	/**
 	 * @var string
 	 */
 	public $chat_id;
+
+	/**
+	 * @var string
+	 */
+	public $msgid;
+
+	/**
+	 * @var string
+	 */
+	public $name;
+
+	/**
+	 * @var string
+	 */
+	public $first_name;
+
+	/**
+	 * @var string
+	 */
+	public $last_name;
 
 	/**
 	 * Constructor.
@@ -57,19 +97,24 @@ final class MainHandler
 		isset($this->input['message']['chat']['title']) and $this->chattitle = $this->input['message']['chat']['title'];
 		isset($this->input['message']['chat']['username']) and $this->chatuname = $this->input['message']['chat']['username'];
 		if (isset($this->input['message']['text'])) {
-			$this->chattype = "text";
-			$this->text		= $this->input['message']['text'];
-			$this->chat_id	= (string) $this->input['message']['chat']['id'];
+			$this->msgtype    = "text";
+			$this->chattype   = $this->input['message']['chat']['type'];
+			$this->text		  = $this->input['message']['text'];
+			$this->lowertext  = strtolower($this->text);
+			$this->chat_id	  = (string) $this->input['message']['chat']['id'];
+			$this->msgid	  = (string) $this->input['message']['message_id'];
+			$this->name		  = $this->input['message']['from']['first_name'] . (isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : "");
+			$this->first_name = $this->input['message']['from']['first_name'];
+			$this->last_name  = isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : null;
 		}
 	}
 
 	private function response()
 	{
-		B::sendMessage(
-			[
-				"chat_id" => $this->chat_id,
-				"text"    => "Hello World!",
-			]
-		);
+		if (in_array($this->msgtype, ["text"])) {
+			var_dump(123);
+			$res = new Response($this);
+			$res();
+		}
 	}
 }

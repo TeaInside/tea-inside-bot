@@ -2,6 +2,7 @@
 
 namespace Handler;
 
+use Telegram as B;
 use Handler\Response;
 
 /**
@@ -19,6 +20,11 @@ final class MainHandler
 	 * @var string
 	 */
 	public $text;
+
+	/**
+	 * @var string
+	 */
+	public $chat_id;
 
 	/**
 	 * Constructor.
@@ -39,6 +45,7 @@ final class MainHandler
 	public function run()
 	{
 		$this->parseEvent();
+		$this->response();
 	}
 
 	/**
@@ -46,9 +53,23 @@ final class MainHandler
 	 */
 	private function parseEvent()
 	{
+		isset($this->input['reply_to_message']) and $this->replyto = $this->input['reply_to_message'];
+		isset($this->input['message']['chat']['title']) and $this->chattitle = $this->input['message']['chat']['title'];
+		isset($this->input['message']['chat']['username']) and $this->chatuname = $this->input['message']['chat']['username'];
 		if (isset($this->input['message']['text'])) {
 			$this->chattype = "text";
 			$this->text		= $this->input['message']['text'];
+			$this->chat_id	= (string) $this->input['message']['chat']['id'];
 		}
+	}
+
+	private function response()
+	{
+		B::sendMessage(
+			[
+				"chat_id" => $this->chat_id,
+				"text"    => "Hello World!",
+			]
+		);
 	}
 }

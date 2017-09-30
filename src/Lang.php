@@ -31,6 +31,5 @@ final class Lang
 
 	public static function system()
 	{
-
 	}
 }

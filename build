@@ -11,4 +11,4 @@ $ch->post(json_encode(
 		]
 	]
 ));
-$ch->exec();
+var_dump($ch->exec(), $ch->info['http_code']);

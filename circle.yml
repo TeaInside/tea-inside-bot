@@ -9,7 +9,6 @@ machine:
 
 dependencies: 
   pre:
-    - php -r "file_put_contents(time(), '/tmp/flag_time.tmp');"
     - cp config.php.example config.php
   override: 
     - composer install --prefer-source --no-interaction -vvv

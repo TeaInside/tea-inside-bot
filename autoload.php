@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 if (file_exists(__DIR__."/vendor/autoload.php")) {
 	require __DIR__."/vendor/autoload.php";
 } else {
@@ -8,7 +12,6 @@ if (file_exists(__DIR__."/vendor/autoload.php")) {
 	{
 	    require __DIR__."/src/".str_replace("\\", "/", $class).".php";
 	}
-
 	spl_autoload_register("___load_class");
 }
 

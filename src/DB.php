@@ -26,9 +26,9 @@ final class DB
 
     /**
      * Call any PDO method.
-     * @param 	string $method
-     * @param 	array  $param
-     * @return 	mixed
+     * @param   string $method
+     * @param   array  $param
+     * @return  mixed
      */
     public static function __callStatic($method, $param)
     {

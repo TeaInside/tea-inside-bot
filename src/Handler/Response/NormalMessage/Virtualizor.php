@@ -53,7 +53,8 @@ class Virtualizor
         $this->lowerText    = strtolower($lowerText);
         $this->absText        = $absText;
         $this->sudo        = $sudo;
-        $this->skip_security= new class() {
+        $this->skip_security= new class()
+        {
             public function is_secure()
             {
                 return true;

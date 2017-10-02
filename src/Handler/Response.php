@@ -61,8 +61,9 @@ class Response
 		}
 		B::sendMessage(
 			[
-				"chat_id" => $this->h->chat_id,
-				"text"    => $msg
+				"chat_id" 	 => $this->h->chat_id,
+				"text"    	 => $msg,
+				"parse_mode" => "HTML"
 			]
 		);
 	}

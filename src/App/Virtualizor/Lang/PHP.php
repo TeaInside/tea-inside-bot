@@ -70,6 +70,14 @@ class PHP implements LangContract
 		);
 		$out = $ch->exec();
 		$ch->errno and $out = $ch->error;
+		$out = str_replace(
+		[
+			"<br />","<br>","<br/>", $this->file
+		],
+		[
+			"","","", "/tmp/virtual/php/".substr($this->hash, 0, 4).".php"
+
+		], $out);
 		return $out;
 	}
 }

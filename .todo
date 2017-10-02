@@ -6,4 +6,10 @@
     <note priority="medium" time="1506962807">
         Create brainly connector
     </note>
+    <note priority="medium" time="1506963064">
+        Create MyAnimeList anime search
+    </note>
+    <note priority="medium" time="1506963079">
+        Create MyAnimeList manga search
+    </note>
 </todo>

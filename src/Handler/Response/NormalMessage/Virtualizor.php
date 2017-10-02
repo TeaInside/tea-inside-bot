@@ -34,6 +34,11 @@ class Virtualizor
 	private $executor;
 
 	/**
+	 * @var string
+	 */
+	private $lang;
+
+	/**
 	 * Constructor.
 	 * @param string $lowerText
 	 * @param string $absText
@@ -55,8 +60,16 @@ class Virtualizor
 		}
 
 		return isset($lang) ? 
-				( $this->is_secure($lang) ? $this->exec() : false ) :
+				( $this->is_secure($lang) ? $this->__exec() : false ) :
 					(null);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLang()
+	{
+		return $this->lang;
 	}
 
 	/**
@@ -69,6 +82,7 @@ class Virtualizor
 		}
 		switch ($par) {
 			case 'php':
+				$this->lang = "php";
 				$st = new PHPSecurity($this->absText);
 				$this->executor = "\\App\\Virtualizor\\Lang\\PHP";
 				break;
@@ -80,9 +94,9 @@ class Virtualizor
 	}
 
 	/**
-	 * @param Exec
+	 * Private executor.
 	 */
-	private function exec()
+	private function __exec()
 	{
 		$st = new $this->executor($this->absText);
 		$st = trim($st->exec());

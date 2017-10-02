@@ -28,11 +28,26 @@ class Response
 
 	public function __invoke()
 	{
-		$this->__run();
+		return $this->__run();
 	}
 
 	private function __run()
 	{
-		$st = new Virtualizor($this->h->lowerText, );
+		if (! $this->virtualizor()) {
+
+		}
+		return false;
+	}
+
+	private function virtualizor()
+	{
+		$st = new Virtualizor($this->h->lowerText, in_array($this->userid, SUDOERS));
+		if ($st = $st->exec()) {
+			if ($st === false) {
+				$st = Map::
+			} else {
+				
+			}
+		}
 	}
 }

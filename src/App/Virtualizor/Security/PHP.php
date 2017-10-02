@@ -4,6 +4,10 @@ namespace App\Virtualizor\Security;
 
 use System\Contracts\App\Virtualizor\SecurityContract;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 class PHP implements SecurityContract
 {	
 	/**
@@ -29,11 +33,16 @@ class PHP implements SecurityContract
 		$this->phpCode = $phpCode;
 	}
 
+	/**
+	 * Parse php code.
+	 */
 	private function parsePHPCode()
 	{
-
 	}
 
+	/**
+	 * @return bool
+	 */
 	public function is_secure()
 	{
 		$this->parsePHPCode();

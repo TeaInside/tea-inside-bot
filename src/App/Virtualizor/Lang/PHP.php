@@ -9,7 +9,6 @@ use System\Contracts\App\Virtualizor\LangContract;
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @license MIT
  */
-
 class PHP implements LangContract
 {
 	/**

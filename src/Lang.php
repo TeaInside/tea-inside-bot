@@ -28,8 +28,9 @@ final class Lang
 			throw new LanguageNotFoundException("Language '{$lang}' not found!", 101);
 		}
 	}
-
+	
 	public static function system()
 	{
+		
 	}
 }

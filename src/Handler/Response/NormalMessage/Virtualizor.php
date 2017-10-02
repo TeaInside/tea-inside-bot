@@ -68,6 +68,8 @@ class Virtualizor
 	{
 		if (substr($this->lowerText, 0, 5) == "<?php") {
 			$lang = "php";
+		} elseif (substr($this->lowerText, 0, 3) == "<?c") {
+			$lang = "gcc";
 		}
 
 		return isset($lang) ? 

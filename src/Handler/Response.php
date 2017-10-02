@@ -4,6 +4,7 @@ namespace Handler;
 
 use Telegram as B;
 use Handler\MainHandler;
+use Handler\Response\NormalMessage\Virtualizor;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
@@ -32,11 +33,6 @@ class Response
 
 	private function __run()
 	{
-		B::sendMessage(
-			[
-				"text" => "test",
-				"chat_id" => $this->h->chat_id
-			]
-		);
+				
 	}
 }

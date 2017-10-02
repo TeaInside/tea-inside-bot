@@ -3,7 +3,7 @@
 require __DIR__."/../../autoload.php";
 
 use Telegram as B;
-
+/*
 $msg = "
 <b>Circle CI Report</b>:
 - Starting node
@@ -39,4 +39,4 @@ B::sendMessage(
 		"chat_id"	 => -1001128531173,
 		"parse_mode" => "HTML"
 	]
-);
+);*/

@@ -17,15 +17,4 @@ class SendMessageTest extends TestCase
 			]
 		)['info']['http_code'] == 200);
 	}
-
-	public function testGroupMessage()
-	{
-		$this->assertTrue(B::sendMessage(
-			[
-				"chat_id" => -1001128531173,
-				"text"    => "<b>Circle CI</b> testGroupMessage test case. Success!\nTest history : ".sha1(time()),
-				"parse_mode" => "HTML"
-			]
-		)['info']['http_code'] == 200);
-	}
 }

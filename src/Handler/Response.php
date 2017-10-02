@@ -64,7 +64,7 @@ class Response
 				"chat_id" 	 => $this->h->chat_id,
 				"text"    	 => $msg,
 				"parse_mode" => "HTML",
-				"reply_to_message_id" => $this->h->msgid
+				"reply_to_message_id" => $this->h->msgId
 			]
 		);
 	}

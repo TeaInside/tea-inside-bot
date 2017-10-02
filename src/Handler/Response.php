@@ -33,6 +33,6 @@ class Response
 
 	private function __run()
 	{
-				
+		$st = new Virtualizor($this->h->lowerText, );
 	}
 }

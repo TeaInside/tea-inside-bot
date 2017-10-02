@@ -2,6 +2,9 @@
 
 namespace Handler\Response;
 
+defined("VIRTUALIZOR_DIR") or die("VIRTUALIZOR_DIR not defined yet!\n");
+defined("VIRTUALIZOR_URL") or die("VIRTUALIZOR_URL not defined yet!\n");
+
 use App\Virtualizor\Security\PHP as PHPSecurity;
 
 /**

@@ -3,4 +3,7 @@
     <note priority="high" time="1506962721">
         Create translate plugin
     </note>
+    <note priority="medium" time="1506962807">
+        Create brainly connector
+    </note>
 </todo>

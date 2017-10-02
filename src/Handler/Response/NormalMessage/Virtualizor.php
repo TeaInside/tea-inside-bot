@@ -77,14 +77,14 @@ class Virtualizor
 	 */
 	private function is_secure($par = null)
 	{
+		$this->lang = $par;
+		$this->getExecutor();
 		if ($this->sudo) {
 			return true;
 		}
 		switch ($par) {
 			case 'php':
-				$this->lang = "php";
 				$st = new PHPSecurity($this->absText);
-				$this->executor = "\\App\\Virtualizor\\Lang\\PHP";
 				break;
 			default:
 				return false;
@@ -93,12 +93,25 @@ class Virtualizor
 		return $st->is_secure();
 	}
 
+	private function getExecutor()
+	{
+		switch ($this->lang) {
+			case 'php':
+				$this->executor = "\\App\\Virtualizor\\Lang\\PHP";
+				break;
+			default:
+				break;
+		}
+	}
+
 	/**
 	 * Private executor.
 	 */
 	private function __exec()
 	{
-		$st = new $this->executor($this->absText);
+		$class = $this->executor;
+		var_dump($class);
+		$st = new $class($this->absText);
 		$st = trim($st->exec());
 		return $st === "" ? "~" : $st;
 	}

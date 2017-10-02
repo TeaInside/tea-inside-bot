@@ -21,9 +21,9 @@ $input = urlencode(file_get_contents("php://input"));
 		            "type": "private"
 		        },
 		        "date": 1506750221,
-		        "text": ""
+		        "text": "<?php print 123;"
 		    }
-		}';
-*/
+		}';*/
+
 
 shell_exec("nohup /usr/bin/php ".__DIR__."/cli.php \"".urlencode($input)."\" >> ".LOG_DIR."/nohup.out 2>&1 &");

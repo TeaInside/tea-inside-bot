@@ -43,7 +43,7 @@ class PHP implements LangContract
 	private function __init()
 	{
 		if (! is_dir(VIRTUALIZOR_DIR."/php/")) {
-			$exe = shell_exec("mkdir -p ".VIRTUALIZOR_DIR."/php/ 2>&");
+			$exe = shell_exec("mkdir -p ".VIRTUALIZOR_DIR."/php/");
 			if (! is_dir(VIRTUALIZOR_DIR."/php/")) {
 				throw new \Exception($exe, 1);
 			}

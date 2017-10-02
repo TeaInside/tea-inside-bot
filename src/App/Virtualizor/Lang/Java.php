@@ -11,6 +11,20 @@ use System\Contracts\App\Virtualizor\LangContract;
  */
 class Java extends Compiler implements LangContract
 {
+	/**
+	 * @var string
+	 */
+	private $javaCode;
+
+	/**
+	 * @var string
+	 */
+	private $className;
+
+	/**
+	 * @var string
+	 */
+	private $file;
 
 	/**
 	 * Constructor.
@@ -19,5 +33,7 @@ class Java extends Compiler implements LangContract
 	 */
 	public function __construct($javaCode)
 	{
+		$this->javaCode  = $javaCode;
+		$this->getClassName();
 	}
 }

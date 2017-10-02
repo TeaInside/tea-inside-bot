@@ -1,7 +1,7 @@
 <?php
 
 require __DIR__."/../autoload.php";
-$input = urlencode(file_get_contents("php://input"));
+$input = file_get_contents("php://input");
 
 /*$input = '{
 		    "update_id": 344262043,

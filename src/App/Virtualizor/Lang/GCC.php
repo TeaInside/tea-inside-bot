@@ -62,7 +62,7 @@ class GCC extends Compiler implements LangContract
 		if (file_exists($this->file)) {
 			return true;
 		} else {
-			$this->errorInfo = "Error create file.";
+			$this->errorInfo = "Cannot create file.";
 			return false;
 		}
 	}

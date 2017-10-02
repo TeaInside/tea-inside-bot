@@ -1,6 +1,6 @@
 <?php
 
-namespace Handler\Response;
+namespace Handler\Response\NormalMessage;
 
 defined("VIRTUALIZOR_DIR") or die("VIRTUALIZOR_DIR not defined yet!\n");
 defined("VIRTUALIZOR_URL") or die("VIRTUALIZOR_URL not defined yet!\n");

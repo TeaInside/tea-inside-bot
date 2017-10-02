@@ -73,11 +73,10 @@ class GCC extends Compiler implements LangContract
 	private function __compile()
 	{
 		$check = shell_exec("gcc --version || echo 0");
-		if ($check == 0) {
+		if ($check === 0) {
 			$this->errorInfo = "GCC not installed!";
 			return false;
 		}
-
 		$compile = shell_exec("gcc ".$this->file." -o ".VIRTUALIZOR_DIR."/c/".$this->hash." 2>&1");
 		if ($compile) {
 			$this->errorInfo = $compile;

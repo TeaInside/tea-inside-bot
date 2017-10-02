@@ -12,4 +12,10 @@
     <note priority="medium" time="1506963079">
         Create MyAnimeList manga search
     </note>
+    <note priority="low" time="1506963174">
+        Create whatanime plugin
+    </note>
+    <note priority="low" time="1506963198">
+        Create youtube downloader
+    </note>
 </todo>

@@ -125,7 +125,7 @@ class Virtualizor
 			case 'gcc':
 				$this->executor = "\\App\\Virtualizor\\Lang\\GCC";
 				break;
-			case 'gcc':
+			case 'cpp':
 				$this->executor = "\\App\\Virtualizor\\Lang\\CPP";
 				break;
 			default:

@@ -1,7 +1,7 @@
 <?php
 
 use PDO;
-use Hub\Singleton;
+use System\Hub\Singleton;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

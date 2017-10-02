@@ -28,11 +28,37 @@ class Response
 
 	public function __invoke()
 	{
-		$this->__run();
+		return $this->__run();
 	}
 
 	private function __run()
 	{
-		$st = new Virtualizor($this->h->lowerText, );
+		if (! $this->virtualizor()) {
+
+		}
+		return false;
+	}
+
+	/**
+	 * Virtualizor.
+	 */
+	private function virtualizor()
+	{
+		$st = new Virtualizor($this->h->lowerText, in_array($this->userid, SUDOERS));
+		if ($st = $st->exec()) {
+			if ($st === false) {
+				$msg = "<b>Rejected for security reason!</b>";
+			} elseif ($st !== null) {
+				$msg = $st;
+			} else {
+				return false;
+			}
+		}
+		B::sendMessage(
+			[
+				"chat_id" => $this->h->chat_id,
+				"text"    => $msg
+			]
+		);
 	}
 }

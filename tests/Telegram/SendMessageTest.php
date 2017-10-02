@@ -9,12 +9,12 @@ class SendMessageTest extends TestCase
 {
 	public function testPrivateMessage()
 	{
-		$this->assertTrue(true/*B::sendMessage(
+		$this->assertTrue(trueB::sendMessage(
 			[
 				"chat_id" => 243692601,
 				"text"    => "<b>Circle CI</b> testPrivateMessage test case. Success!\nTest history : ".sha1(time()),
 				"parse_mode" => "HTML"
 			]
-		)['info']['http_code'] == 200*/);
+		)['info']['http_code'] == 200);
 	}
 }

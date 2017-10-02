@@ -39,6 +39,11 @@ class Virtualizor
 	private $lang;
 
 	/**
+	 * @var ???
+	 */
+	private $skip_security;
+
+	/**
 	 * Constructor.
 	 * @param string $lowerText
 	 * @param string $absText
@@ -48,6 +53,12 @@ class Virtualizor
 		$this->lowerText    = strtolower($lowerText);
 		$this->absText 		= $absText;
 		$this->sudo 		= $sudo;
+		$this->skip_security= new class(){
+			public function is_secure()
+			{
+				return true;
+			}
+		};
 	}
 
 	/**
@@ -86,6 +97,9 @@ class Virtualizor
 			case 'php':
 				$st = new PHPSecurity($this->absText);
 				break;
+			case 'gcc':
+				$st = $this->skip_security;
+				break;
 			default:
 				return false;
 				break;
@@ -99,6 +113,9 @@ class Virtualizor
 			case 'php':
 				$this->executor = "\\App\\Virtualizor\\Lang\\PHP";
 				break;
+			case 'gcc':
+				$this->executor = "\\App\\Virtualizor\\Lang\\GCC";
+				break;
 			default:
 				break;
 		}
@@ -110,7 +127,6 @@ class Virtualizor
 	private function __exec()
 	{
 		$class = $this->executor;
-		var_dump($class);
 		$st = new $class($this->absText);
 		$st = trim($st->exec());
 		return $st === "" ? "~" : $st;

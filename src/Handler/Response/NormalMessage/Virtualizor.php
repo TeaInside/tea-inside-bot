@@ -4,6 +4,10 @@ namespace Handler\Response;
 
 use App\Virtualizor\Security\PHP as PHPSecurity;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 class Virtualizor
 {
 	/** 
@@ -44,8 +48,12 @@ class Virtualizor
 	public function exec()
 	{
 		if (substr($this->lowerText, 0, 5) == "<?php") {
-
+			$lang = "php";
 		}
+
+		return isset($lang) ? 
+				( $this->is_secure($lang) ? $this->exec() : false ) :
+					(null);
 	}
 
 	/**
@@ -74,7 +82,7 @@ class Virtualizor
 	private function exec()
 	{
 		$st = new $this->executor($this->absText);
-		$st = $st->exec();
+		$st = trim($st->exec());
 		return $st === "" ? "~" : $st;
 	}
 }

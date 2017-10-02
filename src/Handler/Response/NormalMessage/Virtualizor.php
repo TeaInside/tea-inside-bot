@@ -2,7 +2,6 @@
 
 namespace Handler\Response;
 
-use App\Virtualizor\Lang\PHP;
 use App\Virtualizor\Security\PHP as PHPSecurity;
 
 class Virtualizor
@@ -21,6 +20,11 @@ class Virtualizor
 	 * @var bool
 	 */
 	private $sudo;
+
+	/**
+	 * @var string
+	 */
+	private $executor;
 
 	/**
 	 * Constructor.
@@ -44,6 +48,9 @@ class Virtualizor
 		}
 	}
 
+	/**
+	 * @param string $par
+	 */
 	private function is_secure($par = null)
 	{
 		if ($this->sudo) {
@@ -52,11 +59,22 @@ class Virtualizor
 		switch ($par) {
 			case 'php':
 				$st = new PHPSecurity($this->absText);
+				$this->executor = "\\App\\Virtualizor\\Lang\\PHP";
 				break;
 			default:
 				return false;
 				break;
 		}
 		return $st->is_secure();
+	}
+
+	/**
+	 * @param Exec
+	 */
+	private function exec()
+	{
+		$st = new $this->executor($this->absText);
+		$st = $st->exec();
+		return $st === "" ? "~" : $st;
 	}
 }

@@ -24,12 +24,12 @@ final class MainHandler
 	/**
 	 * @var string
 	 */
-	public $msgType;
+	public $msgtype;
 
 	/**
 	 * @var string
 	 */
-	public $chatType;
+	public $chattype;
 
 	/**
 	 * @var string
@@ -39,7 +39,7 @@ final class MainHandler
 	/**
 	 * @var string
 	 */
-	public $lowerText;
+	public $lowertext;
 
 	/**
 	 * @var string
@@ -97,12 +97,12 @@ final class MainHandler
 		isset($this->input['message']['chat']['title']) and $this->chattitle = $this->input['message']['chat']['title'];
 		isset($this->input['message']['chat']['username']) and $this->chatuname = $this->input['message']['chat']['username'];
 		if (isset($this->input['message']['text'])) {
-			$this->msgType    = "text";
-			$this->chatType   = $this->input['message']['chat']['type'];
+			$this->msgtype    = "text";
+			$this->chattype   = $this->input['message']['chat']['type'];
 			$this->text		  = $this->input['message']['text'];
-			$this->lowerText  = strtolower($this->text);
+			$this->lowertext  = strtolower($this->text);
 			$this->chat_id	  = (string) $this->input['message']['chat']['id'];
-			$this->msgId	  = (string) $this->input['message']['message_id'];
+			$this->msgid	  = (string) $this->input['message']['message_id'];
 			$this->name		  = $this->input['message']['from']['first_name'] . (isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : "");
 			$this->first_name = $this->input['message']['from']['first_name'];
 			$this->last_name  = isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : null;
@@ -120,5 +120,10 @@ final class MainHandler
 			$res = new Response($this);
 			$res();
 		}
+	}
+
+	public function __get($var)
+	{
+		return $this->{strtolower($var)};
 	}
 }

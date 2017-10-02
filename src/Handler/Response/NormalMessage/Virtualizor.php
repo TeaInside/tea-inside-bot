@@ -135,7 +135,7 @@ class Virtualizor
 				$this->executor = "\\App\\Virtualizor\\Lang\\CPP";
 				break;
 			case 'node':
-				$this->executor = "\\App\\Virtualizor\\Lang\\CPP";
+				$this->executor = "\\App\\Virtualizor\\Lang\\NodeJS";
 				break;
 			default:
 				break;

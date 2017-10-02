@@ -8,11 +8,11 @@ namespace Lang;
  */
 final class Map
 {
-	/**
-	 * @var array
-	 */
-	public static $lang = [
-		"id" => "\\Lang\\ID\\",
-		"en" => "\\Lang\\EN\\"
-	];
+    /**
+     * @var array
+     */
+    public static $lang = [
+        "id" => "\\Lang\\ID\\",
+        "en" => "\\Lang\\EN\\"
+    ];
 }

@@ -3,14 +3,14 @@
 namespace System\Contracts\App\Virtualizor;
 
 interface SecurityContract
-{	
-	/**
-	 * @param string $code
-	 */
-	public function __construct($code);
+{
+    /**
+     * @param string $code
+     */
+    public function __construct($code);
 
-	/**
-	 * @return bool
-	 */
-	public function is_secure();
+    /**
+     * @return bool
+     */
+    public function is_secure();
 }

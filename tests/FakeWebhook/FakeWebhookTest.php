@@ -7,9 +7,9 @@ use PHPUnit\Framework\TestCase;
 
 class FakeWebhookTest extends TestCase
 {
-	public function testInit()
-	{
-		$input = '{
+    public function testInit()
+    {
+        $input = '{
 		    "update_id": 344262043,
 		    "message": {
 		        "message_id": 27024,
@@ -31,8 +31,8 @@ class FakeWebhookTest extends TestCase
 		    }
 		}';
 
-		$app = new Bot($input);
-		$app->run();
-		$this->assertTrue(true);
-	}
+        $app = new Bot($input);
+        $app->run();
+        $this->assertTrue(true);
+    }
 }

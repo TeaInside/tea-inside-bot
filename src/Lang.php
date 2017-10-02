@@ -9,28 +9,27 @@ use Hub\Singleton;
  */
 final class Lang
 {
-	use Singleton;
+    use Singleton;
 
-	/**
-	 * @var string
-	 */
-	private $lang;
+    /**
+     * @var string
+     */
+    private $lang;
 
-	/**
-	 * Constructor.
-	 * @param string $lang
-	 */
-	public function __construct($lang)
-	{
-		if (isset(Map::$lang[$lang])) {
-			$this->lang = $lang;
-		} else {
-			throw new LanguageNotFoundException("Language '{$lang}' not found!", 101);
-		}
-	}
-	
-	public static function system()
-	{
-		
-	}
+    /**
+     * Constructor.
+     * @param string $lang
+     */
+    public function __construct($lang)
+    {
+        if (isset(Map::$lang[$lang])) {
+            $this->lang = $lang;
+        } else {
+            throw new LanguageNotFoundException("Language '{$lang}' not found!", 101);
+        }
+    }
+    
+    public static function system()
+    {
+    }
 }

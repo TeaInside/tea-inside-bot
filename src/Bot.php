@@ -8,25 +8,25 @@ use Handler\MainHandler;
  */
 final class Bot
 {
-	/**
-	 * @var Handler\MainHandler
-	 */
-	private $main;
+    /**
+     * @var Handler\MainHandler
+     */
+    private $main;
 
-	/**
-	 * Constructor.
-	 * @param string $input
-	 */
-	public function __construct($input)
-	{
-		$this->main = new MainHandler($input);
-	}
-	
-	/**
-	 * Run app.
-	 */
-	public function run()
-	{
-		$this->main->run();
-	}
+    /**
+     * Constructor.
+     * @param string $input
+     */
+    public function __construct($input)
+    {
+        $this->main = new MainHandler($input);
+    }
+    
+    /**
+     * Run app.
+     */
+    public function run()
+    {
+        $this->main->run();
+    }
 }

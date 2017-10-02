@@ -43,6 +43,9 @@ class GCC extends Compiler implements LangContract
 		$this->file  = VIRTUALIZOR_DIR."/c/".$this->hash.".c";
 	}
 
+	/**
+	 * Init file.
+	 */
 	private function __init()
 	{
 		if (! is_dir(VIRTUALIZOR_DIR."/c")) {
@@ -64,6 +67,9 @@ class GCC extends Compiler implements LangContract
 		}
 	}
 
+	/**
+	 * Compile it.
+	 */
 	private function __compile()
 	{
 		$check = shell_exec("gcc --version || echo 0");
@@ -80,6 +86,9 @@ class GCC extends Compiler implements LangContract
 		return true;
 	}
 
+	/**
+	 * Run.
+	 */
 	private function __exec()
 	{
 		$exec = shell_exec(VIRTUALIZOR_DIR."/c/".$this->hash);
@@ -90,6 +99,9 @@ class GCC extends Compiler implements LangContract
 		}
 	}
 
+	/**
+	 * Executor.
+	 */
 	public function exec()
 	{
 		if ($this->__init()) {

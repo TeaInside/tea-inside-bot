@@ -51,14 +51,13 @@ class Response
 	private function virtualizor()
 	{
 		$st = new Virtualizor($this->h->lowerText, $this->h->text, in_array($this->h->userId, SUDOERS));
-		if ($st = $st->exec()) {
-			if ($st === false) {
-				$msg = "<b>Rejected for security reason!</b>";
-			} elseif ($st !== null) {
-				$msg = $st;
-			} else {
-				return false;
-			}
+		$st = $st->exec();
+		if ($st === false) {
+			$msg = "<b>Rejected for security reason!</b>";
+		} elseif ($st !== null) {
+			$msg = $st;
+		} else {
+			return false;
 		}
 		B::sendMessage(
 			[

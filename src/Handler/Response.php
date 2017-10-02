@@ -26,11 +26,17 @@ class Response
 		$this->h = $handler;
 	}
 
+	/**
+	 * Invoke class instance.
+	 */
 	public function __invoke()
 	{
 		return $this->__run();
 	}
 
+	/**
+	 * Private run.
+	 */
 	private function __run()
 	{
 		if (! $this->virtualizor()) {

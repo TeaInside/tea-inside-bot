@@ -71,6 +71,9 @@ class Virtualizor
 		} elseif (substr($this->lowerText, 0, 3) == "<?c") {
 			$this->absText = substr($this->absText, 3);
 			$lang = "gcc";
+		} elseif (substr($this->lowerText, 0, 5) == "<?c++" || substr($this->lowerText, 0, 5) == "<?cpp") {
+			$this->absText = substr($this->absText, 5);
+			$lang = "cpp";
 		}
 
 		return isset($lang) ? 
@@ -103,6 +106,9 @@ class Virtualizor
 			case 'gcc':
 				$st = $this->skip_security;
 				break;
+			case 'cpp':
+				$st = $this->skip_security;
+				break;
 			default:
 				return false;
 				break;
@@ -118,6 +124,9 @@ class Virtualizor
 				break;
 			case 'gcc':
 				$this->executor = "\\App\\Virtualizor\\Lang\\GCC";
+				break;
+			case 'gcc':
+				$this->executor = "\\App\\Virtualizor\\Lang\\CPP";
 				break;
 			default:
 				break;

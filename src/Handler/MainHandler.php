@@ -116,7 +116,6 @@ final class MainHandler
 	private function response()
 	{
 		if (in_array($this->msgType, ["text"])) {
-			var_dump(123);
 			$res = new Response($this);
 			$res();
 		}

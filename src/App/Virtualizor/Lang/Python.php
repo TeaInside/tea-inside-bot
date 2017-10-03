@@ -41,6 +41,7 @@ class Python implements LangContract
 
 	public function exec()
 	{
+		$this->__init();
 		$sh = shell_exec("python ".$this->file." 2>&1");
 		return empty($sh) ? "~" : $sh;
 	}

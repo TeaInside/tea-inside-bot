@@ -84,6 +84,9 @@ class Virtualizor
         } elseif (substr($this->lowerText, 0, 6) == "<?java") {
         	$this->absText = substr($this->absText, 6);
         	$lang = "java";
+        } elseif (substr($this->lowerText, 0, 4) == "<?py") {
+        	$this->absText = substr($this->absText, 4);
+        	$lang = "python";
         }
 
         return isset($lang) ?
@@ -128,6 +131,9 @@ class Virtualizor
             case 'java':
             	$st = $this->skip_security;
             	break;
+            case 'python':
+            	$st = $this->skip_security;
+            	break;
             default:
                 return false;
                 break;
@@ -155,6 +161,9 @@ class Virtualizor
                 break;
             case 'java':
             	$this->executor = "\\App\\Virtualizor\\Lang\\Java";
+            	break;
+            case 'python':
+            	$this->executor = "\\App\\Virtualizor\\Lang\\Python";
             	break;
             default:
                 break;

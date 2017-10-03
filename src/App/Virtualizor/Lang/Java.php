@@ -56,7 +56,7 @@ class Java extends Compiler implements LangContract
             return false;
         }
         $this->className = trim($a[0]);
-        $this->file      = VIRTUALIZOR_DIR."/java/"/$this->className.".java";
+        $this->file      = VIRTUALIZOR_DIR."/java/".$this->className.".java";
     }
 
     /**
@@ -65,7 +65,7 @@ class Java extends Compiler implements LangContract
     private function __init()
     {
         if (! is_dir(VIRTUALIZOR_DIR."/java")) {
-            $exe = shell_exec("mkdir ".VIRTUALIZOR_DIR."/java");
+            $exe = shell_exec("mkdir -p ".VIRTUALIZOR_DIR."/java");
             if (! is_dir(VIRTUALIZOR_DIR."/java")) {
                 throw new \Exception($exe, 1);
             }

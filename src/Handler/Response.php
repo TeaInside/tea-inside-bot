@@ -4,6 +4,7 @@ namespace Handler;
 
 use Telegram as B;
 use Handler\MainHandler;
+use Handler\Response\NormalMessage\Command;
 use Handler\Response\NormalMessage\Virtualizor;
 
 /**
@@ -51,6 +52,8 @@ class Response
      */
     private function command()
     {
+        $st = new Command($this->h);
+        return $st->exec();
     }
 
     /**

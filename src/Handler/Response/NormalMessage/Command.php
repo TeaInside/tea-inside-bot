@@ -17,7 +17,7 @@ class Command
 	private $h;
 
 	/**
-	 * @var ???
+	 * @var Handler\Response\NormalMessage\Command
 	 */
 	private $route;
 

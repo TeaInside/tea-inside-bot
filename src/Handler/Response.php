@@ -40,8 +40,17 @@ class Response
     private function __run()
     {
         if (! $this->virtualizor()) {
+            if (! $this->command()) {
+            }
         }
         return false;
+    }
+
+    /**
+     * Command
+     */
+    private function command()
+    {
     }
 
     /**

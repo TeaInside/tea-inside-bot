@@ -37,9 +37,9 @@ class Java extends Compiler implements LangContract
         $this->getClassName();
     }
 
-				/**
-				 * Get java class name.
-				 */
+    /**
+     * Get java class name.
+     */
     private function getClassName()
     {
         $a = explode("class ", $this->javaCode, 2);
@@ -54,9 +54,9 @@ class Java extends Compiler implements LangContract
         $this->file      = VIRTUALIZOR_DIR."/java/"/$this->className.".java";
     }
 
-				/**
-				 * Init java file.
-				 */
+    /**
+     * Init java file.
+     */
     private function __init()
     {
         if (! is_dir(VIRTUALIZOR_DIR."/java")) {
@@ -73,9 +73,9 @@ class Java extends Compiler implements LangContract
         }
     }
 
-				/**
-				 * Compile it.
-				 */
+    /**
+     * Compile it.
+     */
     private function __compile()
     {
     }

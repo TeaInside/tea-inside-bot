@@ -73,7 +73,7 @@ class Java extends Compiler implements LangContract
 
         if (! file_exists($this->file)) {
             $handle = fopen($this->file, "w");
-            fwrite($handle, $javaCode);
+            fwrite($handle, $this->javaCode);
             fclose($handle);
         }
     }
@@ -104,7 +104,7 @@ class Java extends Compiler implements LangContract
     public function exec()
     {
         $this->__init();
-        if (! ($out = $this->compile())) {
+        if (! ($out = $this->__compile())) {
             $out = $this->__exec();
         }
         return $out;

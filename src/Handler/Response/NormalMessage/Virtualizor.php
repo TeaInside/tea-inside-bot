@@ -81,6 +81,9 @@ class Virtualizor
         } elseif ((substr($this->lowerText, 0, 4) == "<?rb" and $cl = 4) or (substr($this->lowerText, 0, 6) == "<?ruby" and $cl = 6)) {
             $this->absText = substr($this->absText, $cl);
             $lang = "ruby";
+        } elseif (substr($this->lowerText, 0, 6) == "<?java") {
+        	$this->absText = substr($this->absText, 6);
+        	$lang = "java";
         }
 
         return isset($lang) ?
@@ -122,6 +125,9 @@ class Virtualizor
             case 'ruby':
                 $st = $this->skip_security;
                 break;
+            case 'java':
+            	$st = $this->skip_security;
+            	break;
             default:
                 return false;
                 break;
@@ -147,6 +153,9 @@ class Virtualizor
             case 'ruby':
                 $this->executor = "\\App\\Virtualizor\\Lang\\Ruby";
                 break;
+            case 'java':
+            	$this->executor = "\\App\\Virtualizor\\Lang\\Java";
+            	break;
             default:
                 break;
         }

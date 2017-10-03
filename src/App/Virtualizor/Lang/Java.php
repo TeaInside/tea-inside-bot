@@ -27,6 +27,11 @@ class Java extends Compiler implements LangContract
     private $file;
 
     /**
+     * @var string
+     */
+    private $errorInfo;
+
+    /**
      * Constructor.
      *
      * @param string $javaCode
@@ -78,5 +83,30 @@ class Java extends Compiler implements LangContract
      */
     private function __compile()
     {
+        $comp = shell_exec("javac ".$this->file." 2>&1");
+        if ($comp) {
+            $this->errorInfo = trim($comp);
+        }
+    }
+
+    /**
+     * Private exec.
+     */
+    private function __exec()
+    {
+        $out = shell_exec("cd ".VIRTUALIZOR_DIR."/java && java ".$this->className." 2>&1");
+        return $out === "" ? "~" : $out;
+    }
+
+    /**
+     * Exec.
+     */
+    public function exec()
+    {
+        $this->__init();
+        if (! ($out = $this->compile())) {
+            $out = $this->__exec();
+        }
+        return $out;
     }
 }

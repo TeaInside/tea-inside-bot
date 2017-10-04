@@ -35,9 +35,10 @@ class CommandRoutes
 		$this->h = $handler;
 		$a = explode(" ", $handler->lowertext, 2);
 		$this->startWith = $a[0];
+		$this->init_routes();
 	}
 
-	private function routes()
+	private function init_routes()
 	{
 		$this->routes = [
 			"/translate" => "\\Handler\\Response\\NormalMessage\\Command\\Translate"

@@ -3,8 +3,11 @@
     <note priority="veryhigh" time="1507014868">
         Create command handler
     </note>
-    <note priority="high" time="1506962721">
+    <note priority="high" time="1506962721" done="1507103710">
         Create translate plugin
+        <comment>
+            Fix totally
+        </comment>
     </note>
     <note priority="medium" time="1506962807">
         Create brainly connector

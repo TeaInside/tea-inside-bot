@@ -47,6 +47,7 @@ class CommandRoutes
 	public function needResponse()
 	{
 		foreach ($this->routes as $key => $val) {
+			var_dump($key, $this->startWith);
 			if ($this->startWith == $key) {
 				$this->run = new $val($this->h);
 				return true;

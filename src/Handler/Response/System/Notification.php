@@ -7,6 +7,10 @@ use PDO;
 use Telegram as B;
 use Handler\MainHandler;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 final class Notification
 {
     /**

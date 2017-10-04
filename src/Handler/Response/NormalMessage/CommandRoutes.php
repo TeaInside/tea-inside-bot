@@ -23,7 +23,7 @@ class CommandRoutes
 	/**
 	 * @var object
 	 */
-	private $run;
+	public $run;
 
 	/**
 	 * Constructor.

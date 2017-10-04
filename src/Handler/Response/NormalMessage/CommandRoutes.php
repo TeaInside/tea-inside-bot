@@ -33,7 +33,7 @@ class CommandRoutes
 	private function routes()
 	{
 		$this->routes = [
-
+			""
 
 		];
 	}

@@ -41,6 +41,7 @@ class Response
     private function __run()
     {
         if (! $this->virtualizor()) {
+            var_dump(123);
             if (! $this->command()) {
             }
         }

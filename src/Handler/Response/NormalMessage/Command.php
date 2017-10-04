@@ -38,7 +38,7 @@ class Command
 	{
 		$st = new CommandRoutes($this->h);
 		if ($st->needResponse()) {
-			$this->route = $st->route;
+			$this->route = $st->run;
 			return true;
 		}
 		return false;

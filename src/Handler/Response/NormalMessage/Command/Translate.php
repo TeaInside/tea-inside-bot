@@ -17,7 +17,7 @@ class Translate
 
 	public function __run()
 	{
-		$x = explode(" ", $this->h, 4);
+		$x = explode(" ", $this->h->text, 4);
 		$from = $x[1];
 		$to   = $x[2];
 		$text = $x[3];

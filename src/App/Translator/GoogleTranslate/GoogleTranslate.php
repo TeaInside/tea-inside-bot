@@ -98,8 +98,8 @@ final class GoogleTranslate
 		if (isset($b[1])) {
 			$b = explode("<", $b[1]);
 		}
-		$out = html_entity_decode($a[0], ENT_QUOTES, 'UTF-8') ;/*xor 
-		(isset($b[0]) and $out .= "\n(".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8').")");*/
+		$out = html_entity_decode($a[0], ENT_QUOTES, 'UTF-8') xor 
+		(isset($b[0]) and $out .= "\n(".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8').")");
 		file_put_contents("aa.tmp", $out);
 	}
 }

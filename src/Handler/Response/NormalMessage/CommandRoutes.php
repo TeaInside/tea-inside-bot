@@ -34,7 +34,6 @@ class CommandRoutes
 	{
 		$this->routes = [
 			""
-
 		];
 	}
 

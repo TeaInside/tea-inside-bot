@@ -1,5 +1,7 @@
 <?php
 
+ini_set("display_errors", true);
+
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @license MIT

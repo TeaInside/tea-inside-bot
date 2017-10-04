@@ -4,6 +4,7 @@ namespace Handler\Response\NormalMessage\Command;
 
 use Telegram as B;
 use Handler\MainHandler;
+use App\Translator\GoogleTranslate\GoogleTranslate;
 
 class Translate
 {	
@@ -16,10 +17,17 @@ class Translate
 
 	public function __run()
 	{
+		$x = explode(" ", $this->h, 4);
+		$from = $x[1];
+		$to   = $x[2];
+		$text = $x[3];
+		$st = new GoogleTranslate($text, $from, $to);
 		B::sendMessage(
 			[
-				"text" => "test router success!",
-				"chat_id" => $this->h->chat_id
+				"text" => $st->exec(),
+				"chat_id" => $this->h->chat_id,
+				"reply_to_message_id" => $this->h->msgid,
+				"disable_web_page_preview" => true
 			]
 		);
 	}

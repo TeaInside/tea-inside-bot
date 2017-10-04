@@ -38,11 +38,9 @@ class Command
 	{
 		$st = new CommandRoutes($this->h);
 		if ($st->needResponse()) {
-			var_dump("need res");
 			$this->route = $st->run;
 			return true;
 		}
-		var_dump("not need res");
 		return false;
 	}
 

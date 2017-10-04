@@ -67,6 +67,7 @@ final class GoogleTranslate
 	 */
 	public function exec()
 	{
+		$this->__init();
 		$ch = new Curl("https://translate.google.com/m?hl=en&sl=".urlencode($this->from)."&tl=".urlencode($this->to)."&ie=UTF-8&prev=_m&q=".urlencode($this->text));
 		$ch->set_opt(
 			[
@@ -90,9 +91,15 @@ final class GoogleTranslate
 	 */
 	private static function parseOutput(&$out)
 	{
+		file_put_contents("aa.tmp", $out);
 		$a = explode("<div dir=\"ltr\" class=\"t0\">", $out, 2);
 		$a = explode("<", $a[1]);
-		// $out = html_entity_decode($a[0], ENT_QUOTES, 'UTF-8');
+		$b = explode("<div dir=\"ltr\" class=\"o1\">", $out, 2);
+		if (isset($b[1])) {
+			$b = explode("<", $b[1]);
+		}
+		$out = html_entity_decode($a[0], ENT_QUOTES, 'UTF-8') ;/*xor 
+		(isset($b[0]) and $out .= "\n(".html_entity_decode($b[0], ENT_QUOTES, 'UTF-8').")");*/
 		file_put_contents("aa.tmp", $out);
 	}
 }

@@ -45,6 +45,7 @@ class CommandRoutes
 	private function init_routes()
 	{
 		Lang::init("id");
+		Lang::initMainHandler($this->h);
 		$this->route(function(){
 			return
 				CMDUtil::firstWorld($this->h->lowerText, "/translate") ||

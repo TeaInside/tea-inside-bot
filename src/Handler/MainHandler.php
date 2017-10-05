@@ -115,7 +115,6 @@ final class MainHandler
             $this->userId      = $this->input['message']['from']['id'];
             $this->username   = isset($this->input['message']['from']['username']) ? $this->input['message']['from']['username'] : null;
         }
-        Lang::initMainHandler($this);
     }
 
     /**

@@ -42,15 +42,21 @@ class CommandRoutes
 
 	private function init_routes()
 	{
-		$this->route((
+		$this->route(function(){
+			return
 			CMDUtil::firstWorld($this->h->lowerText, "/translate") ||
 			CMDUtil::firstWorld($this->h->lowerText, "!translate") ||
 			CMDUtil::firstWorld($this->h->lowerText, "~translate")
-		), "\\Handler\\Response\\NormalMessage\\Command\\Translate");
+		}, "\\Handler\\Response\\NormalMessage\\Command\\Translate");
+
+		return isset($this->route);
 	}
 
 	private function route($a, $route)
 	{
+		if (isset($this->route)) {
+			return false;
+		}
 		if (((bool) (($a instanceof Closure) ? $a() : $a))) {
 			var_dump("masuk");
 			$this->route = $route;

@@ -71,7 +71,7 @@ class CommandRoutes
 		}, "\\Handler\\Response\\NormalMessage\\Command\\TranslateRepliedMessage");
 
 		/**
-		 * Translate replied message.
+		 * Admin list.
 		 */
 		$this->route(function(){
 			return

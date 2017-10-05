@@ -87,6 +87,25 @@ class CommandRoutes
 			return
 				$this->h->lowerText === "/start";
 		}, "\\Handler\\Response\\NormalMessage\\Command\\Start");
+		
+		/**
+		 * Ping bot.
+		 */
+		$this->route(function(){
+			return 
+				CMDUtil::firstWorld($this->h->lowerText, "/ping")		   ||
+				CMDUtil::firstWorld($this->h->lowerText, "!ping")		   ||
+				CMDUtil::firstWorld($this->h->lowerText, "~ping");
+		}, function(){
+			B::sendMessage(
+				[
+					"chat_id" => $this->h->chat_id,
+					"text" => (time() - ($this->h->time))." s",
+					"reply_to_message_id" => $this->h->msgid
+				]
+			);
+		});
+
 		return isset($this->run);
 	}
 

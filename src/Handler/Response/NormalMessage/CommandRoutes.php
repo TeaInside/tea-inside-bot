@@ -43,9 +43,9 @@ class CommandRoutes
 	private function init_routes()
 	{
 		$this->route((
-			CMDUtil::firstWorld($this->lowerText, "/translate") ||
-			CMDUtil::firstWorld($this->lowerText, "!translate") ||
-			CMDUtil::firstWorld($this->lowerText, "~translate")
+			CMDUtil::firstWorld($this->h->lowerText, "/translate") ||
+			CMDUtil::firstWorld($this->h->lowerText, "!translate") ||
+			CMDUtil::firstWorld($this->h->lowerText, "~translate")
 		), "\\Handler\\Response\\NormalMessage\\Command\\Translate");
 	}
 

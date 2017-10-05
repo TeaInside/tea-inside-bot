@@ -33,7 +33,8 @@ class Start extends CommandFactory
 			[
 				"chat_id" => $this->h->chat_id,
 				"text"    => Lang::system("/start"),
-				"reply_to_message_id" => $this->h->msgid
+				"reply_to_message_id" => $this->h->msgid,
+				"parse_mode" => "HTML"
 			]
 		);
 	}

@@ -52,12 +52,14 @@ class CommandRoutes
 		return isset($this->route);
 	}
 
-	private function route($a, $route)
+	private function route(Closure $a, $route)
 	{
-		if (isset($this->route)) {
+		if (isset($this->run)) {
+			var_dump("falx");
 			return false;
 		}
-		if (((bool) (($a instanceof Closure) ? $a() : $a))) {
+		var_dump("nx");
+		if (((bool) $a())) {
 			var_dump("masuk");
 			$this->run = $route;
 			return true;

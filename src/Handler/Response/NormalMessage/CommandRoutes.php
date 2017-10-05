@@ -60,6 +60,9 @@ class CommandRoutes
 				CMDUtil::firstWorld($this->h->lowerText, "~tl");
 		}, "\\Handler\\Response\\NormalMessage\\Command\\Translate");
 
+		/**
+		 * Translate replied message.
+		 */
 		$this->route(function(){
 			return
 				CMDUtil::firstWorld($this->h->lowerText, "/tlr")		   ||
@@ -67,6 +70,19 @@ class CommandRoutes
 				CMDUtil::firstWorld($this->h->lowerText, "~tlr");
 		}, "\\Handler\\Response\\NormalMessage\\Command\\TranslateRepliedMessage");
 
+		/**
+		 * Translate replied message.
+		 */
+		$this->route(function(){
+			return
+				CMDUtil::firstWorld($this->h->lowerText, "/admin")		   ||
+				CMDUtil::firstWorld($this->h->lowerText, "!admin")		   ||
+				CMDUtil::firstWorld($this->h->lowerText, "~admin");
+		}, "\\Handler\\Response\\NormalMessage\\Command\\Admin");
+
+		/**
+		 * Start bot.
+		 */
 		$this->route(function(){
 			return
 				$this->h->lowerText === "/start";

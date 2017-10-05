@@ -71,11 +71,9 @@ class Java extends Compiler implements LangContract
             }
         }
 
-        if (! file_exists($this->file)) {
-            $handle = fopen($this->file, "w");
-            fwrite($handle, $this->javaCode);
-            fclose($handle);
-        }
+        $handle = fopen($this->file, "w");
+        fwrite($handle, $this->javaCode);
+        fclose($handle);
     }
 
     /**

@@ -46,12 +46,27 @@ class CommandRoutes
 	{
 		Lang::init("id");
 		Lang::initMainHandler($this->h);
+
+		/**
+		 * Translate
+		 */
 		$this->route(function(){
 			return
 				CMDUtil::firstWorld($this->h->lowerText, "/translate") ||
 				CMDUtil::firstWorld($this->h->lowerText, "!translate") ||
-				CMDUtil::firstWorld($this->h->lowerText, "~translate");
+				CMDUtil::firstWorld($this->h->lowerText, "~translate") ||
+				CMDUtil::firstWorld($this->h->lowerText, "/tl")		   ||
+				CMDUtil::firstWorld($this->h->lowerText, "!tl")		   ||
+				CMDUtil::firstWorld($this->h->lowerText, "~tl");
 		}, "\\Handler\\Response\\NormalMessage\\Command\\Translate");
+
+		$this->route(function(){
+			return
+				CMDUtil::firstWorld($this->h->lowerText, "/tlr")		   ||
+				CMDUtil::firstWorld($this->h->lowerText, "!tlr")		   ||
+				CMDUtil::firstWorld($this->h->lowerText, "~tlr");
+		}, "\\Handler\\Response\\NormalMessage\\Command\\TranslateRepliedMessage");
+
 		$this->route(function(){
 			return
 				$this->h->lowerText === "/start";

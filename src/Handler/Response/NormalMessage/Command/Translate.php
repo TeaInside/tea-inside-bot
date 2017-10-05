@@ -4,9 +4,10 @@ namespace Handler\Response\NormalMessage\Command;
 
 use Telegram as B;
 use Handler\MainHandler;
+use Handler\Response\Foundation\CommandFactory;
 use App\Translator\GoogleTranslate\GoogleTranslate;
 
-class Translate
+class Translate extends CommandFactory
 {	
 	private $h;
 

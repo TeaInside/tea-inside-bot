@@ -51,11 +51,12 @@ class CommandRoutes
 
 	private function route($a, $route)
 	{
-		$flag = (bool) (($a instanceof Closure) ? $a() : $a);
-		if ($flag) {
+		if (((bool) (($a instanceof Closure) ? $a() : $a))) {
+			var_dump("masuk");
 			$this->route = $route;
 			return true;
 		}
+		var_dump("gak masuk");
 		return false;
 	}
 

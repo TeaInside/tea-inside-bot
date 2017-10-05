@@ -50,6 +50,7 @@ class Command
 	public function exec()
 	{
 		if ($this->checkRoute()) {
+			var_dump("cmd masuk");
 			return $this->route instanceof Closure ? 
 				($this->route)() : 
 					(new $this->route($this->h))->__run();

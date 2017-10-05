@@ -58,11 +58,9 @@ class CommandRoutes
 			return false;
 		}
 		if (((bool) (($a instanceof Closure) ? $a() : $a))) {
-			var_dump("masuk");
-			$this->route = $route;
+			$this->run = $route;
 			return true;
 		}
-		var_dump("gak masuk");
 		return false;
 	}
 

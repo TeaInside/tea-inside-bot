@@ -2,7 +2,9 @@
 
 namespace Handler\Response\NormalMessage;
 
+use Closure;
 use Handler\MainHandler;
+use Handler\Response\NormalMessage\CommandUtils as CMDUtils;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
@@ -40,19 +42,25 @@ class CommandRoutes
 
 	private function init_routes()
 	{
-		$this->routes = [
-			"/translate" => "\\Handler\\Response\\NormalMessage\\Command\\Translate"
-		];
+		$this->route((
+			CMDUtil::firstWorld($this->lowerText, "/translate") ||
+			CMDUtil::firstWorld($this->lowerText, "!translate") ||
+			CMDUtil::firstWorld($this->lowerText, "~translate")
+		), "\\Handler\\Response\\NormalMessage\\Command\\Translate");
+	}
+
+	private function route($a, $route)
+	{
+		$flag = (bool) (($a instanceof Closure) ? $a() : $a);
+		if ($flag) {
+			$this->route = $route;
+			return true;
+		}
+		return false;
 	}
 
 	public function needResponse()
 	{
-		foreach ($this->routes as $key => $val) {
-			var_dump($key, $this->startWith);
-			if ($this->startWith == $key) {
-				$this->run = new $val($this->h);
-				return true;
-			}
-		}
+		return $this->init_routes();
 	}
 }

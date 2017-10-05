@@ -50,7 +50,9 @@ class Command
 	public function exec()
 	{
 		if ($this->checkRoute()) {
-			return $this->route->__run();
+			return $this->route instanceof Closure ? 
+				($this->route)() : 
+					(new $this->route($this->h))->__run();
 		}
 		return false;
 	}

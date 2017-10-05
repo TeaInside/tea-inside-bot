@@ -29,7 +29,13 @@ final class Lang
         }
     }
     
-    public static function system()
+    public static function init($lang)
     {
+        self::$instance = new self($lang);
+    }
+
+    public static function system($gt)
+    {
+        return ($this->lang."System")::$sys[$gt];
     }
 }

@@ -2,7 +2,9 @@
 
 namespace Handler\Response\NormalMessage;
 
+use Lang;
 use Closure;
+use Telegram as B;
 use Handler\MainHandler;
 use Handler\Response\NormalMessage\CommandUtils as CMDUtil;
 
@@ -42,29 +44,29 @@ class CommandRoutes
 
 	private function init_routes()
 	{
+		Lang::init("id");
 		$this->route(function(){
 			return
-			CMDUtil::firstWorld($this->h->lowerText, "/translate") ||
-			CMDUtil::firstWorld($this->h->lowerText, "!translate") ||
-			CMDUtil::firstWorld($this->h->lowerText, "~translate");
+				CMDUtil::firstWorld($this->h->lowerText, "/translate") ||
+				CMDUtil::firstWorld($this->h->lowerText, "!translate") ||
+				CMDUtil::firstWorld($this->h->lowerText, "~translate");
 		}, "\\Handler\\Response\\NormalMessage\\Command\\Translate");
-
+		$this->route(function(){
+			return
+				$this->h->lowerText === "/start";
+		});
 		return isset($this->run);
 	}
 
 	private function route(Closure $a, $route)
 	{
 		if (isset($this->run)) {
-			var_dump("falx");
 			return false;
 		}
-		var_dump("nx");
 		if (((bool) $a())) {
-			var_dump("masuk");
 			$this->run = $route;
 			return true;
 		}
-		var_dump("gk masuk");
 		return false;
 	}
 

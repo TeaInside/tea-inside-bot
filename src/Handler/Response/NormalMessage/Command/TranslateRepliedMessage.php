@@ -22,8 +22,7 @@ class Translate extends CommandFactory
 			$x = explode(" ", $this->h->text, 4);
 			$from = $x[1];
 			$to   = $x[2];
-			$text = $x[3];
-			$st = new GoogleTranslate($text, $from, $to);
+			$st = new GoogleTranslate($this->h->replyto['text'], $from, $to);
 			B::sendMessage(
 				[
 					"text" => $st->exec(),

@@ -10,7 +10,7 @@ use Handler\MainHandler;
  */
 abstract class CommandFactory
 {
-	abstract public function __construct(MainHandler $handler);
-	
-	abstract public function __run();
+    abstract public function __construct(MainHandler $handler);
+    
+    abstract public function __run();
 }

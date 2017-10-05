@@ -12,49 +12,49 @@ use Handler\Response\NormalMessage\CommandRoutes;
  */
 class Command
 {
-	/**
-	 * @var Handler\MainHandler
-	 */
-	private $h;
+    /**
+     * @var Handler\MainHandler
+     */
+    private $h;
 
-	/**
-	 * @var Handler\Response\NormalMessage\Command
-	 */
-	private $route;
+    /**
+     * @var Handler\Response\NormalMessage\Command
+     */
+    private $route;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param Handler\MainHandler
-	 */
-	public function __construct(MainHandler $handler)
-	{
-		$this->h = $handler;
-	}
+    /**
+     * Constructor.
+     *
+     * @param Handler\MainHandler
+     */
+    public function __construct(MainHandler $handler)
+    {
+        $this->h = $handler;
+    }
 
-	/**
-	 * Check and declare route instance.
-	 */
-	private function checkRoute()
-	{
-		$st = new CommandRoutes($this->h);
-		if ($st->needResponse()) {
-			$this->route = $st->run;
-			return true;
-		}
-		return false;
-	}
+    /**
+     * Check and declare route instance.
+     */
+    private function checkRoute()
+    {
+        $st = new CommandRoutes($this->h);
+        if ($st->needResponse()) {
+            $this->route = $st->run;
+            return true;
+        }
+        return false;
+    }
 
-	/**
-	 * Public executor.
-	 */
-	public function exec()
-	{
-		if ($this->checkRoute()) {
-			return $this->route instanceof Closure ? 
-				($this->route)() : 
-					(new $this->route($this->h))->__run();
-		}
-		return false;
-	}
+    /**
+     * Public executor.
+     */
+    public function exec()
+    {
+        if ($this->checkRoute()) {
+            return $this->route instanceof Closure ?
+                ($this->route)() :
+                    (new $this->route($this->h))->__run();
+        }
+        return false;
+    }
 }

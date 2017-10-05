@@ -8,9 +8,9 @@ namespace Handler\Response\NormalMessage;
  */
 class CommandUtils
 {
-	public static function firstWorld($text, $word, $caseSensitive = false)
-	{
-		$a = explode(" ", $text, 2);
-		return $caseSensitive ? $a[0] === $word : strtolower($a[0]) === $word;
-	}
+    public static function firstWorld($text, $word, $caseSensitive = false)
+    {
+        $a = explode(" ", $text, 2);
+        return $caseSensitive ? $a[0] === $word : strtolower($a[0]) === $word;
+    }
 }

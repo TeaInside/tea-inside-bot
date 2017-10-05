@@ -53,8 +53,7 @@ class Virtualizor
         $this->lowerText    = strtolower($lowerText);
         $this->absText        = $absText;
         $this->sudo        = $sudo;
-        $this->skip_security= new class()
-        {
+        $this->skip_security= new class() {
             public function is_secure()
             {
                 return true;
@@ -82,11 +81,11 @@ class Virtualizor
             $this->absText = substr($this->absText, $cl);
             $lang = "ruby";
         } elseif (substr($this->lowerText, 0, 6) == "<?java") {
-        	$this->absText = substr($this->absText, 6);
-        	$lang = "java";
+            $this->absText = substr($this->absText, 6);
+            $lang = "java";
         } elseif (substr($this->lowerText, 0, 4) == "<?py") {
-        	$this->absText = substr($this->absText, 4);
-        	$lang = "python";
+            $this->absText = substr($this->absText, 4);
+            $lang = "python";
         }
 
         return isset($lang) ?
@@ -129,11 +128,11 @@ class Virtualizor
                 $st = $this->skip_security;
                 break;
             case 'java':
-            	$st = $this->skip_security;
-            	break;
+                $st = $this->skip_security;
+                break;
             case 'python':
-            	$st = $this->skip_security;
-            	break;
+                $st = $this->skip_security;
+                break;
             default:
                 return false;
                 break;
@@ -160,11 +159,11 @@ class Virtualizor
                 $this->executor = "\\App\\Virtualizor\\Lang\\Ruby";
                 break;
             case 'java':
-            	$this->executor = "\\App\\Virtualizor\\Lang\\Java";
-            	break;
+                $this->executor = "\\App\\Virtualizor\\Lang\\Java";
+                break;
             case 'python':
-            	$this->executor = "\\App\\Virtualizor\\Lang\\Python";
-            	break;
+                $this->executor = "\\App\\Virtualizor\\Lang\\Python";
+                break;
             default:
                 break;
         }

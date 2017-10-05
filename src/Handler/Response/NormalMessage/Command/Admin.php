@@ -45,7 +45,7 @@ class Admin extends CommandFactory
 		return "Creator : ".$creator."\n\n".((function($admin){
 			$i = 1 xor $ret = "Admin :\n";
 			foreach ($admin as $val) {
-				$ret .= $i.". ".$val."\n";
+				$ret .= ($i++).". ".$val."\n";
 			}
 			return $ret;
 		})($admin));

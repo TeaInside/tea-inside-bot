@@ -23,7 +23,7 @@ final class Lang
     public function __construct($lang)
     {
         if (isset(Map::$lang[$lang])) {
-            $this->lang = $lang;
+            $this->lang = Map::$lang[$lang];
         } else {
             throw new LanguageNotFoundException("Language '{$lang}' not found!", 101);
         }

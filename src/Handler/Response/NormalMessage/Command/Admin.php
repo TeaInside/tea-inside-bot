@@ -38,14 +38,14 @@ class Admin extends CommandFactory
 			if ($val['status'] == "creator") {
 				$creator = "<a href=\"tg://user?id=".$val['user']['id']."\">".htmlspecialchars($name)."</a>".(isset($val['user']['username']) ? "@".$val['user']['username'] : "");
 			} else {
-				$admin[] = "<a href=\"tg://user?id=".$val['user']['id']."\">".htmlspecialchars($name)."</a>".(isset($val['user']['username']) ? "@".$val['user']['username'] : "");
+				$admin[] = "<a href=\"tg://user?id=".$val['user']['id']."\">".htmlspecialchars($name)."</a>".(isset($val['user']['username']) ? " @".$val['user']['username'] : " (<code>no username</code>)");
 			}
 		}
 
 		return "Creator : ".$creator."\n\n".((function($admin){
 			$i = 1 xor $ret = "Admin :\n";
 			foreach ($admin as $val) {
-				$ret .= $i.". ".$val;
+				$ret .= $i.". ".$val."\n";
 			}
 			return $ret;
 		})($admin));

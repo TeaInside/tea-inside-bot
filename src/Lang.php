@@ -1,6 +1,7 @@
 <?php
 
 use Lang\Map;
+use Handler\MainHandler;
 use System\Hub\Singleton;
 
 /**
@@ -15,6 +16,11 @@ final class Lang
      * @var string
      */
     private $lang;
+
+    /**
+     * @var Handler\MainHandler
+     */
+    private $h;
 
     /**
      * Constructor.
@@ -34,8 +40,36 @@ final class Lang
         self::$instance = new self($lang);
     }
 
+    public static function initMainHandler(MainHandler $handler)
+    {
+        self::getInstance()->h = $handler;
+    }
+
+    private static function fx($fx)
+    {
+        $ins = self::getInstance();
+        if ($ins->h instanceof MainHandler) {
+            return str_replace(
+            [
+                "{namelink}",
+                "{userid}",
+                "{msgid}",
+                "{username}",
+                "{name}"
+            ],
+            [
+                "<a href=\"tg://user?id=".$ins->h->userid."\">".htmlspecialchars($ins->h->name)."</a>",
+                $ins->h->userid,
+                $ins->h->msgid,
+                $ins->h->username,
+                $ins->h->name
+            ], $fx);
+        }
+        return $fx;
+    }
+
     public static function system($gt)
     {
-        return (self::getInstance()->lang."System")::$sys[$gt];
+        return self::fx((self::getInstance()->lang."System")::$sys[$gt]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Handler;
 
+use Lang;
 use Telegram as B;
 use Handler\Response;
 
@@ -67,6 +68,11 @@ final class MainHandler
     public $last_name;
 
     /**
+     * @var string
+     */
+    public $username;
+
+    /**
      * Constructor.
      * @param string $input
      */
@@ -107,7 +113,9 @@ final class MainHandler
             $this->first_name = $this->input['message']['from']['first_name'];
             $this->last_name  = isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : null;
             $this->userId      = $this->input['message']['from']['id'];
+            $this->username   = isset($this->input['message']['from']['username']) ? $this->input['message']['from']['username'] : null;
         }
+        Lang::initMainHandler($this);
     }
 
     /**

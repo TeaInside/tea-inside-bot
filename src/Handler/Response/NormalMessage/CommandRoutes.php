@@ -49,7 +49,7 @@ class CommandRoutes
 			CMDUtil::firstWorld($this->h->lowerText, "~translate");
 		}, "\\Handler\\Response\\NormalMessage\\Command\\Translate");
 
-		return isset($this->route);
+		return isset($this->run);
 	}
 
 	private function route(Closure $a, $route)

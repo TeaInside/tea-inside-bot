@@ -7,7 +7,7 @@ use Telegram as B;
 use Handler\MainHandler;
 use Handler\Response\Foundation\CommandFactory;
 
-class Translate extends CommandFactory
+class Start extends CommandFactory
 {
 	/**
 	 * @var Handler\MainHandler

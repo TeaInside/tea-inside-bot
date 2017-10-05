@@ -7,7 +7,7 @@ use Handler\MainHandler;
 use Handler\Response\Foundation\CommandFactory;
 use App\Translator\GoogleTranslate\GoogleTranslate;
 
-class Translate extends CommandFactory
+class TranslateRepliedMessage extends CommandFactory
 {	
 	private $h;
 

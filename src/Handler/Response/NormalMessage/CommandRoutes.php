@@ -4,7 +4,7 @@ namespace Handler\Response\NormalMessage;
 
 use Closure;
 use Handler\MainHandler;
-use Handler\Response\NormalMessage\CommandUtils as CMDUtils;
+use Handler\Response\NormalMessage\CommandUtils as CMDUtil;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

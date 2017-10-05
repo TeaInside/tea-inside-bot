@@ -36,6 +36,6 @@ final class Lang
 
     public static function system($gt)
     {
-        return ($this->lang."System")::$sys[$gt];
+        return (self::getInstance()->lang."System")::$sys[$gt];
     }
 }

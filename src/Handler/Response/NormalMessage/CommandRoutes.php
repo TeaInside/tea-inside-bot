@@ -46,7 +46,7 @@ class CommandRoutes
 			return
 			CMDUtil::firstWorld($this->h->lowerText, "/translate") ||
 			CMDUtil::firstWorld($this->h->lowerText, "!translate") ||
-			CMDUtil::firstWorld($this->h->lowerText, "~translate")
+			CMDUtil::firstWorld($this->h->lowerText, "~translate");
 		}, "\\Handler\\Response\\NormalMessage\\Command\\Translate");
 
 		return isset($this->route);

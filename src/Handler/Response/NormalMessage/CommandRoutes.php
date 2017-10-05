@@ -54,7 +54,7 @@ class CommandRoutes
 		$this->route(function(){
 			return
 				$this->h->lowerText === "/start";
-		});
+		}, "\\Handler\\Response\\NormalMessage\\Command\\Start");
 		return isset($this->run);
 	}
 

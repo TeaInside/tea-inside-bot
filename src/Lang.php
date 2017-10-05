@@ -50,20 +50,22 @@ final class Lang
         $ins = self::getInstance();
         if ($ins->h instanceof MainHandler) {
             return str_replace(
-            [
+                [
                 "{namelink}",
                 "{userid}",
                 "{msgid}",
                 "{username}",
                 "{name}"
-            ],
-            [
+                ],
+                [
                 "<a href=\"tg://user?id=".$ins->h->userid."\">".htmlspecialchars($ins->h->name)."</a>",
                 $ins->h->userid,
                 $ins->h->msgid,
                 $ins->h->username,
                 $ins->h->name
-            ], $fx);
+                ],
+                $fx
+            );
         }
         return $fx;
     }

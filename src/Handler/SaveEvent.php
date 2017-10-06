@@ -20,4 +20,9 @@ final class SaveEvent
     {
         $this->h = $handler;
     }
+
+    public function save()
+    {
+        
+    }
 }

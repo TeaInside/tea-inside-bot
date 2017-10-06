@@ -5,6 +5,7 @@ namespace Handler;
 use Lang;
 use Telegram as B;
 use Handler\Response;
+use Handler\SaveEvent;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
@@ -128,6 +129,8 @@ final class MainHandler
             $res = new Response($this);
             $res();
         }
+        $ch = new SaveEvent($this);
+        $ch->save();
     }
 
     public function __get($var)

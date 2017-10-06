@@ -37,9 +37,6 @@ class CommandRoutes
     public function __construct(MainHandler $handler)
     {
         $this->h = $handler;
-        $a = explode(" ", $handler->lowertext, 2);
-        $this->startWith = $a[0];
-        $this->init_routes();
     }
 
     /**

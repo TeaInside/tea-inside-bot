@@ -7,6 +7,10 @@ use Telegram as B;
 use Handler\MainHandler;
 use Handler\Response\Foundation\CommandFactory;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 class Admin extends CommandFactory
 {
     /**
@@ -17,13 +21,33 @@ class Admin extends CommandFactory
     /**
      * Constructor.
      *
-     * @param Handler\MainHandler
+     * @param Handler\MainHandler $handler
      */
     public function __construct(MainHandler $handler)
     {
         $this->h = $handler;
     }
 
+    /**
+     * Run command.
+     */
+    public function __run()
+    {
+        if ($this->h->chattype != "private") {
+            return B::sendMessage(
+                [
+                    "chat_id" => $this->h->chat_id,
+                    "text" => $this->getAdmin(),
+                    "reply_to_message_id" => $this->h->msgid,
+                    "parse_mode" => "HTML"
+                ]
+            );
+        }
+    }
+
+    /**
+     * Get administrators list.
+     */
     private function getAdmin()
     {
         $creator = "";
@@ -49,22 +73,5 @@ class Admin extends CommandFactory
             }
             return $ret;
         })($admin));
-    }
-
-    /**
-     * Run.
-     */
-    public function __run()
-    {
-        if ($this->h->chattype != "private") {
-            return B::sendMessage(
-                [
-                    "chat_id" => $this->h->chat_id,
-                    "text" => $this->getAdmin(),
-                    "reply_to_message_id" => $this->h->msgid,
-                    "parse_mode" => "HTML"
-                ]
-            );
-        }
     }
 }

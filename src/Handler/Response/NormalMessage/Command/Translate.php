@@ -7,15 +7,30 @@ use Handler\MainHandler;
 use Handler\Response\Foundation\CommandFactory;
 use App\Translator\GoogleTranslate\GoogleTranslate;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 class Translate extends CommandFactory
 {
+    /**
+     * @var Handler\MainHandler
+     */
     private $h;
 
+    /**
+     * Constructor.
+     *
+     * @param Handler\MainHandler $handler
+     */
     public function __construct(MainHandler $handler)
     {
         $this->h = $handler;
     }
 
+    /**
+     * Run command.
+     */
     public function __run()
     {
         $x = explode(" ", $this->h->text, 4);

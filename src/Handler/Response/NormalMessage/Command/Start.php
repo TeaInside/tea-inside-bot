@@ -7,6 +7,10 @@ use Telegram as B;
 use Handler\MainHandler;
 use Handler\Response\Foundation\CommandFactory;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 class Start extends CommandFactory
 {
     /**
@@ -17,7 +21,7 @@ class Start extends CommandFactory
     /**
      * Constructor.
      *
-     * @param Handler\MainHandler
+     * @param Handler\MainHandler $handler
      */
     public function __construct(MainHandler $handler)
     {
@@ -25,7 +29,7 @@ class Start extends CommandFactory
     }
 
     /**
-     * Run.
+     * Run command.
      */
     public function __run()
     {

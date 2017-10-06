@@ -42,6 +42,9 @@ class CommandRoutes
         $this->init_routes();
     }
 
+    /**
+     * Init command routes.
+     */
     private function init_routes()
     {
         Lang::init("id");
@@ -55,8 +58,8 @@ class CommandRoutes
                 CMDUtil::firstWorld($this->h->lowerText, "/translate") ||
                 CMDUtil::firstWorld($this->h->lowerText, "!translate") ||
                 CMDUtil::firstWorld($this->h->lowerText, "~translate") ||
-                CMDUtil::firstWorld($this->h->lowerText, "/tl")           ||
-                CMDUtil::firstWorld($this->h->lowerText, "!tl")           ||
+                CMDUtil::firstWorld($this->h->lowerText, "/tl")        ||
+                CMDUtil::firstWorld($this->h->lowerText, "!tl")        ||
                 CMDUtil::firstWorld($this->h->lowerText, "~tl");
         }, "\\Handler\\Response\\NormalMessage\\Command\\Translate");
 
@@ -65,8 +68,8 @@ class CommandRoutes
          */
         $this->route(function () {
             return
-                CMDUtil::firstWorld($this->h->lowerText, "/tlr")           ||
-                CMDUtil::firstWorld($this->h->lowerText, "!tlr")           ||
+                CMDUtil::firstWorld($this->h->lowerText, "/tlr")    ||
+                CMDUtil::firstWorld($this->h->lowerText, "!tlr")    ||
                 CMDUtil::firstWorld($this->h->lowerText, "~tlr");
         }, "\\Handler\\Response\\NormalMessage\\Command\\TranslateRepliedMessage");
 
@@ -75,8 +78,8 @@ class CommandRoutes
          */
         $this->route(function () {
             return
-                CMDUtil::firstWorld($this->h->lowerText, "/admin")           ||
-                CMDUtil::firstWorld($this->h->lowerText, "!admin")           ||
+                CMDUtil::firstWorld($this->h->lowerText, "/admin")  ||
+                CMDUtil::firstWorld($this->h->lowerText, "!admin")  ||
                 CMDUtil::firstWorld($this->h->lowerText, "~admin");
         }, "\\Handler\\Response\\NormalMessage\\Command\\Admin");
 
@@ -93,8 +96,8 @@ class CommandRoutes
          */
         $this->route(function () {
             return
-                CMDUtil::firstWorld($this->h->lowerText, "/ping")           ||
-                CMDUtil::firstWorld($this->h->lowerText, "!ping")           ||
+                CMDUtil::firstWorld($this->h->lowerText, "/ping")   ||
+                CMDUtil::firstWorld($this->h->lowerText, "!ping")   ||
                 CMDUtil::firstWorld($this->h->lowerText, "~ping");
         }, function () {
             B::sendMessage(
@@ -109,18 +112,27 @@ class CommandRoutes
         return isset($this->run);
     }
 
-    private function route(Closure $a, $route)
+    /**
+     * Set route.
+     *
+     * @param \Closure          $cond
+     * @param string|\Closure   $route
+     */
+    private function route(Closure $cond, $route)
     {
         if (isset($this->run)) {
             return false;
         }
-        if (((bool) $a())) {
+        if (((bool) $cond())) {
             $this->run = $route;
             return true;
         }
         return false;
     }
 
+    /**
+     * Check route.
+     */
     public function needResponse()
     {
         return $this->init_routes();

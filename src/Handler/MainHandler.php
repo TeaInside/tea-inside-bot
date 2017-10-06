@@ -115,6 +115,7 @@ final class MainHandler
             $this->userid      = $this->input['message']['from']['id'];
             $this->username   = isset($this->input['message']['from']['username']) ? $this->input['message']['from']['username'] : null;
             $this->time    = $this->input['message']['date'];
+        } elseif (isset($this->input['message']['photo'])) {
         }
     }
 

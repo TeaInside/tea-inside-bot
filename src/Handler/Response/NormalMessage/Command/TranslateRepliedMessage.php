@@ -4,6 +4,7 @@ namespace Handler\Response\NormalMessage\Command;
 
 use Telegram as B;
 use Handler\MainHandler;
+use System\Contract\CommandContract;
 use Handler\Response\Foundation\CommandFactory;
 use App\Translator\GoogleTranslate\GoogleTranslate;
 
@@ -11,7 +12,7 @@ use App\Translator\GoogleTranslate\GoogleTranslate;
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @license MIT
  */
-class TranslateRepliedMessage extends CommandFactory
+class TranslateRepliedMessage extends CommandFactory implements CommandContract
 {
     /**
      * @var Handler\MainHandler

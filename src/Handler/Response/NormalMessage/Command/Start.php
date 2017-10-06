@@ -5,13 +5,14 @@ namespace Handler\Response\NormalMessage\Command;
 use Lang;
 use Telegram as B;
 use Handler\MainHandler;
+use System\Contract\CommandContract;
 use Handler\Response\Foundation\CommandFactory;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @license MIT
  */
-class Start extends CommandFactory
+class Start extends CommandFactory implements CommandContract
 {
     /**
      * @var Handler\MainHandler

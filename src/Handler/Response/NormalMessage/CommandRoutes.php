@@ -52,12 +52,12 @@ class CommandRoutes
          */
         $this->route(function () {
             return
-                CMDUtil::fW($trcmd "/translate") ||
-                CMDUtil::fW($trcmd "!translate") ||
-                CMDUtil::fW($trcmd "~translate") ||
-                CMDUtil::fW($trcmd "/tl")        ||
-                CMDUtil::fW($trcmd "!tl")        ||
-                CMDUtil::fW($trcmd "~tl");
+                CMDUtil::fW($trcmd, "/translate") ||
+                CMDUtil::fW($trcmd, "!translate") ||
+                CMDUtil::fW($trcmd, "~translate") ||
+                CMDUtil::fW($trcmd, "/tl")        ||
+                CMDUtil::fW($trcmd, "!tl")        ||
+                CMDUtil::fW($trcmd, "~tl");
         }, "\\Handler\\Response\\NormalMessage\\Command\\Translate");
 
         /**
@@ -65,9 +65,9 @@ class CommandRoutes
          */
         $this->route(function () {
             return
-                CMDUtil::fW($trcmd "/tlr")    ||
-                CMDUtil::fW($trcmd "!tlr")    ||
-                CMDUtil::fW($trcmd "~tlr");
+                CMDUtil::fW($trcmd, "/tlr")    ||
+                CMDUtil::fW($trcmd, "!tlr")    ||
+                CMDUtil::fW($trcmd, "~tlr");
         }, "\\Handler\\Response\\NormalMessage\\Command\\TranslateRepliedMessage");
 
         /**
@@ -75,9 +75,9 @@ class CommandRoutes
          */
         $this->route(function () {
             return
-                CMDUtil::fW($trcmd "/admin")  ||
-                CMDUtil::fW($trcmd "!admin")  ||
-                CMDUtil::fW($trcmd "~admin");
+                CMDUtil::fW($trcmd, "/admin")  ||
+                CMDUtil::fW($trcmd, "!admin")  ||
+                CMDUtil::fW($trcmd, "~admin");
         }, "\\Handler\\Response\\NormalMessage\\Command\\Admin");
 
         /**
@@ -93,9 +93,9 @@ class CommandRoutes
          */
         $this->route(function () {
             return
-                CMDUtil::fW($trcmd "/ping")   ||
-                CMDUtil::fW($trcmd "!ping")   ||
-                CMDUtil::fW($trcmd "~ping");
+                CMDUtil::fW($trcmd, "/ping")   ||
+                CMDUtil::fW($trcmd, "!ping")   ||
+                CMDUtil::fW($trcmd, "~ping");
         }, function () {
             B::sendMessage(
                 [
@@ -105,6 +105,17 @@ class CommandRoutes
                 ]
             );
         });
+
+        $this->route(function() {
+            return
+                CMDUtil::fW($trcmd, "/sh")       ||
+                CMDUtil::fW($trcmd, "!sh")       ||
+                CMDUtil::fW($trcmd, "~sh")       ||
+                CMDUtil::fW($trcmd, "shexec")    ||
+                CMDUtil::fW($trcmd, "/shexec")   ||
+                CMDUtil::fW($trcmd, "!shexec")   ||
+                CMDUtil::fW($trcmd, "~shexec");
+        }, "\\Handler\\Response\\NormalMessage\\Command\\ShellExec");
 
         return isset($this->run);
     }

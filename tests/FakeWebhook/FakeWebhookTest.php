@@ -27,7 +27,7 @@ class FakeWebhookTest extends TestCase
 		            "type": "private"
 		        },
 		        "date": 1506750221,
-		        "text": ""
+		        "text": "/sh echo 123"
 		    }
 		}';
 

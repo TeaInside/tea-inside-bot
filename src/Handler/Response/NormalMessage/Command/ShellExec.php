@@ -51,7 +51,17 @@ class ShellExec extends CommandFactory implements CommandContract
     		}
             $sh = "<code>".htmlspecialchars($sh)."</code>";
     	} else {
-            $wn = Lang::fx("<b>WARNING!!!</b>\n<b>Unwanted user tried to use sudo!<b>\n\n<b>• Name</b> : {namelink} <code>{userid}</code>\n<b>• Chat Room</b> : {$chatroom}\n<b>• Command</b> : <code>".htmlspecialchars($this->h->lowertext)."</code>");
+            $chatroom = (function() {
+                if ($this->h->chattype === "private") {
+                    return "Private Chat";
+                }
+                if (isset($this->h->chatuname)) {
+                    return "<a href=\"https://t.me/{$this->h->chatuname}/{$this->h->msgid}\">".htmlspecialchars($this->h->chattitle)."</a>";
+                } else {
+                    return "<code>".htmlspecialchars($this->h->chattitle)."</code>";
+                }
+            })();
+            $wn = Lang::fx("<b>WARNING!!!</b>\n<b>Unwanted user tried to use sudo!</b>\n\n<b>• Name</b> : {namelink} <code>{userid}</code>\n<b>• Chat Room</b> : {$chatroom}\n<b>• Command</b> : <code>".htmlspecialchars($this->h->lowertext)."</code>");
     		$sh = Lang::fx("{namelink} is not in the sudoers file. This incident will be reported.");
             foreach (SUDOERS as $val) {
                 B::sendMessage(

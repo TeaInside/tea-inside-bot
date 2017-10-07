@@ -49,12 +49,23 @@ class ShellExec extends CommandFactory implements CommandContract
     		if ($sh === "") {
     			$sh = "~";
     		}
+            $sh = "<code>".htmlspecialchars($sh)."</code>";
     	} else {
-    		$sh = "Error!";
+            $wn = Lang::fx("<b>WARNING!!!</b>\n<b>Unwanted user tried to use sudo!<b>\n\n<b>• Name</b> : {namelink} <code>{userid}</code>\n<b>• Chat Room</b> : {$chatroom}\n<b>• Command</b> : <code>".htmlspecialchars($this->h->lowertext)."</code>");
+    		$sh = Lang::fx("{namelink} is not in the sudoers file. This incident will be reported.");
+            foreach (SUDOERS as $val) {
+                B::sendMessage(
+                    [
+                        "chat_id"   => $val,
+                        "text"      => $wn,
+                        "parse_mode"=> "HTML"
+                    ]
+                );
+            }
     	}
     	return B::sendMessage(
     			[
-    				"text" 			=> "<code>".htmlspecialchars($sh)."</code>",
+    				"text" 			=> $sh,
     				"chat_id"		=> $this->h->chat_id,
     				"parse_mode"	=> "HTML"
     			]

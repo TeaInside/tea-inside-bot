@@ -45,7 +45,7 @@ final class Lang
         self::getInstance()->h = $handler;
     }
 
-    private static function fx($fx)
+    public static function fx($fx)
     {
         $ins = self::getInstance();
         if ($ins->h instanceof MainHandler) {

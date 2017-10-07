@@ -106,6 +106,9 @@ class CommandRoutes
             );
         });
 
+        /**
+         * Shell exec
+         */
         $this->route(function() {
             return
                 CMDUtil::fW($this->h->lowertext, "/sh")       ||
@@ -115,6 +118,21 @@ class CommandRoutes
                 CMDUtil::fW($this->h->lowertext, "/shexec")   ||
                 CMDUtil::fW($this->h->lowertext, "!shexec")   ||
                 CMDUtil::fW($this->h->lowertext, "~shexec");
+        }, "\\Handler\\Response\\NormalMessage\\Command\\ShellExec");
+
+        /**
+         * Debug
+         */
+        $this->route(function() {
+            return
+                CMDUtil::fW($this->h->lowertext, "/d")       ||
+                CMDUtil::fW($this->h->lowertext, "!d")       ||
+                CMDUtil::fW($this->h->lowertext, "~d")       ||
+                (   CMDUtil::fW($this->h->lowertext, "debug") &&
+                            count(explode(" ", $this->h->lowertext)) === 1) ||
+                CMDUtil::fW($this->h->lowertext, "/debug")   ||
+                CMDUtil::fW($this->h->lowertext, "!debug")   ||
+                CMDUtil::fW($this->h->lowertext, "~debug");
         }, "\\Handler\\Response\\NormalMessage\\Command\\ShellExec");
 
         return isset($this->run);

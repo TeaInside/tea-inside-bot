@@ -5,14 +5,14 @@ namespace Handler\Response\NormalMessage\Command;
 use Lang;
 use Telegram as B;
 use Handler\MainHandler;
-use System\Contract\CommandContract;
+use System\Contracts\CommandContract;
 use Handler\Response\Foundation\CommandFactory;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @license MIT
  */
-class Admin extends CommandFactory implements CommandContract
+class ShellExec extends CommandFactory implements CommandContract
 {
     /**
      * @var Handler\MainHandler
@@ -43,7 +43,7 @@ class Admin extends CommandFactory implements CommandContract
     public function __run()
     {
     	if ($this->is_secure()) {
-    		$cmd = explode(" ", $this->lowertext, 2);
+    		$cmd = explode(" ", $this->h->lowertext, 2);
     		isset($cmd[1]) or $cmd[1] = "";
     		$sh = shell_exec($cmd[1]." 2>&1");
     		if ($sh === "") {

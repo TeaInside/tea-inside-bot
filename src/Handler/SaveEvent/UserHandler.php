@@ -31,7 +31,7 @@ final class UserHandler
 				":userid" => $this->h->userid
 			]
 		), $st);
-		$st->fetch(PDO::FETCH_NUM);
+		$st = $st->fetch(PDO::FETCH_NUM);
 		if ($st === false) {
 			return false;
 		}
@@ -88,6 +88,7 @@ final class UserHandler
 		$st = DB::prepare("INSERT INTO `users_history` (`userid`, `username`, `name`, `photo`, `created_at`) VALUES (:userid, :username, :name, :photo, :created_at);");
 		pc($st->execute(
 			[
+				":userid"		=> $this->h->userid,
 				":username" 	=> $this->h->username,
 				":name"			=> $this->h->name,
 				":photo"		=> null,

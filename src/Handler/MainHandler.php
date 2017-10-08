@@ -26,6 +26,11 @@ final class MainHandler
     /**
      * @var string
      */
+    public $chatuname;
+
+    /**
+     * @var string
+     */
     public $msgtype;
 
     /**
@@ -135,6 +140,7 @@ final class MainHandler
 
     public function __get($var)
     {
-        return $this->{strtolower($var)};
+        $wd = strtolower($var);
+        return isset($this->{$wd}) ? $this->{$wd} : null;
     }
 }

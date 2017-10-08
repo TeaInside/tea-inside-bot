@@ -3,6 +3,8 @@
 namespace Handler;
 
 use Handler\MainHandler;
+use Handler\SaveEvent\UserHandler;
+use Handler\SaveEvent\GroupHandler;
 
 final class SaveEvent
 {
@@ -34,22 +36,24 @@ final class SaveEvent
             $st = new UserHandler($this->h);
             $tr = $st->track();
             if ($tr === false) {
-                $tr->saveNewUser();
+                $st->saveNewUser();
             } elseif ($tr === "change") {
-                $tr->saveChange();
+                $st->saveChange();
             }
         } else {
             $st = new UserHandler($this->h);
             $tr = $st->track();
             if ($tr === false) {
-                $tr->saveNewUser();
+                $st->saveNewUser();
             } elseif ($tr === "change") {
-                $tr->saveChange();
+                $st->saveChange();
             }
             $st = new GroupHandler($this->h);
             $tr = $st->track();
             if ($tr === false) {
-                $tr->saveNewGroup();
+                $st->saveNewGroup();
+            } elseif ($tr === "change") {
+                $st->saveChange();
             }
         }
         switch ($this->h->msgtype) {

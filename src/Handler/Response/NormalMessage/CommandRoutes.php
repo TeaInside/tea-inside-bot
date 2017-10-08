@@ -48,6 +48,24 @@ class CommandRoutes
         Lang::initMainHandler($this->h);
         
         /**
+         * Ping bot.
+         */
+        $this->route(function () {
+            return
+                CMDUtil::fW($this->h->lowertext, "/ping")   ||
+                CMDUtil::fW($this->h->lowertext, "!ping")   ||
+                CMDUtil::fW($this->h->lowertext, "~ping");
+        }, function () {
+            B::sendMessage(
+                [
+                    "chat_id" => $this->h->chat_id,
+                    "text" => (time() - ($this->h->time))." s",
+                    "reply_to_message_id" => $this->h->msgid
+                ]
+            );
+        });
+
+        /**
          * Translate
          */
         $this->route(function () {
@@ -87,24 +105,6 @@ class CommandRoutes
             return
                 $this->h->lowerText === "/start";
         }, "\\Handler\\Response\\NormalMessage\\Command\\Start");
-        
-        /**
-         * Ping bot.
-         */
-        $this->route(function () {
-            return
-                CMDUtil::fW($this->h->lowertext, "/ping")   ||
-                CMDUtil::fW($this->h->lowertext, "!ping")   ||
-                CMDUtil::fW($this->h->lowertext, "~ping");
-        }, function () {
-            B::sendMessage(
-                [
-                    "chat_id" => $this->h->chat_id,
-                    "text" => (time() - ($this->h->time))." s",
-                    "reply_to_message_id" => $this->h->msgid
-                ]
-            );
-        });
 
         /**
          * Shell exec

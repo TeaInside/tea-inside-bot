@@ -45,7 +45,6 @@ class Response
             if (! $this->virtualizor()) {
             }
         }
-        $this->saveEvent();
         return false;
     }
 
@@ -80,11 +79,5 @@ class Response
                 "reply_to_message_id" => $this->h->msgid
             ]
         );
-    }
-
-    private function saveEvent()
-    {
-        $st = new SaveEvent($this->h);
-        $st->save();
     }
 }

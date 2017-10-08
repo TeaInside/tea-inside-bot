@@ -83,6 +83,19 @@ final class UserHandler
 		return true;
 	}
 
+	public function saveCountMessage($type)
+	{
+		if ($type === "private") {
+			$st = DB::prepare("UPDATE `a_users` SET `private_msg_count`=`private_msg_count`+1 WHERE `userid`=:userid LIMIT 1;");
+			pc($st->execute([":userid" => $this->h->userid]), $st);
+		} else {
+			$st = DB::prepare("UPDATE `a_users` SET `group_msg_count`=`group_msg_count`+1 WHERE `userid`=:userid LIMIT 1;");
+			pc($st->execute([":userid" => $this->h->userid]), $st);
+			$st = DB::prepare("UPDATE `a_groups` SET `msg_count`=`msg_count`+1 WHERE `group_id`=:group_id LIMIT 1;");
+			pc($st->execute([":group_id" => $this->h->chat_id]), $st);
+		}
+	}
+
 	private function writeHistory()
 	{
 		$st = DB::prepare("INSERT INTO `users_history` (`userid`, `username`, `name`, `photo`, `created_at`) VALUES (:userid, :username, :name, :photo, :created_at);");

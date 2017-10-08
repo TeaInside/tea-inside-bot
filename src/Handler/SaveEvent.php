@@ -40,6 +40,7 @@ final class SaveEvent
             } elseif ($tr === "change") {
                 $st->saveChange();
             }
+            $st->saveCountMessage();
         } else {
             $st = new UserHandler($this->h);
             $tr = $st->track();
@@ -48,6 +49,7 @@ final class SaveEvent
             } elseif ($tr === "change") {
                 $st->saveChange();
             }
+            $st->saveCountMessage();
             $st = new GroupHandler($this->h);
             $tr = $st->track();
             if ($tr === false) {

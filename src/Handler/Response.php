@@ -3,6 +3,7 @@
 namespace Handler;
 
 use Telegram as B;
+use Handler\SaveEvent;
 use Handler\MainHandler;
 use Handler\Response\NormalMessage\Command;
 use Handler\Response\NormalMessage\Virtualizor;
@@ -40,10 +41,11 @@ class Response
      */
     private function __run()
     {
-        if (! $this->virtualizor()) {
-            if (! $this->command()) {
+        if (! $this->command()) {
+            if (! $this->virtualizor()) {
             }
         }
+        $this->saveEvent();
         return false;
     }
 
@@ -78,5 +80,11 @@ class Response
                 "reply_to_message_id" => $this->h->msgid
             ]
         );
+    }
+
+    private function saveEvent()
+    {
+        $st = new SaveEvent($this->h);
+        $st->save();
     }
 }

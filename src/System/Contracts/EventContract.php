@@ -1,6 +1,6 @@
 <?php
 
-namespace System\Contract;
+namespace System\Contracts;
 
 use Handler\MainHandler;
 

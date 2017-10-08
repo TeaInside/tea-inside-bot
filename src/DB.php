@@ -1,6 +1,5 @@
 <?php
 
-use PDO;
 use System\Hub\Singleton;
 
 /**
@@ -33,5 +32,14 @@ final class DB
     public static function __callStatic($method, $param)
     {
         return self::getInstance()->pdo->{$method}(...$param);
+    }
+}
+
+
+function pc($exe, $st)
+{
+    if (! $exe) {
+        var_dump($st->errorInfo());
+        die;
     }
 }

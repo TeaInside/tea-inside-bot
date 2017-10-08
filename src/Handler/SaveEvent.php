@@ -41,6 +41,7 @@ final class SaveEvent
                 $st->saveChange();
             }
             $st->saveCountMessage("private");
+            var_dump(456);
         } else {
             $st = new UserHandler($this->h);
             $tr = $st->track();
@@ -57,6 +58,7 @@ final class SaveEvent
             } elseif ($tr === "change") {
                 $st->saveChange();
             }
+            var_dump(123);
         }
         switch ($this->h->msgtype) {
             case 'text':

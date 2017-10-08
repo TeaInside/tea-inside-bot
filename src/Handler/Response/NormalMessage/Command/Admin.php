@@ -5,7 +5,7 @@ namespace Handler\Response\NormalMessage\Command;
 use Lang;
 use Telegram as B;
 use Handler\MainHandler;
-use System\Contract\CommandContract;
+use System\Contracts\CommandContract;
 use Handler\Response\Foundation\CommandFactory;
 
 /**

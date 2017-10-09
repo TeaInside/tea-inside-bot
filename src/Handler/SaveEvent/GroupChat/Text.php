@@ -1,6 +1,6 @@
 <?php
 
-namespace Handler\SaveEvent\Group;
+namespace Handler\SaveEvent\GroupChat;
 
 use DB;
 use Handler\MainHandler;

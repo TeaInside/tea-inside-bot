@@ -62,6 +62,9 @@ final class SaveEvent
             case 'text':
                 $this->saver = "\\Handler\\SaveEvent\\{$chattype}\\Text";
                 break;
+            case 'photo':
+                $this->saver = "\\Handler\\SaveEvent\\{$chattype}\\Text";
+                break;
             default:
                 break;
         }

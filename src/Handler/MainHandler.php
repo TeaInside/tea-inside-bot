@@ -122,6 +122,19 @@ final class MainHandler
             $this->username   = isset($this->input['message']['from']['username']) ? $this->input['message']['from']['username'] : null;
             $this->time    = $this->input['message']['date'];
         } elseif (isset($this->input['message']['photo'])) {
+            $this->msgtype    = "photo";
+            $this->chattype   = $this->input['message']['chat']['type'];
+            $this->text          = isset($this->input['message']['caption']) ? $this->input['message']['caption'] : null;
+            $this->photo      = end($this->input['message']['photo']);
+            $this->lowertext  = strtolower($this->text);
+            $this->chat_id      = (string) $this->input['message']['chat']['id'];
+            $this->msgid      = (string) $this->input['message']['message_id'];
+            $this->name          = $this->input['message']['from']['first_name'] . (isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : "");
+            $this->first_name = $this->input['message']['from']['first_name'];
+            $this->last_name  = isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : null;
+            $this->userid      = $this->input['message']['from']['id'];
+            $this->username   = isset($this->input['message']['from']['username']) ? $this->input['message']['from']['username'] : null;
+            $this->time    = $this->input['message']['date'];
         }
     }
 

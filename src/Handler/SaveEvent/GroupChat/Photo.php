@@ -36,15 +36,16 @@ final class Photo implements EventContract
                 ":group_id"             => $this->h->chat_id,
                 ":message_id"           => $this->h->msgid,
                 ":reply_to_message_id"  => (isset($this->replyto) ? $this->replyto['message_id'] : null),
-                ":type"                 => "text",
+                ":type"                 => "photo",
                 ":created_at"           => date("Y-m-d H:i:s")
             ]
         ), $st);
-        $st = DB::prepare("INSERT INTO `group_messages_data` (`msg_uniq`, `text`, `file`) VALUES (:msg_uniq, :txt, NULL);");
+        $st = DB::prepare("INSERT INTO `group_messages_data` (`msg_uniq`, `text`, `file`) VALUES (:msg_uniq, :txt, :file);");
         pc($st->execute(
             [
                 ":msg_uniq" => $uniq,
-                ":txt"      => $this->h->text
+                ":txt"      => $this->h->text,
+                ":file"     => $this->h->photo['file_id']
             ]
         ), $st);
         return true;

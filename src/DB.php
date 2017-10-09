@@ -39,7 +39,7 @@ final class DB
 function pc($exe, $st)
 {
     if (! $exe) {
-        var_dump($st->errorInfo());
+        var_dump($st->errorInfo(), debug_backtrace());
         die;
     }
 }

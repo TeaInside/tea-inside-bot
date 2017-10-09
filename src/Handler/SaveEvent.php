@@ -31,7 +31,7 @@ final class SaveEvent
     private function getSaverClass()
     {
         $chattype = ($conder = $this->h->chattype === "private") 
-                ? "Private" : "Group";
+                ? "PrivateChat" : "GroupChat";
         if ($conder) {
             $st = new UserHandler($this->h);
             $tr = $st->track();

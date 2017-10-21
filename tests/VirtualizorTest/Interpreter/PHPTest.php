@@ -25,8 +25,8 @@ class PHPTest extends TestCase
 		);
 	}
 
-	public function test2()
+	public function test1()
 	{
-		$this->assertTrue($this->instance->exec());		
+		$this->assertTrue($this->instance->exec() === "Hello World!");		
 	}
 }

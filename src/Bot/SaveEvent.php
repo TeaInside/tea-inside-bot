@@ -2,6 +2,8 @@
 
 namespace Bot;
 
+use Bot\SaveEvent\UserEvent;
+
 class SaveEvent
 {	
 
@@ -22,6 +24,11 @@ class SaveEvent
 
 	public function run()
 	{
+		$st = new UserEvent($this->b);
+		if ($st->run()) {
+			$st = new GroupEvent($this->b);
+			$st->run();
+		}
 		if ($this->b->chattype === "private") {
 			$ns = "\\Bot\\SaveEvent\\PrivateChat";
 		} else {

@@ -10,7 +10,10 @@
     	"psr-0": {
             "": "src/",
             "Contracts": "src/",
-            "Plugins": "src/"
+            "Plugins": "src/",
+            "System": "src/",
+            "Lang": "src/",
+            "Bot": "src/"
     	},
         "files": [
             "config.php"

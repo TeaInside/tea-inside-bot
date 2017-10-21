@@ -4,6 +4,7 @@ namespace Bot\Response;
 
 use Closure;
 use Bot\Bot;
+use Bot\Response\CommandRoutes;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
@@ -11,6 +12,8 @@ use Bot\Bot;
  */
 final class Command
 {
+
+	use CommandRoutes;
 
 	/**
 	 * @var \Bot\Bot
@@ -35,14 +38,6 @@ final class Command
 	private function set(Closure $cond, $action)
 	{
 		$this->cmd[] = [$cond, $action];
-	}
-
-	private function buildCMDRoutes()
-	{
-		$this->set(function()
-		{
-			return true;
-		}, "ShellExec@run");
 	}
 
 	private function isCommandAction()

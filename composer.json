@@ -8,13 +8,11 @@
     "require": {},
     "autoload": {
     	"psr-0": {
-    		"": "src/",
-    		"App": "src/",
-    		"Handler": "src/",
-            "Lang": "src/",
-    		"Plugins": "src/",
-            "System": "src/"
+            "": "src/"
     	},
+        "psr-4": {
+            "Bot\\": "src/CraynerBot/"
+        },
         "files": [
             "config.php"
         ]

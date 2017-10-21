@@ -22,6 +22,10 @@ class SaveEvent
 
 	public function run()
 	{
-		
+		if ($this->b->chattype === "private") {
+			$this->ns = "\\Bot\\SaveEvent\\PrivateChat";
+		} else {
+			$this->ns = "\\Bot\\SaveEvent\\GroupChat";
+		}
 	}
 }

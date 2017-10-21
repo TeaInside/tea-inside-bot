@@ -14,7 +14,7 @@
             "System": "src/",
             "Lang": "src/",
             "Bot": "src/",
-            "": "src/",
+            "": "src/"
     	},
         "files": [
             "config.php"

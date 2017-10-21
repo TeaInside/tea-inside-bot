@@ -26,6 +26,11 @@ final class Bot
 	/**
 	 * @var string
 	 */
+	public $msgtype;
+
+	/**
+	 * @var string
+	 */
 	public $update_id;
 
 	/**
@@ -101,6 +106,7 @@ final class Bot
 	{
 		$this->chattitle = isset($this->input['message']['chat']['title']) ? $this->input['message']['chat']['title'] : null;
 		if (isset($this->input['message']['text'])) {
+			$this->msgtype   = "text";
 			$this->update_id = $this->input['update_id'];
 			$this->name		 = $this->input['message']['from']['first_name'] . (isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : "");
 			$this->username  = isset($this->input['message']['from']['username']) ? $this->input['message']['from']['username'] : null;

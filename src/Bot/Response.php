@@ -2,6 +2,7 @@
 
 namespace Bot;
 
+use Lang;
 use Bot\Response\Command;
 use Bot\Response\Virtualizor;
 
@@ -30,6 +31,7 @@ final class Response
 	public function run()
 	{
 		if (! $this->virtualizor()) {
+			Lang::init($this->b, "ID");
 			if (! $this->command()) {
 				return false;
 			}

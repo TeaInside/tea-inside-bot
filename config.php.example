@@ -10,13 +10,13 @@ define("BASEPATH", __DIR__);
 /**
  * Token.
  */
-define("TOKEN", "466965678:AAHEXYPp8ygjNnZdzw-Ibx5IiLo0joJkZnY");
+define("TOKEN", "");
 
 /**
  * Global Admin and Sudoers.
  */
-define("SUDOERS", []);
-define("GLOBAL_ADMIN", []);
+define("SUDOERS", [243692601]);
+define("GLOBAL_ADMIN", [243692601]);
 
 
 /**
@@ -35,12 +35,13 @@ define("PRIVATE_STORAGE", BASEPATH."/storage");
 define("PUBLIC_PATH", BASEPATH."/public");
 define("STORAGE", PUBLIC_PATH."/storage");
 define("data", STORAGE."/data");
+define("LOG_DIR", __DIR__."/logs");
 
 /**
  * Virtualizor
  */
 define("VIRTUALIZOR_DIR", PUBLIC_PATH."/virtual");
-
+define("VIRTUALIZOR_URL", "http://localhost:8000/virtual");
 
 /**
  * MyAnimeList

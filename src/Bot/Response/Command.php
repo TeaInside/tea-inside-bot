@@ -5,6 +5,10 @@ namespace Bot\Response;
 use Closure;
 use Bot\Bot;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 final class Command
 {
 

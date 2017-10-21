@@ -6,6 +6,10 @@ use Bot\Bot;
 use Telegram as B;
 use Bot\Abstraction\CommandFoundation;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 class ShellExec extends CommandFoundation
 {	
 

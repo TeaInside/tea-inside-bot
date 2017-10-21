@@ -22,6 +22,16 @@ final class Lang
 	private $b;
 
 	/**
+	 * @var array
+	 */
+	private $r1 = [];
+
+	/**
+	 * @var array
+	 */
+	private $r2 = [];
+
+	/**
 	 * Constructor.
 	 *
 	 * @param string $lang
@@ -37,8 +47,33 @@ final class Lang
 	 */
 	public static function init(Bot $bot, $lang = "ID")
 	{
-		self::getInstance($lang)->saveBotInstance($bot);
+		$ins = self::getInstance($lang);
+		$ins->saveBotInstance($bot);
 		return true;
+	}
+
+	private function buildContext()
+	{
+		$this->r1 = [
+			"{name}",
+			"{namelink}",			
+			"{username}",
+			"{chattile}",
+			"{chat_id}",
+			"{first_name}",
+			"{last_name}",
+			"{short_namelink}"
+		];
+		$this->r2 = [
+			$this->b->name,
+			"<a href=\"tg://user?id=".$this->b->user_id."\">".htmlspecialchars($this->b->name)."</a>",
+			(isset($this->b->username) ? "@".$this->b->username : ""),
+			$this->b->chattile,
+			$this->b->chat_id,
+			$this->b->first_name,
+			$this->b->last_name,
+			"<a href=\"tg://user?id=".$this->b->user_id."\">".htmlspecialchars($this->b->first_name)."</a>",
+		];
 	}
 
 	/**
@@ -50,10 +85,22 @@ final class Lang
 	}
 
 	/**
-	 *
+	 * @param string $what
 	 */
-	public static function get($space)
+	public static function get($what)
 	{
 
+	}
+
+	/**
+	 * @param string $str
+	 */
+	public static function bind($str)
+	{
+		$ins = self::getInstance();
+		if (! $ins->r1) {
+			$this->buildContext();
+		}
+		return str_replace($ins->r1, $ins->r2, $str);
 	}
 }

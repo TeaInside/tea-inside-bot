@@ -1,6 +1,6 @@
 <?php
 
-namespace VirtualizorTest\Interpreter\PHPTest;
+namespace VirtualizorTest\Interpreter;
 
 use Plugins\Virtualizor\Bridge;
 use PHPUnit\Framework\TestCase;
@@ -18,14 +18,15 @@ class PHPTest extends TestCase
 	 */
 	public function __construct()
 	{
+		parent::__construct();
 		$this->instance = new Bridge(
 			"<?php print \"Hello World!\";"
 			, "php"
 		);
 	}
 
-	public function testInit()
+	public function test2()
 	{
-		$this->assertTrue($this->instance->init());
+		$this->assertTrue($this->instance->exec());		
 	}
 }

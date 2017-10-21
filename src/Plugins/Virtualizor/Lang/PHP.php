@@ -17,7 +17,7 @@ final class PHP extends Interpreter implements Executable
 	/**
 	 * @var string
 	 */
-	priavte $hash;
+	private $hash;
 
 	/**
 	 * @var string
@@ -37,29 +37,29 @@ final class PHP extends Interpreter implements Executable
 
 	public function init()
 	{
-		if (! defined(PHP_VIRTUAL_DIR)) {
-			$this->errorMessage = "PHP_VIRTUAL_DIR is not defined yet!";
+		if (! defined("VIRTUALIZOR_DIR")) {
+			$this->errorMessage = "VIRTUALIZOR_DIR is not defined yet!";
 			return false;
 		}
 
-		if (! defined(PHP_VIRTUAL_URL)) {
-			$this->errorMessage = "PHP_VIRTUAL_URL is not defined yet!";
+		if (! defined("VIRTUALIZOR_URL")) {
+			$this->errorMessage = "VIRTUALIZOR_URL is not defined yet!";
 			return false;
 		}
 
-		is_dir(PHP_VIRTUAL_DIR) or shell_exec("mkdir -p ".PHP_VIRTUAL_DIR);
+		is_dir(VIRTUALIZOR_DIR) or shell_exec("mkdir -p ".VIRTUALIZOR_DIR);
 
-		if (! is_dir(PHP_VIRTUAL_DIR)) {
-			$this->errorMessage = "Cannot create directory ".PHP_VIRTUAL_DIR;
+		if (! is_dir(VIRTUALIZOR_DIR)) {
+			$this->errorMessage = "Cannot create directory ".VIRTUALIZOR_DIR;
 			return false;
 		}
 
-		if (! file_exists(PHP_VIRTUAL_DIR."/".$this->hash.".php")) {
-			$handle = fopen(PHP_VIRTUAL_DIR."/".$this->hash.".php", "w");
+		if (! file_exists(VIRTUALIZOR_DIR."/".$this->hash.".php")) {
+			$handle = fopen(VIRTUALIZOR_DIR."/".$this->hash.".php", "w");
 			fwrite($handle, $this->code);
 			fclose($handle);
-			if (! file_exists(PHP_VIRTUAL_DIR."/".$this->hash.".php")) {
-				$this->errorMessage = "Cannot create file ".PHP_VIRTUAL_DIR."/".$this->hash.".php";
+			if (! file_exists(VIRTUALIZOR_DIR."/".$this->hash.".php")) {
+				$this->errorMessage = "Cannot create file ".VIRTUALIZOR_DIR."/".$this->hash.".php";
 				return false;
 			}
 		}
@@ -68,16 +68,16 @@ final class PHP extends Interpreter implements Executable
 
 	public function exec()
 	{
-		$st = new Curl(PHP_VIRTUAL_URL."/".$this->hash.".php");
+		$st = new Curl(VIRTUALIZOR_URL."/".$this->hash.".php");
 		$st->set_opt(
 			[
 				CURLOPT_TIMEOUT 	   => 5,
 				CURLOPT_CONNECTTIMEOUT => 5
 			]
 		);
-		$st  = $st->exec();
-		$err = $st->error and $st = $err;
-		return $st;
+		$out = $st->exec();
+		$err = $st->error and $out = $err;
+		return $out;
 	}
 
 	public function errorInfo()

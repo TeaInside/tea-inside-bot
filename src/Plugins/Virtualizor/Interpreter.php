@@ -10,7 +10,7 @@ use Exception;
  *
  * Intepreter parent.
  */
-abstract class Intepreter
+abstract class Interpreter
 {
 	/**
 	 * Constructor.

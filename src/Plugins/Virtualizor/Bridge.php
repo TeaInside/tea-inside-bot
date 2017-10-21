@@ -45,7 +45,7 @@ final class Bridge
 
 	private function initLangInstance()
 	{
-		return new self::map[$this->lang]($this->code);
+		return new self::$map[$this->lang]($this->code);
 	}
 
 	public function exec()

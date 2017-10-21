@@ -13,32 +13,24 @@ class ServerTest extends TestCase
 		shell_exec(PHP_BINARY." -S 127.0.0.1:9000 -t ".BASEPATH."/public >> /dev/null 2>&1 &");
 		$ch = new Curl("http://127.0.0.1:9000/webhook.php");
 		$ch->post('{
-    "update_id": 344283499,
-    "message": {
-        "message_id": 33081,
-        "from": {
-            "id": 243692601,
-            "is_bot": false,
-            "first_name": "Ammar",
-            "last_name": "F",
-            "username": "ammarfaizi2",
-            "language_code": "en-US"
-        },
-        "chat": {
-            "id": -1001128531173,
-            "title": "Tea Inside",
-            "type": "supergroup"
-        },
-        "date": 1507452015,
-        "text": "/sh echo server test",
-        "entities": [
-            {
-                "offset": 0,
-                "length": 5,
-                "type": "bot_command"
-            }
-        ]
-    }
+    "message_id": 3461593,
+    "from": {
+        "id": 243692601,
+        "is_bot": false,
+        "first_name": "Ammar",
+        "last_name": "F",
+        "username": "ammarfaizi2",
+        "language_code": "en-US"
+    },
+    "chat": {
+        "id": 243692601,
+        "first_name": "Ammar",
+        "last_name": "F",
+        "username": "ammarfaizi2",
+        "type": "private"
+    },
+    "date": 1508600597,
+    "text": "qwe"
 }');
 		$out = $ch->exec();
         var_dump($out);

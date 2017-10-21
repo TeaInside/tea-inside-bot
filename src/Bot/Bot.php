@@ -3,6 +3,7 @@
 namespace Bot;
 
 use Bot\Response;
+use Bot\SaveEvent;
 use Telegram as B;
 
 /**
@@ -133,6 +134,9 @@ final class Bot
 	public function run()
 	{
 		$this->parseEvent();
-		return $this->response();
+		$res = $this->response();
+		$st  = new SaveEvent($this);
+		$st->run();
+		return $res;
 	}
 }

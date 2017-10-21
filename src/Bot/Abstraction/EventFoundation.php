@@ -18,12 +18,9 @@ abstract class EventFoundation
 	 *
 	 * @param \Bot\Bot $bot
 	 */
-	final public function __construct(Bot $bot)
-	{
-		$this->b = $bot;
-	}
+	abstract public function __construct(Bot $bot);
 
-	public function trackEvent()
+	private function trackEvent()
 	{
 		throw new Exception("The EventFoundation::trackEvent method must override");		
 	}

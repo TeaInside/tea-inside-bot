@@ -1,7 +1,12 @@
 <?php
 
+use Bot\Bot;
 use System\Hub\Singleton;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 final class Lang
 {
 	use Singleton;
@@ -10,6 +15,11 @@ final class Lang
 	 * @var string
 	 */
 	private $lang;
+
+	/**
+	 * @var \Bot\Bot
+	 */
+	private $b;
 
 	/**
 	 * Constructor.
@@ -25,12 +35,23 @@ final class Lang
 	 * @param string $lang
 	 * @return bool
 	 */
-	public static function init($lang)
+	public static function init(Bot $bot, $lang = "ID")
 	{
-		self::getInstance($lang);
+		self::getInstance($lang)->saveBotInstance($bot);
 		return true;
 	}
 
+	/**
+	 * @param \Bot\Bot $bot
+	 */
+	public function saveBotInstance($bot)
+	{
+		$this->b = $bot;
+	}
+
+	/**
+	 *
+	 */
 	public static function get($space)
 	{
 

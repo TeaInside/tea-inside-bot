@@ -30,7 +30,7 @@ class ServerTest extends TestCase
             "type": "supergroup"
         },
         "date": 1507452015,
-        "text": "/sh echo 123",
+        "text": "/sh echo server test",
         "entities": [
             {
                 "offset": 0,
@@ -40,7 +40,8 @@ class ServerTest extends TestCase
         ]
     }
 }');
-		$ch->exec();
+		$out = $ch->exec();
+        var_dump($out);
 		$this->assertTrue($ch->info['http_code'] === 200);
 	}
 }

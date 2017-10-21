@@ -55,12 +55,14 @@ final class Bridge
 			if ($st->init()) {
 				if ($st instanceof Compiler) {
 					if ($st->compile()) {
-						return $st->exec();
+						$st = $st->exec();
+						return $st==="" ? "~" : $st;
 					} else {
 						return $st->errorInfo();
 					}
 				} elseif ($st instanceof Interpreter) {
-					return $st->exec();
+					$st = $st->exec();
+					return $st==="" ? "~" : $st;
 				}
 			} else {
 				return $st->errorInfo();

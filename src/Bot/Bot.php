@@ -2,8 +2,13 @@
 
 namespace Bot;
 
+use Bot\Response;
 use Telegram as B;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 final class Bot
 {
 
@@ -36,6 +41,7 @@ final class Bot
 			$this->msgid     = $input['message']['message_id'];
 			$this->date      = $input['message']['date'];
 			$this->text      = $input['message']['text'];
+			$this->lowertext = strtolower($input['message']['text']);
 			$this->entities  = isset($input['message']['entities']) ? $input['message']['entities'] : [];
 			$this->chat_id	 = $input['message']['chat']['id'];
 			$this->chattitle = $input['message']['chat']['title'];
@@ -51,7 +57,8 @@ final class Bot
 	 */
 	private function response()
 	{
-
+		$st = new Response($this);
+		return $st->run();
 	}
 
 	/**
@@ -61,7 +68,6 @@ final class Bot
 	public function run()
 	{
 		$this->parseEvent();
-		$this->response();
-		return true;
+		return $this->response();
 	}
 }

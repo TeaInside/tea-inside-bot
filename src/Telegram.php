@@ -16,9 +16,9 @@
  	public static function __callStatic($method, $param)
  	{
  		if (isset($param[1]) and $param[1] === "GET") {
- 			$ch = new Curl("https://api.telegram.org/".$method."?".http_build_query($param[0]));
+ 			$ch = new Curl("https://api.telegram.org/bot".TOKEN."/".$method."?".http_build_query($param[0]));
  		} else {
- 			$ch = new Curl("https://api.telegram.org/".$method);
+ 			$ch = new Curl("https://api.telegram.org/bot".TOKEN."/".$method);
  			$ch->post(http_build_query($param[0]));
  		}
  		$out = $ch->exec();

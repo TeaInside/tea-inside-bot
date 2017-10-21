@@ -8,11 +8,10 @@
     "require": {},
     "autoload": {
     	"psr-0": {
-            "": "src/"
+            "": "src/",
+            "Contracts": "src/",
+            "Plugins": "src/"
     	},
-        "psr-4": {
-            "Bot\\": "src/CraynerBot/"
-        },
         "files": [
             "config.php"
         ]

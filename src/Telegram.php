@@ -23,6 +23,9 @@
  		}
  		$out = $ch->exec();
  		$err = $ch->error and $out = $err;
- 		return $out;
+ 		return [
+ 			"content" => $out,
+ 			"info" 	  => $ch->info
+ 		];
  	}
  }

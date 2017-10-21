@@ -2,7 +2,9 @@
 
 namespace Bot\SaveEvent;
 
-class UserEvent
+use Bot\Abstraction\EventFoundation;
+
+class UserEvent extends EventFoundation
 {
 	
 }

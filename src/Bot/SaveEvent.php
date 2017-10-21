@@ -4,6 +4,10 @@ namespace Bot;
 
 use Bot\SaveEvent\UserEvent;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 class SaveEvent
 {	
 

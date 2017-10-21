@@ -1,6 +1,5 @@
 <?php
 
-use PDO;
 use System\Hub\Singleton;
 
 class DB
@@ -28,8 +27,17 @@ class DB
 	 * @param array  $param
 	 * @return mixed
 	 */
-	public function __callStatic($method, $param)
+	public static function __callStatic($method, $param)
 	{
-		return self::getInstance()->pdo->{$method}(...$param);
+		return (new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PASS))->{$method}(...$param);
 	}
+}
+
+function pc($exe, $pdo)
+{
+	if (! $exe) {
+		var_dump($pdo->errorInfo());
+		die();
+	}
+	return true;
 }

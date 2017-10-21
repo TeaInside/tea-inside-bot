@@ -7,14 +7,31 @@ use PDO;
 use Bot\Bot;
 use Bot\Abstraction\EventFoundation;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
 class UserEvent extends EventFoundation
-{
+{	
 
+	/**
+	 * @var \Bot\Bot
+	 */
+	private $b;
+
+	/**
+	 * Constructor.
+	 *
+	 * @param \Bot\Bot $bot
+	 */
 	public function __construct(Bot $bot)
 	{
 		$this->b = $bot;
 	}
 
+	/**
+	 * Track event.
+	 */
 	private function trackEvent()
 	{
 		$st = DB::prepare("SELECT `username`,`name`,`photo` FROM `a_users` WHERE `user_id`=:user_id LIMIT 1;");
@@ -33,6 +50,9 @@ class UserEvent extends EventFoundation
 		return "known";
 	}
 
+	/**
+	 * Update user info.
+	 */
 	private function updateUserInfo()
 	{
 		$add = $this->b->chattype === "private" ? "`private_msg_count`=`private_msg_count`+1" : "`group_msg_count`=`group_msg_count`+1";
@@ -49,6 +69,9 @@ class UserEvent extends EventFoundation
 		return true;
 	}
 
+	/**
+	 * Increase message count.
+	 */
 	private function increaseMessageCount()
 	{
 		$add = $this->b->chattype === "private" ? "`private_msg_count`=`private_msg_count`+1" : "`group_msg_count`=`group_msg_count`+1";
@@ -57,6 +80,9 @@ class UserEvent extends EventFoundation
 		return true;
 	}
 
+	/**
+	 * Save new user.
+	 */
 	private function saveNewUser()
 	{
 		$pr = $this->b->chattype === "private" ? 1 : 0;
@@ -74,6 +100,9 @@ class UserEvent extends EventFoundation
 		return true;
 	}
 
+	/**
+	 * Write user history.
+	 */
 	private function writeUserHistory()
 	{
 		$st = DB::prepare("INSERT INTO `users_history` (`user_id`, `username`, `name`, `photo`, `created_at`) VALUES (:user_id, :username, :name, NULL, :created_at)");
@@ -88,6 +117,9 @@ class UserEvent extends EventFoundation
 		return true;
 	}
 
+	/**
+	 * Run user event.
+	 */
 	public function run()
 	{
 		$track = $this->trackEvent();

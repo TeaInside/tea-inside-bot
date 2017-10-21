@@ -8,12 +8,13 @@
     "require": {},
     "autoload": {
     	"psr-0": {
-            "": "src/",
+            "Exceptions": "src/",
             "Contracts": "src/",
             "Plugins": "src/",
             "System": "src/",
             "Lang": "src/",
-            "Bot": "src/"
+            "Bot": "src/",
+            "": "src/",
     	},
         "files": [
             "config.php"

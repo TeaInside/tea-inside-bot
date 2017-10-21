@@ -26,6 +26,11 @@ final class Bot
 	/**
 	 * @var string
 	 */
+	public $chatuname;
+
+	/**
+	 * @var string
+	 */
 	public $msgtype;
 
 	/**
@@ -105,6 +110,7 @@ final class Bot
 	private function parseEvent()
 	{
 		$this->chattitle = isset($this->input['message']['chat']['title']) ? $this->input['message']['chat']['title'] : null;
+		$this->chatuname = isset($this->input['message']['chat']['username']) ? $this->input['message']['chat']['username'] : null;
 		if (isset($this->input['message']['text'])) {
 			$this->msgtype   = "text";
 			$this->update_id = $this->input['update_id'];

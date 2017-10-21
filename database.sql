@@ -21,7 +21,7 @@ CREATE TABLE `a_groups` (
 
 DROP TABLE IF EXISTS `a_users`;
 CREATE TABLE `a_users` (
-  `userid` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `username` varchar(255) DEFAULT NULL,
   `name` varchar(255) NOT NULL,
   `photo` varchar(255) DEFAULT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE `a_users` (
   `group_msg_count` bigint(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`userid`)
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -57,16 +57,16 @@ CREATE TABLE `groups_setting` (
 DROP TABLE IF EXISTS `group_messages`;
 CREATE TABLE `group_messages` (
   `msg_uniq` varchar(255) NOT NULL,
-  `userid` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `group_id` varchar(255) NOT NULL,
   `message_id` varchar(255) NOT NULL,
   `reply_to_message_id` varchar(255) DEFAULT NULL,
   `type` enum('text','photo','voice','video') NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`msg_uniq`),
-  KEY `userid` (`userid`),
+  KEY `user_id` (`user_id`),
   KEY `group_id` (`group_id`),
-  CONSTRAINT `group_messages_ibfk_4` FOREIGN KEY (`userid`) REFERENCES `a_users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `group_messages_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `a_users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `group_messages_ibfk_5` FOREIGN KEY (`group_id`) REFERENCES `a_groups` (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -84,14 +84,14 @@ CREATE TABLE `group_messages_data` (
 DROP TABLE IF EXISTS `private_messages`;
 CREATE TABLE `private_messages` (
   `msg_uniq` varchar(255) NOT NULL,
-  `userid` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `message_id` varchar(255) NOT NULL,
   `reply_to_message_id` varchar(255) DEFAULT NULL,
   `type` enum('text','photo','voice','video') NOT NULL,
   `created_at` datetime NOT NULL,
   PRIMARY KEY (`msg_uniq`),
-  KEY `userid` (`userid`),
-  CONSTRAINT `private_messages_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `a_users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `private_messages_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `a_users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -107,13 +107,13 @@ CREATE TABLE `private_messages_data` (
 
 DROP TABLE IF EXISTS `users_history`;
 CREATE TABLE `users_history` (
-  `userid` varchar(255) NOT NULL,
+  `user_id` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `photo` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  KEY `userid` (`userid`),
-  CONSTRAINT `users_history_ibfk_2` FOREIGN KEY (`userid`) REFERENCES `a_users` (`userid`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `users_history_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `a_users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 

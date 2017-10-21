@@ -37,7 +37,7 @@ trait CommandRoutes
 					"chat_id" 			  => $this->b->chat_id,
 					"reply_to_message_id" => $this->b->msgid
 				]
-			)['content']);
+			)['content'], true);
 		});
 	}
 }

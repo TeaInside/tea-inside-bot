@@ -1,9 +1,12 @@
 <?php
 
 use PDO;
+use System\Hub\Singleton;
 
 class DB
 {
+	
+	use Singleton;
 
 	/**
 	 * @var \PDO
@@ -19,6 +22,7 @@ class DB
 	}
 
 	/**
+	 * Call static pdo.
 	 *
 	 * @param string $method
 	 * @param array  $param

@@ -39,14 +39,37 @@ class GroupEvent extends EventFoundation
 		}
 
 		if (
-			true
+			$st['username'] !== $this->b->chatuname ||
+			$st['name']		!== $this->b->chattitle
 		) {
-			
+			return "update";
 		}
+		return "known";
+	}
+
+	private function updateGroupInfo()
+	{
+		$st = DB::prepare("UPDATE `a_group` SET `username`=:username, `name`=:name, `private_link`=NULL, `updated_at`=:updated_at, `msg_count`=`msg_count`+1 WHERE `group_id`=:group_id LIMIT 1;");
+		pc($st->execute(
+			[
+				":username" 	=> $this->b->username,
+				":name"			=> $this->b->name,
+				":updated_at"	=> date("Y-m-d H:i:s"),
+				":group_id"		=> $this->b->chat_id
+			]
+		), $st);
+		return true;
 	}
 
 	public function run()
 	{
-
+		$track = $this->trackEvent();
+		if ($track === "update") {
+			$this->updateGroupInfo();
+		} elseif ($track === "known") {
+			$this->increaseMessageCount();
+		} else {
+			$this->saveNewGroup();
+		}
 	}
 }

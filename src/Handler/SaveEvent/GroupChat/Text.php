@@ -35,7 +35,7 @@ final class Text implements EventContract
                 ":userid"               => $this->h->userid,
                 ":group_id"             => $this->h->chat_id,
                 ":message_id"           => $this->h->msgid,
-                ":reply_to_message_id"  => (isset($this->replyto) ? $this->replyto['message_id'] : null),
+                ":reply_to_message_id"  => (isset($this->h->replyto) ? $this->h->replyto['message_id'] : null),
                 ":type"                 => "text",
                 ":created_at"           => date("Y-m-d H:i:s")
             ]

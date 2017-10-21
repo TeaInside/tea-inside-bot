@@ -34,7 +34,7 @@ final class Text implements EventContract
                 ":msg_uniq"             => ($uniq = $this->h->msgid."|".$this->h->chat_id),
                 ":userid"               => $this->h->userid,
                 ":message_id"           => $this->h->msgid,
-                ":reply_to_message_id"  => (isset($this->replyto) ? $this->replyto['message_id'] : null),
+                ":reply_to_message_id"  => (isset($this->h->replyto) ? $this->h->replyto['message_id'] : null),
                 ":type"                 => "text",
                 ":created_at"           => date("Y-m-d H:i:s")
             ]

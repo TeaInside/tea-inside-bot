@@ -15,7 +15,72 @@ final class Bot
 	/**
 	 * @var array
 	 */
-	private $input = [];
+	public $input = [];
+
+	/**
+	 * @var string
+	 */
+	public $chattitle;
+
+	/**
+	 * @var string
+	 */
+	public $update_id;
+
+	/**
+	 * @var string
+	 */
+	public $name;
+
+	/**
+	 * @var string
+	 */
+	public $username;
+
+	/**
+	 * @var string
+	 */
+	public $msgid;
+
+	/**
+	 * @var int
+	 */
+	public $date;
+
+	/**
+	 * @var text
+	 */
+	public $text;
+
+	/**
+	 * @var string
+	 */
+	public $lowertext;
+
+	/**
+	 * @var array
+	 */
+	public $entities = [];
+
+	/**
+	 * @var string
+	 */
+	public $chat_id;
+
+	/**
+	 * @var string
+	 */
+	public $chattype;
+
+	/**
+	 * @var bool
+	 */
+	public $is_bot;
+
+	/**
+	 * @var string
+	 */
+	public $user_id;
 
 	/**
 	 * Constructor.
@@ -33,6 +98,7 @@ final class Bot
 	 */
 	private function parseEvent()
 	{
+		$this->chattitle = isset($this->input['message']['chat']['title']) ? $this->input['message']['chat']['title'] : null;
 		if (isset($this->input['message']['text'])) {
 			$this->update_id = $this->input['update_id'];
 			$this->name		 = $this->input['message']['from']['first_name'] . (isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : "");
@@ -43,12 +109,12 @@ final class Bot
 			$this->lowertext = strtolower($this->input['message']['text']);
 			$this->entities  = isset($this->input['message']['entities']) ? $this->input['message']['entities'] : [];
 			$this->chat_id	 = $this->input['message']['chat']['id'];
-			$this->chattitle = $this->input['message']['chat']['title'];
 			$this->chattype  = $this->input['message']['chat']['type'];
 			$this->is_bot    = $this->input['message']['from']['is_bot'];
 			$this->user_id   = $this->input['message']['from']['id'];
 		}
 	}
+
 
 	/**
 	 * Response.

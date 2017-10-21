@@ -30,11 +30,4 @@ trait Singleton
 	final private function __clone()
 	{
 	}
-
-	/**
-	 * Prevent sleep.
-	 */
-	final private function __sleep()
-	{
-	}
 }

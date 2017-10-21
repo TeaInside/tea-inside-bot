@@ -31,7 +31,7 @@ final class Lang
 		return true;
 	}
 
-	public function get($space)
+	public static function get($space)
 	{
 
 	}

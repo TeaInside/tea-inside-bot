@@ -103,7 +103,7 @@ class GroupEvent extends EventFoundation
 			$admin[':updated_at'] = date("Y-m-d H:i:s");
 			foreach ($st['result'] as $val) {
 				$admin[":user_id_{$i}"] = $val['user']['id'];
-				$st = DB::prepare("INSERT INTO `users_history` (`user_id`, `username`, `name`, `photo`, `created_at`) VALUES (:user_id, :username, :name, NULL, :created_at)");
+				$st = DB::prepare("INSERT INTO `a_users` (`user_id`, `username`, `name`, `photo`, `private_msg_count`, `group_msg_count`, `created_at`, `updated_at`) VALUES (:user_id, :username, :name, NULL, 0, 0, :created_at, NULL);");
 				$st->execute(
 					[
 						":user_id" 		=> $val['user']['id'],

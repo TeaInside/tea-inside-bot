@@ -5,6 +5,7 @@ namespace Bot\SaveEvent;
 use DB;
 use PDO;
 use Bot\Bot;
+use Telegram as B;
 use Bot\Abstraction\EventFoundation;
 
 /**

@@ -153,8 +153,10 @@ final class Bot
 	{
 		$this->parseEvent();
 		$res = $this->response();
-		$st  = new SaveEvent($this);
-		$st->run();
+		if ($this->msgtype === "text") {
+			$st  = new SaveEvent($this);
+			$st->run();
+		}
 		return $res;
 	}
 }

@@ -33,9 +33,13 @@ class Translator extends CommandFoundation
 	{
 		$segment = explode(" ", $this->b->text, 4);
 		if (isset($segment[1], $segment[2], $segment[3])) {
-			$msg = new GoogleTranslate($segment[3], $segment[1], $segment[2]);
-			$msg = htmlspecialchars($msg->exec());
-			$msg = $msg==="" ? "~" : $msg;
+			try {
+				$msg = new GoogleTranslate($segment[3], $segment[1], $segment[2]);
+				$msg = htmlspecialchars($msg->exec());
+				$msg = $msg==="" ? "~" : $msg;	
+			} catch (\Exception $e) {
+				$msg = "Language not found!";
+			}
 		} else {
 			$msg = "Penulisan format translate salah!\n\nBerikut ini adalah penulisan yang benar :\n<pre>/tl [from] [to] [string]</pre>\n\nContoh :\n<pre>/tl id en Apa kabar?</pre>";
 		}
@@ -53,9 +57,13 @@ class Translator extends CommandFoundation
 	{
 		$segment = explode(" ", $this->b->text, 4);
 		if (isset($segment[1], $segment[2]) && isset($this->b->replyto['text'])) {
-			$msg = new GoogleTranslate($this->b->replyto['text'], $segment[1], $segment[2]);
-			$msg = htmlspecialchars($msg->exec());
-			$msg = $msg==="" ? "~" : $msg;
+			try {
+				$msg = new GoogleTranslate($this->b->replyto['text'], $segment[1], $segment[2]);
+				$msg = htmlspecialchars($msg->exec());
+				$msg = $msg==="" ? "~" : $msg;	
+			} catch (\Exception $e) {
+				$msg = "Language not found!";
+			}
 			return B::sendMessage(
 				[
 					"chat_id" => $this->b->chat_id,

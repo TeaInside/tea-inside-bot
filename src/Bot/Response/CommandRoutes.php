@@ -46,7 +46,6 @@ trait CommandRoutes
 					"text" => "Pong!\n".((time() - $this->b->date) + round(microtime(true) - $start,  2))." s"
 				]
 			);
-			var_dump($st);
 		});
 
 		$this->set(function() use ($st)
@@ -59,6 +58,7 @@ trait CommandRoutes
 				$st[0] === "!translate" ||
 				$st[0] === "~translate";
 		}, "Translator@googleTranslate");
+		
 		$this->set(function() use ($st)
 		{
 			return

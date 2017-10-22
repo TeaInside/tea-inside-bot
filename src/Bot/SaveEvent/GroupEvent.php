@@ -5,6 +5,7 @@ namespace Bot\SaveEvent;
 use DB;
 use PDO;
 use Bot\Bot;
+use Telegram as B;
 use Bot\Abstraction\EventFoundation;
 
 /**
@@ -86,6 +87,33 @@ class GroupEvent extends EventFoundation
 		return true;
 	}
 
+	private function flushGroupAdmin()
+	{
+		$query = "INSERT INTO `group_admins` (`group_id`,`user_id`,`status`,`privileges`,`created_at`,`updated_at`) VALUES ";
+		$st = json_decode(B::getChatAdminstrators(
+			[
+				"chat_id" => $this->b->chat_id
+			]
+		)['content'], true) xor $admin = [];
+		if (isset($st['result'])) {
+			$i = 1;
+			$admin[":group_id"] = $this->b->chat_id;
+			$admin[":created_at"] = date("Y-m-d H:i:s");
+			$admin[':updated_at'] = date("Y-m-d H:i:s");
+			foreach ($result as $val) {
+				$admin[":user_id_{$i}"] = $val['user']['id'];
+				$admin[":status_{$i}"] = $val['status'];
+				unset($val['user'], $val['status']);
+				$admin[":privileges_{$i}"] = $admin[":status_{$i}"]==="creator" ? "all" : json_encode($val);
+				$query .= "(:group_id, :user_id_{$i}, :status_{$i}, :privileges_{$i}, :created_at, :updated_at),"
+			}
+			$st = DB::prepare("DELETE FROM `group_admins` WHERE `group_id`=:group_id;");
+			pc($st->execute([":group_id" => $this->b->group_id]), $st);
+			$st = DB::prepare(rtrim($query, ",").";");
+			pc($st->execute($admin), $st);
+		}
+	}
+
 	private function writeGroupHistory()
 	{
 		$st = DB::prepare("INSERT INTO `groups_history` (`group_id`, `username`, `name`, `created_at`) VALUES (:group_id, :username, :name, :created_at);");
@@ -110,5 +138,6 @@ class GroupEvent extends EventFoundation
 		} else {
 			$this->saveNewGroup();
 		}
+		$this->flushGroupAdmin();
 	}
 }

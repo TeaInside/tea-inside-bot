@@ -107,6 +107,7 @@ class GroupEvent extends EventFoundation
 				unset($val['user'], $val['status']);
 				$admin[":privileges_{$i}"] = $admin[":status_{$i}"]==="creator" ? "all" : json_encode($val);
 				$query .= "(:group_id, :user_id_{$i}, :status_{$i}, :privileges_{$i}, :created_at, :updated_at),";
+				$i++;
 			}
 			$st = DB::prepare("DELETE FROM `group_admins` WHERE `group_id`=:group_id;");
 			pc($st->execute([":group_id" => $this->b->chat_id]), $st);

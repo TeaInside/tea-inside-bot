@@ -80,6 +80,23 @@ class GroupEvent extends EventFoundation
 				":created_at"	=> date("Y-m-d H:i:s")
 			]
 		), $st);
+		$st = DB::prepare("INSERT INTO `groups_setting` (`group_id`, `max_warn`, `welcome_message`) VALUES (:group_id, 3, NULL)");
+		pc($st->execute([":group_id" => $this->b->chat_id]), $st);
+		$this->writeGroupHistory();
+		return true;
+	}
+
+	private function writeGroupHistory()
+	{
+		$st = DB::prepare("INSERT INTO `groups_history` (`group_id`, `username`, `name`, `created_at`) VALUES (:group_id, :username, :name, :created_at);");
+		pc($st->execute(
+			[
+				":group_id" 	=> $this->b->chat_id,
+				":username"		=> $this->b->chatuname,
+				":name"			=> $this->b->chattitle,
+				":created_at"	=> date("Y-m-d H:i:s")
+			]
+		), $st);
 		return true;
 	}
 

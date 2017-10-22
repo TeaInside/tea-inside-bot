@@ -35,16 +35,15 @@ class SaveEvent
 			$st->run();
 		}
 		if ($this->b->chattype === "private") {
-			$ns = "\\Bot\\SaveEvent\\PrivateChat";
+			$ns = "\\Bot\\SaveEvent\\PrivateChat\\";
 		} else {
-			$ns = "\\Bot\\SaveEvent\\GroupChat";
+			$ns = "\\Bot\\SaveEvent\\GroupChat\\";
 		}
 
 		switch ($this->b->msgtype) {
 			case 'text':
-					$ns.= "Text";
+				$ns.= "Text";
 				break;
-			case 
 			default:
 				throw new \Exception("Unknown event", 1);
 				break;

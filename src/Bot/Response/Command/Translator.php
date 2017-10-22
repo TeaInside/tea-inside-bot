@@ -37,7 +37,7 @@ class Translator extends CommandFoundation
 			$msg = htmlspecialchars($msg->exec());
 			$msg = $msg==="" ? "~" : $msg;
 		} else {
-			$msg = "Penulisan format translate salah!\n\nBerikut ini adalah penulisan yang benar :\n<pre>/tl [from] [to] [string]\n\nContoh :\n<pre>/tl id en Apa kabar?</pre>";
+			$msg = "Penulisan format translate salah!\n\nBerikut ini adalah penulisan yang benar :\n<pre>/tl [from] [to] [string]</pre>\n\nContoh :\n<pre>/tl id en Apa kabar?</pre>";
 		}
 		return B::sendMessage(
 			[

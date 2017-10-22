@@ -109,7 +109,7 @@ class GroupEvent extends EventFoundation
 				$query .= "(:group_id, :user_id_{$i}, :status_{$i}, :privileges_{$i}, :created_at, :updated_at),";
 			}
 			$st = DB::prepare("DELETE FROM `group_admins` WHERE `group_id`=:group_id;");
-			pc($st->execute([":group_id" => $this->b->group_id]), $st);
+			pc($st->execute([":group_id" => $this->b->chat_id]), $st);
 			$st = DB::prepare(rtrim($query, ",").";");
 			pc($st->execute($admin), $st);
 		}

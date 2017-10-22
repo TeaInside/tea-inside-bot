@@ -101,7 +101,7 @@ class GroupEvent extends EventFoundation
 			$admin[":group_id"] = $this->b->chat_id;
 			$admin[":created_at"] = date("Y-m-d H:i:s");
 			$admin[':updated_at'] = date("Y-m-d H:i:s");
-			foreach ($result as $val) {
+			foreach ($st['result'] as $val) {
 				$admin[":user_id_{$i}"] = $val['user']['id'];
 				$admin[":status_{$i}"] = $val['status'];
 				unset($val['user'], $val['status']);

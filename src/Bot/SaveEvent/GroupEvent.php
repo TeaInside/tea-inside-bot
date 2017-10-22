@@ -87,7 +87,7 @@ class GroupEvent extends EventFoundation
 		return true;
 	}
 
-	private function flushGroupAdmin()
+	public function flushGroupAdmin()
 	{
 		$query = "INSERT INTO `group_admins` (`group_id`,`user_id`,`status`,`privileges`,`created_at`,`updated_at`) VALUES ";
 		$st = json_decode(B::getChatAdministrators(
@@ -104,14 +104,24 @@ class GroupEvent extends EventFoundation
 			foreach ($st['result'] as $val) {
 				$admin[":user_id_{$i}"] = $val['user']['id'];
 				$st = DB::prepare("INSERT INTO `a_users` (`user_id`, `username`, `name`, `photo`, `private_msg_count`, `group_msg_count`, `created_at`, `updated_at`) VALUES (:user_id, :username, :name, NULL, 0, 0, :created_at, NULL);");
-				$st->execute(
+				if ($st->execute(
 					[
 						":user_id" 		=> $val['user']['id'],
 						":username" 	=> (isset($val['user']['username']) ? $val['user']['username'] : ""),
 						":name"			=> $val['user']['first_name'] . (isset($val['user']['last_name']) ? " ".$val['user']['last_name'] : ""),
 						":created_at"	=> date("Y-m-d H:i:s")
 					]
-				);
+				)) {
+					$st = DB::prepare("INSERT INTO `users_history` (`user_id`, `username`, `name`, `photo`, `created_at`) VALUES (:user_id, :username, :name, NULL, :created_at)");
+					pc($st->execute(
+						[
+							":user_id" 		=> $val['user']['id'],
+							":username" 	=> (isset($val['user']['username']) ? $val['user']['username'] : ""),
+							":name"			=> $val['user']['first_name'] . (isset($val['user']['last_name']) ? " ".$val['user']['last_name'] : ""),
+							":created_at"	=> date("Y-m-d H:i:s")
+						]
+					), $st);
+				}
 				$admin[":status_{$i}"] = $val['status'];
 				unset($val['user'], $val['status']);
 				$admin[":privileges_{$i}"] = $admin[":status_{$i}"]==="creator" ? "all" : json_encode($val);
@@ -144,11 +154,25 @@ class GroupEvent extends EventFoundation
 		$track = $this->trackEvent();
 		if ($track === "update") {
 			$this->updateGroupInfo();
+			$this->flushGroupAdmin();
 		} elseif ($track === "known") {
 			$this->increaseMessageCount();
+			$get = 0;
+			is_dir(STORAGE."/groups") or mkdir(STORAGE."/groups");
+			if (file_exists($a = STORAGE."/groups/".$this->b->chat_id."_flush_privileges")) {
+				$get = (int)file_get_contents($a);
+				if ($get === 10) {
+					$this->flushGroupAdmin();
+					file_put_contents($a, 0);
+				} else {
+					file_put_contents($a, ++$get);
+				}
+			} else {
+				file_put_contents($a, ++$get);
+			}
 		} else {
 			$this->saveNewGroup();
+			$this->flushGroupAdmin();
 		}
-		$this->flushGroupAdmin();
 	}
 }

@@ -59,7 +59,7 @@ class Translator extends CommandFoundation
 			return B::sendMessage(
 				[
 					"chat_id" => $this->b->chat_id,
-					"reply_to_message_id" => $this->b->msgid,
+					"reply_to_message_id" => $this->b->replyto['message_id'],
 					"text" => $msg,
 					"parse_mode" => "HTML"
 				]

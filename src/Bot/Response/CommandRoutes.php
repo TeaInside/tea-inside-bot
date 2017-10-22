@@ -39,6 +39,12 @@ trait CommandRoutes
 					"reply_to_message_id" => $this->b->msgid
 				]
 			)['content'], true);
+			/*B::editMessageText(
+				[
+					// "chat_id" => $st['res']
+				]
+			);*/
+			var_dump($st);
 		});
 
 		$this->set(function() use ($st)

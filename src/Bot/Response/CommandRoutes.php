@@ -6,9 +6,10 @@ trait CommandRoutes
 {
 	private function buildCMDRoutes()
 	{
-		$this->set(function()
+		$st = explode(" ", $this->b->lowertext, 2);
+		$st = explode("@", $st[0]);
+		$this->set(function() use ($st)
 		{
-			$st = explode(" ", $this->b->lowertext, 2);
 			return 
 				$st[0] === "/sh"  	 ||
 				$st[0] === "!sh" 	 ||
@@ -20,10 +21,8 @@ trait CommandRoutes
 				$st[0] === "shexec";
 		}, "ShellExec@run");
 
-		$this->set(function()
+		$this->set(function() use ($st)
 		{
-			$st = explode(" ", $this->b->lowertext, 2);
-			$st = explode("@", $st[0]);
 			return 
 				$st[0] === "/ping"   ||
 				$st[0] === "!ping" 	 ||
@@ -39,5 +38,16 @@ trait CommandRoutes
 				]
 			)['content'], true);
 		});
+
+		$this->set(function() use ($st)
+		{
+			return
+				$st[0] === "/tl"   		||
+				$st[0] === "!tl" 	 	||
+				$st[0] === "~tl" 	 	||
+				$st[0] === "/translate"	||
+				$st[0] === "!translate" ||
+				$st[0] === "~translate";
+		}, "Translator@googleTranslate");
 	}
 }

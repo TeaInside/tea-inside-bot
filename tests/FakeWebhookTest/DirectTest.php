@@ -29,7 +29,7 @@ class DirectChatTest extends TestCase
             "type": "private"
         },
         "date": 1508600922,
-        "text": "\/sh echo \"direct test (sh)\"",
+        "text": "/tl id en selamat pagi",
         "entities": [
             {
                 "offset": 0,

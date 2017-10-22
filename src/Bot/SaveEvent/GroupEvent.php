@@ -103,6 +103,15 @@ class GroupEvent extends EventFoundation
 			$admin[':updated_at'] = date("Y-m-d H:i:s");
 			foreach ($st['result'] as $val) {
 				$admin[":user_id_{$i}"] = $val['user']['id'];
+				$st = DB::prepare("INSERT INTO `users_history` (`user_id`, `username`, `name`, `photo`, `created_at`) VALUES (:user_id, :username, :name, NULL, :created_at)");
+				$st->execute(
+					[
+						":user_id" 		=> $val['user']['id'],
+						":username" 	=> (isset($val['user']['username']) ? $val['user']['username'] : ""),
+						":name"			=> $val['user']['first_name'] . (isset($val['user']['last_name']) ? " ".$val['user']['last_name'] : ""),
+						":created_at"	=> date("Y-m-d H:i:s")
+					]
+				);
 				$admin[":status_{$i}"] = $val['status'];
 				unset($val['user'], $val['status']);
 				$admin[":privileges_{$i}"] = $admin[":status_{$i}"]==="creator" ? "all" : json_encode($val);

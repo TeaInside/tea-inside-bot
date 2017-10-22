@@ -75,8 +75,13 @@ class UserEvent extends EventFoundation
 	private function increaseMessageCount()
 	{
 		$add = $this->b->chattype === "private" ? "`private_msg_count`=`private_msg_count`+1" : "`group_msg_count`=`group_msg_count`+1";
-		$st = DB::prepare("UPDATE `a_users` SET {$add} WHERE `user_id`=:user_id LIMIT 1;");
-		pc($st->execute([":user_id" => $this->b->user_id]), $st);
+		$st = DB::prepare("UPDATE `a_users` SET `updated_at`=:updated_at, {$add} WHERE `user_id`=:user_id LIMIT 1;");
+		pc($st->execute(
+			[
+				":user_id" 		=> $this->b->user_id,
+				":updated_at"	=> date("Y-m-d H:i:s")
+			]
+		), $st);
 		return true;
 	}
 

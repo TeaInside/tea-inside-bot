@@ -94,6 +94,11 @@ final class Bot
 	public $user_id;
 
 	/**
+	 * @var array
+	 */
+	public $replyto = [];
+
+	/**
 	 * Constructor.
 	 *
 	 * @param string $input
@@ -125,6 +130,7 @@ final class Bot
 			$this->chattype  = $this->input['message']['chat']['type'];
 			$this->is_bot    = $this->input['message']['from']['is_bot'];
 			$this->user_id   = $this->input['message']['from']['id'];
+			$this->replyto   = isset($this->input['message']['reply_to_message']) ? $this->input['message']['reply_to_message'] : [];
 		}
 	}
 

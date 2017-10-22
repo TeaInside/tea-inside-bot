@@ -90,7 +90,7 @@ class GroupEvent extends EventFoundation
 	private function flushGroupAdmin()
 	{
 		$query = "INSERT INTO `group_admins` (`group_id`,`user_id`,`status`,`privileges`,`created_at`,`updated_at`) VALUES ";
-		$st = json_decode(B::getChatAdminstrators(
+		$st = json_decode(B::getChatAdministrators(
 			[
 				"chat_id" => $this->b->chat_id
 			]

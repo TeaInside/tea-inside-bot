@@ -43,7 +43,7 @@ trait CommandRoutes
 				[
 					"chat_id" => $this->b->chat_id,
 					"message_id" => $st['result']['message_id'],
-					"text" => "Pong!\n".((time() - $this->b->date) + round(microtime(true) - $start,  4))." s"
+					"text" => "Pong!\n".((time() - $this->b->date) + round(microtime(true) - $start,  2))." s"
 				]
 			);
 			var_dump($st);

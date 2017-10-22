@@ -40,7 +40,7 @@ CREATE TABLE `groups_history` (
   `name` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   KEY `group_id` (`group_id`),
-  CONSTRAINT `groups_history_ibfk_1` FOREIGN KEY (`group_id`) REFERENCES `a_groups` (`group_id`)
+  CONSTRAINT `groups_history_ibfk_2` FOREIGN KEY (`group_id`) REFERENCES `a_groups` (`group_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -67,7 +67,7 @@ CREATE TABLE `group_messages` (
   KEY `user_id` (`user_id`),
   KEY `group_id` (`group_id`),
   CONSTRAINT `group_messages_ibfk_4` FOREIGN KEY (`user_id`) REFERENCES `a_users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `group_messages_ibfk_5` FOREIGN KEY (`group_id`) REFERENCES `a_groups` (`group_id`)
+  CONSTRAINT `group_messages_ibfk_6` FOREIGN KEY (`group_id`) REFERENCES `a_groups` (`group_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -117,4 +117,4 @@ CREATE TABLE `users_history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
--- 2017-10-21 04:19:54
+-- 2017-10-22 07:46:45

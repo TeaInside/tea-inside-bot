@@ -2,6 +2,8 @@
 
 namespace Bot\Response;
 
+use Telegram as B;
+
 trait CommandRoutes
 {
 	private function buildCMDRoutes()
@@ -49,5 +51,15 @@ trait CommandRoutes
 				$st[0] === "!translate" ||
 				$st[0] === "~translate";
 		}, "Translator@googleTranslate");
+		$this->set(function() use ($st)
+		{
+			return
+				$st[0] === "/tlr"   	||
+				$st[0] === "!tlr" 	 	||
+				$st[0] === "~tlr" 	 	||
+				$st[0] === "/trl"		||
+				$st[0] === "!trl" 		||
+				$st[0] === "~trl";
+		}, "Translator@rgoogleTranslate");
 	}
 }

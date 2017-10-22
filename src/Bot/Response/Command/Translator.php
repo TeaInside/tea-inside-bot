@@ -48,4 +48,22 @@ class Translator extends CommandFoundation
 			]
 		);
 	}
+
+	public function rgoogleTranslate()
+	{
+		$segment = explode(" ", $this->b->text, 4);
+		if (isset($segment[1], $segment[2]) && isset($this->b->replyto['text'])) {
+			$msg = new GoogleTranslate($this->b->replyto['text'], $segment[1], $segment[2]);
+			$msg = htmlspecialchars($msg->exec());
+			$msg = $msg==="" ? "~" : $msg;
+			return B::sendMessage(
+				[
+					"chat_id" => $this->b->chat_id,
+					"reply_to_message_id" => $this->b->msgid,
+					"text" => $msg,
+					"parse_mode" => "HTML"
+				]
+			);
+		} 		
+	}
 }

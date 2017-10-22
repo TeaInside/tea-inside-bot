@@ -43,7 +43,6 @@ class ServerTest extends TestCase
     }
 }');
 		$out = $ch->exec();
-        var_dump($out);
 		$this->assertTrue($ch->info['http_code'] === 200);
 	}
 }

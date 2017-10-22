@@ -3,6 +3,7 @@
 namespace Bot;
 
 use Bot\SaveEvent\UserEvent;
+use Bot\SaveEvent\GroupEvent;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

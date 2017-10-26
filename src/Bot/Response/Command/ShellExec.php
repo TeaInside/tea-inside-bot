@@ -28,7 +28,16 @@ class ShellExec extends CommandFoundation
 		$this->b = $bot;
 	}
 
-
+	private function reportIncidentToSudoers()
+	{
+		
+	}
+	
+	private function securityCheck()
+	{
+		
+	}
+	
 	public function run()
 	{
 		$isRoot = false;

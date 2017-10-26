@@ -54,6 +54,7 @@ final class Lang
 
 	private function buildContext()
 	{
+		var_dump($this->b);
 		$this->r1 = [
 			"{name}",
 			"{namelink}",			
@@ -65,7 +66,7 @@ final class Lang
 			"{short_namelink}"
 		];
 		$this->r2 = [
-			$this->b->name,
+			$this->b->name, 
 			"<a href=\"tg://user?id=".$this->b->user_id."\">".htmlspecialchars($this->b->name)."</a>",
 			(isset($this->b->username) ? "@".$this->b->username : ""),
 			$this->b->chattile,

@@ -36,7 +36,7 @@ class AdminHammer extends CommandFoundation
 	 */
 	private function isAdmin()
 	{
-		if ($this->chattype === "private") {
+		if ($this->b->chattype === "private") {
 			return false;
 		}
 		$st = DB::prepare("SELECT `user_id` FROM `group_admins` WHERE `group_id`=:group_id AND `user_id`=:user_id LIMIT 1;");

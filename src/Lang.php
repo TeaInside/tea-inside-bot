@@ -99,7 +99,7 @@ final class Lang
 	{
 		$ins = self::getInstance();
 		if (! $ins->r1) {
-			$this->buildContext();
+			$ins->buildContext();
 		}
 		return str_replace($ins->r1, $ins->r2, $str);
 	}

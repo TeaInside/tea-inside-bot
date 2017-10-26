@@ -60,7 +60,8 @@ class ShellExec extends CommandFoundation
 			[
 				"chat_id" 	 => $this->b->chat_id,
 				"text"  	 => $msg,
-				"parse_mode" => "HTML"
+				"parse_mode" => "HTML",
+				"reply_to_message_id" => $this->b->msgid
 			]
 		);
 	}

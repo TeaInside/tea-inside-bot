@@ -50,7 +50,7 @@ class ShellExec extends CommandFoundation
 
 		if (! $isRoot and ! $this->securityCheck()) {
 			$msg = Lang::bind("{namelink} is not in the sudoers file. This incident will be reported.");
-			$this->reportIncidentToSudoers()
+			$this->reportIncidentToSudoers();
 		} else {
 			$cmd = explode(" ", $this->b->text, 2);
 			$msg = shell_exec($cmd[1]." 2>&1");

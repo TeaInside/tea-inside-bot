@@ -69,7 +69,7 @@ final class Lang
 			$this->b->name, 
 			"<a href=\"tg://user?id=".$this->b->user_id."\">".htmlspecialchars($this->b->name)."</a>",
 			(isset($this->b->username) ? "@".$this->b->username : ""),
-			$this->b->chattile,
+			$this->b->chattitle,
 			$this->b->chat_id,
 			$this->b->first_name,
 			$this->b->last_name,

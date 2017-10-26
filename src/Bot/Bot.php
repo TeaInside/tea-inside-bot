@@ -51,6 +51,16 @@ final class Bot
 	/**
 	 * @var string
 	 */
+	public $first_name;
+
+	/**
+	 * @var string
+	 */
+	public $last_name;
+
+	/**
+	 * @var string
+	 */
 	public $msgid;
 
 	/**
@@ -131,6 +141,8 @@ final class Bot
 			$this->is_bot    = $this->input['message']['from']['is_bot'];
 			$this->user_id   = $this->input['message']['from']['id'];
 			$this->replyto   = isset($this->input['message']['reply_to_message']) ? $this->input['message']['reply_to_message'] : [];
+			$this->first_name = $this->input['message']['from']['first_name'];
+			$this->last_name  = isset($this->input['message']['from']['last_name']) ? $this->input['message']['from']['last_name'] : "");
 		} elseif (isset($this->input['photo'][''])) {
 			
 		}

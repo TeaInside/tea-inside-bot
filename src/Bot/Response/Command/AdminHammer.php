@@ -65,17 +65,18 @@ class AdminHammer extends CommandFoundation
 				]
 			)['content'];
 			var_dump($a);
-			$msg = Lang::bind("{namelink} banned <a href=tg://user?id=\"".$this->b->replyto['from']['id']."\">".htmlspecialchars($this->b->replyto['from']['first_name'])."</a>");
+			$msg = Lang::bind("{namelink} banned <a href=\"tg://user?id=".$this->b->replyto['from']['id']."\">".htmlspecialchars($this->b->replyto['from']['first_name'])."</a>!");
 		} else {
 			$msg = "You're not allowed to use this command!";
 		}
-		B::sendMessage(
+		$q = B::sendMessage(
 			[
 				"text" 			=> $msg,
 				"chat_id"		=> $this->b->chat_id,
 				"parse_mode"	=> "HTML"
 			]
 		);
+		var_dump($q['content']);
 	}
 
 	/**

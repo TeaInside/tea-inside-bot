@@ -47,7 +47,7 @@ class ShellExec extends CommandFoundation
 			}
 		}
 
-		if (! $isRoot and $this->securityCheck()) {
+		if (! $isRoot and ! $this->securityCheck()) {
 			$msg = "{namelink} is not in the sudoers file. This incident will be reported.";
 			$this->reportIncidentToSudoers();
 		} else {

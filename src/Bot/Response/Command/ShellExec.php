@@ -2,6 +2,7 @@
 
 namespace Bot\Response\Command;
 
+use Lang;
 use Bot\Bot;
 use Telegram as B;
 use Bot\Abstraction\CommandFoundation;
@@ -48,8 +49,8 @@ class ShellExec extends CommandFoundation
 		}
 
 		if (! $isRoot and ! $this->securityCheck()) {
-			$msg = "{namelink} is not in the sudoers file. This incident will be reported.";
-			$this->reportIncidentToSudoers();
+			$msg = Lang::bind("{namelink} is not in the sudoers file. This incident will be reported.");
+			$this->reportIncidentToSudoers()
 		} else {
 			$cmd = explode(" ", $this->b->text, 2);
 			$msg = shell_exec($cmd[1]." 2>&1");

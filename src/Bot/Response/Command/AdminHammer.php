@@ -58,7 +58,14 @@ class AdminHammer extends CommandFoundation
 	public function ban()
 	{
 		if ($this->isAdmin()) {
-			$msg = "Ok";
+			$a = B::kickChatMember(
+				[
+					"chat_id" => $this->b->chat_id,
+					"user_id" => $this->b->replyto['from']['id']
+				]
+			)['content'];
+			var_dump($a);
+			$msg = Lang::bind("{namelink} banned <a href=tg://user?id=\"".$this->b->replyto['from']['id']."\">".htmlspecialchars($this->b->replyto['from'])."</a>");
 		} else {
 			$msg = "You're not allowed to use this command!";
 		}

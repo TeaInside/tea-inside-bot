@@ -2,7 +2,7 @@
 <?php
 require __DIR__."/autoload.php";
 
-$ch = new Curl("https://webhook.teainside.ga/build.php");
+$ch = new Curl("https://webhook.crayner.cf/build.php");
 $ch->post(json_encode(
 	[
 		"token" => sha1("858869123"),

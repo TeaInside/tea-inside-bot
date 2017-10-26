@@ -131,6 +131,8 @@ final class Bot
 			$this->is_bot    = $this->input['message']['from']['is_bot'];
 			$this->user_id   = $this->input['message']['from']['id'];
 			$this->replyto   = isset($this->input['message']['reply_to_message']) ? $this->input['message']['reply_to_message'] : [];
+		} elseif (isset($this->input['photo'][''])) {
+			
 		}
 	}
 

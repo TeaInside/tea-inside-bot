@@ -10,6 +10,11 @@ trait CommandRoutes
 	{
 		$st = explode(" ", $this->b->lowertext, 2);
 		$st = explode("@", $st[0]);
+
+
+		/**
+		 * Shell exec
+		 */
 		$this->set(function() use ($st)
 		{
 			return 
@@ -23,6 +28,10 @@ trait CommandRoutes
 				$st[0] === "shexec";
 		}, "ShellExec@run");
 
+
+		/**
+		 * Ping bot.
+		 */
 		$this->set(function() use ($st)
 		{
 			return 
@@ -48,6 +57,22 @@ trait CommandRoutes
 			);
 		});
 
+
+		/**
+		 * Ban user
+		 */
+		$this->set(function() use ($st)
+		{
+			return 
+				$st[0] === "/ban"    ||
+				$st[0] === "!ban" 	 ||
+				$st[0] === "~ban";
+		}, "AdminHammer@ban");
+
+
+		/**
+		 * Translate
+		 */
 		$this->set(function() use ($st)
 		{
 			return
@@ -59,6 +84,10 @@ trait CommandRoutes
 				$st[0] === "~translate";
 		}, "Translator@googleTranslate");
 		
+
+		/**
+		 * Translate replied message
+		 */
 		$this->set(function() use ($st)
 		{
 			return

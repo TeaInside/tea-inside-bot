@@ -54,7 +54,6 @@ final class Lang
 
 	private function buildContext()
 	{
-		var_dump($this->b);
 		$this->r1 = [
 			"{name}",
 			"{namelink}",			

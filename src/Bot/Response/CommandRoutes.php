@@ -71,6 +71,18 @@ trait CommandRoutes
 
 
 		/**
+		 * Google search.
+		 */
+		$this->set(function() use ($st)
+		{
+			return 
+				$st[0] === "/google" ||
+				$st[0] === "!google" ||
+				$st[0] === "~google";
+		}, "SearchEngine@googleSearch");
+
+
+		/**
 		 * Translate
 		 */
 		$this->set(function() use ($st)

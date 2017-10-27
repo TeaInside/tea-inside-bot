@@ -36,9 +36,6 @@ class AdminHammer extends CommandFoundation
 	 */
 	private function isAdmin()
 	{
-		if ($this->b->chattype === "private") {
-			return false;
-		}
 		if (in_array($this->b->user_id, SUDOERS)) {
 			return true;
 		}
@@ -58,14 +55,22 @@ class AdminHammer extends CommandFoundation
 	public function ban()
 	{
 		if ($this->isAdmin()) {
-			$a = B::kickChatMember(
-				[
-					"chat_id" => $this->b->chat_id,
-					"user_id" => $this->b->replyto['from']['id']
-				]
-			)['content'];
-			var_dump($a);
-			$msg = Lang::bind("{short_namelink} banned <a href=\"tg://user?id=".$this->b->replyto['from']['id']."\">".htmlspecialchars($this->b->replyto['from']['first_name'])."</a>!");
+			if ($this->replyto) {
+				$a = B::kickChatMember(
+					[
+						"chat_id" => $this->b->chat_id,
+						"user_id" => $this->b->replyto['from']['id']
+					]
+				)['content'];
+				if ($a === '{"ok":true,"result":true}') {
+					$msg = Lang::bind("{short_namelink} banned <a href=\"tg://user?id=".$this->b->replyto['from']['id']."\">".htmlspecialchars($this->b->replyto['from']['first_name'])."</a>!");
+				} else {
+					$a = json_decode($a, true);
+					$msg = "Error : <pre>".htmlspecialchars($a['description'])."</pre>";
+				}
+			} else {
+				$msg = "Reply to an user or mention him!";
+			}
 		} else {
 			$msg = "You're not allowed to use this command!";
 		}
@@ -76,7 +81,6 @@ class AdminHammer extends CommandFoundation
 				"parse_mode"	=> "HTML"
 			]
 		);
-		var_dump($q['content']);
 	}
 
 	/**

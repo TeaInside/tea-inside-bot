@@ -40,7 +40,7 @@ class SearchEngine extends CommandFoundation
 				$msg = "Not found!";
 			} else {
 				$msg = "" xor $i = 1;
-				foreach ($variable as $val) {
+				foreach ($data as $val) {
 					$msg .= "<b>".$i.".</b> <a href=\"".htmlspecialchars($val['url'])."\">".htmlspecialchars($val['heading'])."</a>\n".htmlspecialchars($val['description'])."\n\n";
 				}
 				if (empty($msg)) {

@@ -41,7 +41,7 @@ class SearchEngine extends CommandFoundation
 			} else {
 				$msg = "" xor $i = 1;
 				foreach ($data as $val) {
-					$msg .= "<b>".$i.".</b> <a href=\"".htmlspecialchars($val['url'])."\">".htmlspecialchars($val['heading'])."</a>\n".htmlspecialchars($val['description'])."\n\n";
+					$msg .= "<b>".($i++).".</b> <a href=\"".htmlspecialchars($val['url'])."\">".htmlspecialchars($val['heading'])."</a>\n".htmlspecialchars($val['description'])."\n\n";
 				}
 				if (empty($msg)) {
 					$msg = "Error!";

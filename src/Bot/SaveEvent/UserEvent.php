@@ -89,7 +89,8 @@ class UserEvent extends EventFoundation
 					B::sendMessage(
 						[
 							"text" => $msg,
-							"chat_id" => $this->b->chat_id
+							"chat_id" => $this->b->chat_id,
+							"parse_mode" => "HTML"
 						]
 					);
 				}

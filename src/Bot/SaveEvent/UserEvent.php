@@ -4,6 +4,7 @@ namespace Bot\SaveEvent;
 
 use DB;
 use PDO;
+use Lang;
 use Bot\Bot;
 use Telegram as B;
 use Bot\Abstraction\EventFoundation;
@@ -83,18 +84,26 @@ class UserEvent extends EventFoundation
 		if ($st = $st->fetch(PDO::FETCH_NUM)) {
 			if ($st[0] === 'true') {
 				if ($this->b->name !== $this->oldIdentity['name']) {
+					$msg = Lang::bind(
+				"<a href=\"tg://user?id=".$this->b->user_id."\">".htmlspecialchars($this->oldIdentity['name'])."</a> changes name to {namelink}");
 					B::sendMessage(
 						[
-							"text" =>  $this->oldIdentity['name']." changes name to ".$this->b->name,
+							"text" => $msg,
 							"chat_id" => $this->b->chat_id
 						]
 					);
 				}
-				if ($this->b->username !== $this->oldIdentity['username']) {
+				if ($this->b->username != $this->oldIdentity['username']) {
+					if (empty($this->oldIdentity['username'])) {
+						$msg = Lang::bind("{namelink} create new username @".$this->b->username);
+					} else {
+						$msg = Lang::bind("{namelink} changes username from @".$this->oldIdentity['username']." to @{username}");
+					}
 					B::sendMessage(
 						[
-							"text" =>  $this->oldIdentity['name']." changes username from ".$this->oldIdentity['username']." to ".$this->b->username,
-							"chat_id" => $this->b->chat_id
+							"text" =>  $msg,
+							"chat_id" => $this->b->chat_id,
+							"parse_mode" => "HTML"
 						]
 					);
 				}

@@ -96,6 +96,8 @@ class UserEvent extends EventFoundation
 				if ($this->b->username != $this->oldIdentity['username']) {
 					if (empty($this->oldIdentity['username'])) {
 						$msg = Lang::bind("{namelink} create new username @".$this->b->username);
+					} elseif(empty($this->b->username)) {
+						$msg = Lang::bind("{namelink} removed username");
 					} else {
 						$msg = Lang::bind("{namelink} changes username from @".$this->oldIdentity['username']." to @{username}");
 					}

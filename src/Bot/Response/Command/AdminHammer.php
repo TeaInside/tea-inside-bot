@@ -55,7 +55,7 @@ class AdminHammer extends CommandFoundation
 	public function ban()
 	{
 		if ($this->isAdmin()) {
-			if ($this->replyto) {
+			if ($this->b->replyto) {
 				$a = B::kickChatMember(
 					[
 						"chat_id" => $this->b->chat_id,

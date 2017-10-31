@@ -120,4 +120,41 @@ class AdminHammer extends CommandFoundation
 			]
 		);
 	}
+
+	public function kick()
+	{
+		if ($this->isAdmin()) {
+			if ($this->b->replyto) {
+				$a = B::kickChatMember(
+					[
+						"chat_id" => $this->b->chat_id,
+						"user_id" => $this->b->replyto['from']['id']
+					]
+				)['content'];
+				if ($a === '{"ok":true,"result":true}') {
+					B::unbanChatMember(
+						[
+							"chat_id" => $this->b->chat_id,
+							"user_id" => $this->b->replyto['from']['id']
+						]
+					);
+					$msg = Lang::bind("{short_namelink} kicked <a href=\"tg://user?id=".$this->b->replyto['from']['id']."\">".htmlspecialchars($this->b->replyto['from']['first_name'])."</a>!");
+				} else {
+					$a = json_decode($a, true);
+					$msg = "Error : <pre>".htmlspecialchars($a['description'])."</pre>";
+				}
+			} else {
+				$msg = "Reply to an user or mention him!";
+			}
+		} else {
+			$msg = "You're not allowed to use this command!";
+		}
+		$q = B::sendMessage(
+			[
+				"text" 			=> $msg,
+				"chat_id"		=> $this->b->chat_id,
+				"parse_mode"	=> "HTML"
+			]
+		);
+	}
 }

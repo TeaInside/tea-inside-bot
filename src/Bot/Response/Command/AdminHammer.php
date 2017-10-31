@@ -121,6 +121,10 @@ class AdminHammer extends CommandFoundation
 		);
 	}
 
+
+	/**
+	 * Kick.
+	 */
 	public function kick()
 	{
 		if ($this->isAdmin()) {

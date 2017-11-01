@@ -29,10 +29,17 @@ class Init extends KulgramWriterFoundation
 		$b = explode("oleh", $a[1], 2);
 		$author = isset($b[1]) ? ucwords(strtolower($b[1])) : $this->b->name;
 		$title  = strtoupper(trim($a[0]));
-		file_put_contents($this->lockfile, data)
+		file_put_contents($this->lockfile, json_encode(
+			[
+				"start" => null,
+				"title" => $title,
+				"author" => $author,
+				"init_time" => time()
+			]
+		));
 		B::sendMessage(
 			[
-				"text" => "Baiklah, materi kulgram hari ini adalah \"<b>".htmlspecialchars($title)."</b>\" oleh <b>".htmlspecialchars($author)."</b>",
+				"text" => "Baiklah, topik saat ini adalah \"<b>".htmlspecialchars($title)."</b>\" oleh <b>".htmlspecialchars($author)."</b>",
 				"chat_id" => $this->b->chat_id,
 				"parse_mode" => "HTML"
 			]

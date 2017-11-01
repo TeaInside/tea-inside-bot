@@ -123,5 +123,16 @@ trait CommandRoutes
 				strpos($this->b->lowertext, "materi kulgram hari ini") !== false ||
 				strpos($this->b->lowertext, "topik kulgram hari ini") !== false;
 		}, "KulgramWriter@init");
+
+		/**
+		 * Init kulgram
+		 */
+		$this->set(function()
+		{
+			return
+				strpos($this->b->lowertext, "mulai nyatet") !== false ||
+				strpos($this->b->lowertext, "mulai catatan") !== false ||
+				strpos($this->b->lowertext, "mulai nyatat") !== false;				
+		}, "KulgramWriter@start");
 	}
 }

@@ -39,4 +39,14 @@ abstract class KulgramWriterFoundation
 			$this->infodata = json_decode(file_get_contents($this->infofile), true);
 		}
 	}
+
+	protected function getInfo()
+	{
+		file_put_contents($this->infofile, json_encode($this->infodata));
+	}
+
+	protected function start()
+	{
+		file_put_contents($this->lockfile.".start", 1);
+	}
 }

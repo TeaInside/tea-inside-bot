@@ -33,4 +33,10 @@ class KulgramWriter extends CommandFoundation
 		$st = new \Plugins\KulgramWriter\Actions\Init($this->b);
 		$st->run();
 	}
+
+	public function init()
+	{
+		$st = new \Plugins\KulgramWriter\Actions\Start($this->b);
+		$st->run();
+	}
 }

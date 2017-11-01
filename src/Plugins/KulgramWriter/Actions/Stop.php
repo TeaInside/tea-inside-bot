@@ -7,7 +7,7 @@ use PDO;
 use Telegram as B;
 use Plugins\KulgramWriter\KulgramWriterFoundation;
 
-class Start extends KulgramWriterFoundation
+class Stop extends KulgramWriterFoundation
 {
 	public function run()
 	{

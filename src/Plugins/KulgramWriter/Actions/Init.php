@@ -32,7 +32,7 @@ class Init extends KulgramWriterFoundation
 		
 		$b = explode("oleh", $a[1], 2);
 		$author = isset($b[1]) ? ucwords(strtolower($b[1])) : $this->b->name;
-		$title  = isset($b[1]) ? strtoupper(trim($b[1])) : strtoupper(trim($a[1]));
+		$title  = isset($b[1]) ? strtoupper(trim($b[0])) : strtoupper(trim($a[1]));
 		file_put_contents($this->lockfile, json_encode(
 			[
 				"start" => null,
@@ -43,7 +43,7 @@ class Init extends KulgramWriterFoundation
 		));
 		B::sendMessage(
 			[
-				"text" => "Baiklah, topik saat ini adalah <b>\"".htmlspecialchars($title)."\"</b>\" oleh <b>\"".htmlspecialchars($author)."\"</b>",
+				"text" => "Baiklah, topik saat ini adalah <b>\"".htmlspecialchars($title)."\"</b> oleh <b>\"".htmlspecialchars($author)."\"</b>",
 				"chat_id" => $this->b->chat_id,
 				"parse_mode" => "HTML"
 			]

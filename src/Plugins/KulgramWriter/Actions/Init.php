@@ -33,7 +33,7 @@ class Init extends KulgramWriterFoundation
 		$b = explode("oleh", $a[1], 2);
 		$author = isset($b[1]) ? ucwords(strtolower($b[1])) : $this->b->name;
 		$title  = isset($b[1]) ? strtoupper(trim($b[0])) : strtoupper(trim($a[1]));
-		$this->getData();
+		$this->getInfo();
 		$data =[
 				"start" => null,
 				"title" => $title,

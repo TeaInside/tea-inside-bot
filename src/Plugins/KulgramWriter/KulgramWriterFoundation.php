@@ -40,7 +40,7 @@ abstract class KulgramWriterFoundation
 		}
 	}
 
-	protected function getInfo()
+	protected function writeInfo()
 	{
 		file_put_contents($this->infofile, json_encode($this->infodata));
 	}

@@ -47,14 +47,14 @@ class Stop extends KulgramWriterFoundation
 	{
 		$start = date("Y-m-d H:i:s", $this->infodata['list'][$this->infodata['count'] - 1]['start']);
 		$end = date("Y-m-d H:i:s", $this->infodata['list'][$this->infodata['count'] - 1]['end']);
-		$st = DB::prepare($q = "SELECT `c`.`name`,`c`.`user_id`,`a`.`message_id`, `a`.`reply_to_message_id`,`a`.`type`,`b`.`text`,`b`.`file` FROM `group_messages` AS `a` INNER JOIN `group_messages_data` AS `b` ON `a`.`msg_uniq`=`b`.`msg_uniq` INNER JOIN `a_users` AS `c` ON `a`.`user_id`=`c`.`user_id` WHERE `a`.`group_id`=:group_id AND `a`.`created_at` >= '{$start}' AND `a`.`created_at` <= '{$end}';");
+		$st = DB::prepare($q = "SELECT `c`.`name`,`c`.`user_id`,`a`.`message_id`, `a`.`reply_to_message_id` AS `reply_to`,`a`.`type`,`b`.`text`,`b`.`file` FROM `group_messages` AS `a` INNER JOIN `group_messages_data` AS `b` ON `a`.`msg_uniq`=`b`.`msg_uniq` INNER JOIN `a_users` AS `c` ON `a`.`user_id`=`c`.`user_id` WHERE `a`.`group_id`=:group_id AND `a`.`created_at` >= '{$start}' AND `a`.`created_at` <= '{$end}';");
 		var_dump($q);
 		pc($st->execute(
 			[
 				":group_id" => $this->b->chat_id
 			]
 		), $st);
-		$data = $st->fetchAll(PDO::FETCH_ASSOC);
-		file_put_contents($this->datapath."/".$this->infodata['count'], json_encode($data), LOCK_EX);
+		$this->infodata['list'][$this->infodata['count'] - 1]['data'] = $st->fetchAll(PDO::FETCH_ASSOC);
+		file_put_contents($this->datapath."/".$this->infodata['count'], json_encode($this->infodata['list'][$this->infodata['count'] - 1]), LOCK_EX);
 	}
 }

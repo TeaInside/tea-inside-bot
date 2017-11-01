@@ -10,14 +10,8 @@ class Start extends KulgramWriterFoundation
 	public function run()
 	{
 		if (file_exists($this->lockfile)) {
-			return false;
+			
 		}
-		if (file_exists($this->initfile)) {
-			B::sendMessages(
-				[
-					
-				]
-			);
-		}
+		return false;
 	}
 }

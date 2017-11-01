@@ -20,7 +20,7 @@ class Photo implements SaveEvent
 	 * @param \Bot\Bot $bot
 	 */
 	public function __construct(Bot $bot)
-	{
+	{ var_dump("save photo");
 		$this->b = $bot;
 	}
 

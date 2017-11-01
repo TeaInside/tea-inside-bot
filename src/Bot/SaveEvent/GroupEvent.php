@@ -95,7 +95,6 @@ class GroupEvent extends EventFoundation
 				"chat_id" => $this->b->chat_id
 			]
 		)['content'], true) xor $admin = [];
-		var_dump($st);
 		if (isset($st['result'])) {
 			$i = 1;
 			$admin[":group_id"] = $this->b->chat_id;

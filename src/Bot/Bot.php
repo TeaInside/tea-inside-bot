@@ -156,8 +156,8 @@ final class Bot
 			$this->username  = isset($this->input['message']['from']['username']) ? $this->input['message']['from']['username'] : null;
 			$this->msgid     = $this->input['message']['message_id'];
 			$this->date      = $this->input['message']['date'];
-			$this->text      = $this->input['message']['caption'];
-			$this->lowertext = strtolower($this->input['message']['text']);
+			$this->text      = isset($this->input['message']['caption']) ? $this->input['message']['caption'] : null;
+			$this->lowertext = strtolower($this->text);
 			$this->entities  = isset($this->input['message']['entities']) ? $this->input['message']['entities'] : [];
 			$this->chat_id	 = $this->input['message']['chat']['id'];
 			$this->chattype  = $this->input['message']['chat']['type'];

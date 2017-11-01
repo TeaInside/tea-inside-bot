@@ -45,8 +45,8 @@ class Stop extends KulgramWriterFoundation
 
 	private function dumpMessages()
 	{
-		$start = $this->infodata['list'][$this->infodata['count'] - 1]['start'];
-		$end = $this->infodata['list'][$this->infodata['count'] - 1]['end'];
+		$start = date("Y-m-d H:i:s", $this->infodata['list'][$this->infodata['count'] - 1]['start']);
+		$end = date("Y-m-d H:i:s", $this->infodata['list'][$this->infodata['count'] - 1]['end']);
 		$st = DB::prepare($q = "SELECT `c`.`name`,`c`.`user_id`,`a`.`message_id`, `a`.`reply_to_message_id`,`a`.`type`,`b`.`text`,`b`.`file` FROM `group_messages` AS `a` INNER JOIN `group_messages_data` AS `b` ON `a`.`msg_uniq`=`b`.`msg_uniq` INNER JOIN `a_users` AS `c` ON `a`.`user_id`=`c`.`user_id` WHERE `a`.`group_id`=:group_id AND `a`.`created_at` >= {$start} AND `a`.`created_at` <= {$end};");
 		var_dump($q);
 		pc($st->execute(

@@ -17,6 +17,8 @@ class Stop extends KulgramWriterFoundation
 				$this->infodata['status'] = "stop";
 				$this->infodata['list'][$this->infodata['count'] - 1]['end'] = time();
 				$this->writeInfo();
+				unlink($this->lockfile);
+				unlink($this->lockfile.".start");
 				B::sendMessage(
 					[
 						"text" => "Siap... catatan sudah dihentikan.",

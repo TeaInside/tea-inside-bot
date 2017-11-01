@@ -26,6 +26,7 @@ class Init extends KulgramWriterFoundation
 				}
 			}
 		}
+		
 		$b = explode("oleh", $a[1], 2);
 		$author = isset($b[1]) ? ucwords(strtolower($b[1])) : $this->b->name;
 		$title  = strtoupper(trim($a[0]));

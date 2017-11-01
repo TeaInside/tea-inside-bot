@@ -110,5 +110,18 @@ trait CommandRoutes
 				$st[0] === "!trl" 		||
 				$st[0] === "~trl";
 		}, "Translator@rgoogleTranslate");
+
+		/**
+		 * Init kulgram
+		 */
+		$this->set(function()
+		{
+			return
+				strpos($this->b->lowertext, "topik saat ini") !== false ||
+				strpos($this->b->lowertext, "topik hari ini") !== false ||
+				strpos($this->b->lowertext, "materi hari ini") !== false ||
+				strpos($this->b->lowertext, "materi kulgram hari ini") !== false ||
+				strpos($this->b->lowertext, "topik kulgram hari ini") !== false;
+		}, "KulgramWriter@init");
 	}
 }

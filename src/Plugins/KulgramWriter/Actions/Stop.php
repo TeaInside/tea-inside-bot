@@ -56,6 +56,6 @@ class Stop extends KulgramWriterFoundation
 		$this->infodata['list'][$this->infodata['count'] - 1]['data'] = $st->fetchAll(PDO::FETCH_ASSOC);
 		file_put_contents($this->tmpdir."/data.json", json_encode($this->infodata['list'][$this->infodata['count'] - 1]), LOCK_EX);
 		shell_exec("cd ".$this->tmpdir." && zip ".$this->datapath."/".$this->infodata['count'].".zip * && rm -rfv *");
-		return $this->datapath."/".$this->infodata['count'].".zip\n\nDownload : https://crayner.webhook.cf/storage/data/kulgram/data/".$this->b->chat_id."/".$this->infodata['count'].".zip";
+		return $this->datapath."/".$this->infodata['count'].".zip\n\nDownload : https://webhook.crayner.cf/storage/data/kulgram/data/".$this->b->chat_id."/".$this->infodata['count'].".zip";
 	}
 }

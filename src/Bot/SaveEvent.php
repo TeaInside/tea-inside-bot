@@ -44,6 +44,9 @@ class SaveEvent
 			case 'text':
 				$ns.= "Text";
 				break;
+			case 'photo': 
+			  $ns.="Photo";
+			 break;
 			default:
 				throw new \Exception("Unknown event", 1);
 				break;

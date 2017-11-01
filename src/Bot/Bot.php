@@ -92,6 +92,11 @@ final class Bot
 	 * @var string
 	 */
 	public $chattype;
+	
+	/**
+	 * @var array
+	 */
+	public $photo = [];
 
 	/**
 	 * @var bool
@@ -143,8 +148,24 @@ final class Bot
 			$this->replyto   = isset($this->input['message']['reply_to_message']) ? $this->input['message']['reply_to_message'] : [];
 			$this->first_name = $this->input['message']['from']['first_name'];
 			$this->last_name  = isset($this->input['message']['from']['last_name']) ? $this->input['message']['from']['last_name'] : "";
-		} elseif (isset($this->input['photo'][''])) {
-			
+		} else if (isset($this->input['message']?['photo'])) {
+			$this->photo = $this->input['message']['photo'];
+			$this->msgtype   = "photo";
+			$this->update_id = $this->input['update_id'];
+			$this->name		 = $this->input['message']['from']['first_name'] . (isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : "");
+			$this->username  = isset($this->input['message']['from']['username']) ? $this->input['message']['from']['username'] : null;
+			$this->msgid     = $this->input['message']['message_id'];
+			$this->date      = $this->input['message']['date'];
+			$this->text      = $this->input['message']['caption'];
+			$this->lowertext = strtolower($this->input['message']['text']);
+			$this->entities  = isset($this->input['message']['entities']) ? $this->input['message']['entities'] : [];
+			$this->chat_id	 = $this->input['message']['chat']['id'];
+			$this->chattype  = $this->input['message']['chat']['type'];
+			$this->is_bot    = $this->input['message']['from']['is_bot'];
+			$this->user_id   = $this->input['message']['from']['id'];
+			$this->replyto   = isset($this->input['message']['reply_to_message']) ? $this->input['message']['reply_to_message'] : [];
+			$this->first_name = $this->input['message']['from']['first_name'];
+			$this->last_name  = isset($this->input['message']['from']['last_name']) ? $this->input['message']['from']['last_name'] : "";
 		}
 	}
 
@@ -167,7 +188,7 @@ final class Bot
 	{
 		$this->parseEvent();
 		$res = $this->response();
-		if ($this->msgtype === "text") {
+		if (in_array($this->msgtype, ["text","photo"])) {
 			$st  = new SaveEvent($this);
 			$st->run();
 		}

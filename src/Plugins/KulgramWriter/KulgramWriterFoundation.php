@@ -28,7 +28,7 @@ abstract class KulgramWriterFoundation
 		is_dir($this->path) or mkdir($this->path);
 		is_dir($this->path."/data") or mkdir($this->path."/data");
 		is_dir($this->path."/info") or mkdir($this->path."/info");
-		$this->datapath = $this->path."/data";
+		$this->datapath = $this->path."/data/".$bot->chat_id;
 		is_dir($this->path."/data/".$bot->chat_id) or mkdir($this->path."/data/".$bot->chat_id);
 		is_dir($this->path."/data/".$bot->chat_id."/lock") or mkdir($this->path."/data/".$bot->chat_id."/lock");
 		is_dir($this->path."/data/".$bot->chat_id."/tmp") or mkdir($this->path."/data/".$bot->chat_id."/tmp");

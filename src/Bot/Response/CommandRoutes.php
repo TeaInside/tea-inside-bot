@@ -145,5 +145,32 @@ trait CommandRoutes
 				strpos($this->b->lowertext, "berhenti nyatet") !== false ||
 				strpos($this->b->lowertext, "hentikan catatan") !== false;				
 		}, "KulgramWriter@stop");
+
+		$this->set(function()
+		{
+			return
+				strpos($this->b->lowertext, "berhenti nyatat") !== false ||
+				strpos($this->b->lowertext, "berhenti nyatet") !== false ||
+				strpos($this->b->lowertext, "hentikan catatan") !== false;				
+		}, "KulgramWriter@stop");
+
+		$this->set(function() use ($st)
+		{
+			return $st[0] == "!solid";
+		}, function() {
+			$q = explode(" ", $this->text, 2);
+			isset($q[1]) and
+			\Bridge::go("line/push_cli.php", ["\"".urlencode(json_encode(
+				[
+					"to" => "Uadc81288db14210ff9b062e0605b805f",
+					"messages" => [
+						[
+							"type" => "text",
+							"text" => $q[1]
+						]
+					]
+				]
+			))."\""]);
+		});
 	}
 }

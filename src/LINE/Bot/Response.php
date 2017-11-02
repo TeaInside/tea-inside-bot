@@ -48,7 +48,7 @@ class Response
 			file_put_contents(data."/line/tmp/".($t = time()).".jpg", LINE::getContent($this->b->msgid)['content']);
 			$u = json_decode(LINE::profile($this->b->userid)['content'], true);
 			isset($u['displayName']) or $u['displayName'] = $this->b->userid;
-			$msg = "<b>".htmlspecialchars($u['displayName'])."</b>\n<pre>".htmlspecialchars($this->b->text)."</pre>";
+			$msg = htmlspecialchars($u['displayName']);
 			Bridge::go("telegram/action_cli.php", ["sendPhoto", urlencode(json_encode(
 				[
 					"caption" => $msg,

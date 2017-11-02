@@ -20,7 +20,13 @@
 
  	public static function push($data)
  	{
- 		return self::__exec();
+ 		return self::__exec(
+ 			"https://api.line.me/v2/bot/message/push",
+ 			[
+ 				CURLOPT_POST => true,
+ 				CURLOPT_POSTFIELDS => json_encode($data)
+ 			]
+ 		);
  	}
 
  	private function __exec($url, $opt = null)
@@ -31,10 +37,12 @@
  			CURLOPT_SSL_VERIFYPEER => false,
  			CURLOPT_SSL_VERIFYHOST => false,
  			CURLOPT_BINARYTRANSFER => true,
+ 			CURLOPT_CONNECTTIMEOUT => 10,
  			CURLOPT_HTTPHEADER 	   => [
  				"Authorization: Bearer ".CHANNEL_ACCESS_TOKEN,
  				"Content-Type: application/json"
- 			]
+ 			],
+ 			CURLOPT_TIMEOUT => 10
  		];
  		if (is_array($opt)) {
  			foreach ($opt as $key => $value) {

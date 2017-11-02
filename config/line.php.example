@@ -1,0 +1,3 @@
+<?php
+
+define("SUDOERS", ["U547ba62dc793c6557abbb42ab347f15f"]);

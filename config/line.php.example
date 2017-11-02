@@ -1,3 +1,32 @@
 <?php
 
-define("SUDOERS", ["U547ba62dc793c6557abbb42ab347f15f"]);
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
+
+define("BASEPATH", __DIR__."/..");
+
+
+define("SUDOERS", []);
+define("CHANNEL_ACCESS_TOKEN", "");
+
+
+/**
+ * Database.
+ */
+define("DB_HOST", "localhost");
+define("DB_USER", "root");
+define("DB_PASS", "858869123icetea");
+define("DB_NAME", "pg2ice");
+define("DB_PORT", "3306");
+
+/**
+ * Storage and public path.
+ */
+define("PRIVATE_STORAGE", BASEPATH."/storage");
+define("PUBLIC_PATH", BASEPATH."/public");
+define("STORAGE", PUBLIC_PATH."/storage");
+define("data", STORAGE."/data");
+define("LOG_DIR", __DIR__."/logs");
+

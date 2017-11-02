@@ -1,14 +1,6 @@
 <?php
 
-require __DIR__."/../../config/telegram.php";
+require __DIR__."/../../config/line.php";
 require __DIR__."/../../autoload.php";
 
-$a = file_get_contents("php://input");
-$a = json_encode(json_decode($a), 128);
-
-Telegram::sendMessage(
-	[
-		"text" => $a,
-		"chat_id" => 243692601
-	]
-);
+shell_exec("nohup /usr/bin/php ".__DIR__."/cli.php \"".urlencode(file_get_contents("php://input"))."\" >> ".LOG_DIR."/line.out 2>&1 &");

@@ -162,7 +162,7 @@ trait CommandRoutes
 			isset($q[1]) and
 			\Bridge::go("line/push_cli.php", ["\"".urlencode(json_encode(
 				[
-					"to" => "Uadc81288db14210ff9b062e0605b805f",
+					"to" => "Ce20228a1f1f98e6cf9d6f6338603e962",
 					"messages" => [
 						[
 							"type" => "text",

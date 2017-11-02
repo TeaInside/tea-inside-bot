@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @license MIT
+ */
+
+define("BASEPATH", __DIR__);
+
+/**
+ * Token.
+ */
+define("TOKEN", "");
+
+/**
+ * Global Admin and Sudoers.
+ */
+define("SUDOERS", [243692601]);
+define("GLOBAL_ADMIN", [243692601]);
+
+
+/**
+ * Database.
+ */
+define("DB_HOST", "localhost");
+define("DB_USER", "debian-sys-maint");
+define("DB_PASS", "");
+define("DB_NAME", "pgice");
+define("DB_PORT", "3306");
+
+/**
+ * Storage and public path.
+ */
+define("PRIVATE_STORAGE", BASEPATH."/storage");
+define("PUBLIC_PATH", BASEPATH."/public");
+define("STORAGE", PUBLIC_PATH."/storage");
+define("data", STORAGE."/data");
+define("LOG_DIR", __DIR__."/logs");
+
+/**
+ * Virtualizor
+ */
+define("VIRTUALIZOR_DIR", PUBLIC_PATH."/virtual");
+define("VIRTUALIZOR_URL", "http://localhost:8000/virtual");
+
+/**
+ * MyAnimeList
+ */
+define("MAL_USER", "username");
+define("MAL_PASS", "password");

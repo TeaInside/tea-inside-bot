@@ -38,7 +38,7 @@ class Response
 			Bridge::go("telegram/action_cli.php", ["sendMessage", urlencode(json_encode(
 				[
 					"text" => $msg,
-					"chat_id" => 243692601,
+					"chat_id" => -1001134449138,
 					"parse_mode" => "HTML"
 				]
 			))]);

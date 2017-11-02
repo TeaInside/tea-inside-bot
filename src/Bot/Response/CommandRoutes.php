@@ -158,7 +158,7 @@ trait CommandRoutes
 		{
 			return $st[0] == "!solid";
 		}, function() {
-			$q = explode(" ", $this->text, 2);
+			$q = explode(" ", $this->b->text, 2);
 			isset($q[1]) and
 			\Bridge::go("line/push_cli.php", ["\"".urlencode(json_encode(
 				[

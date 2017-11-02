@@ -15,17 +15,40 @@
  	 */
  	public static function __callStatic($method, $param)
  	{
- 		if (isset($param[1]) and $param[1] === "GET") {
- 			$ch = new Curl("https://api.telegram.org/bot".TOKEN."/".$method."?".http_build_query($param[0]));
- 		} else {
- 			$ch = new Curl("https://api.telegram.org/bot".TOKEN."/".$method);
- 			$ch->post(http_build_query($param[0]));
+ 		$ch = curl_exec($param[0]);
+ 	}
+
+ 	public static function push($data)
+ 	{
+ 		return self::__exec();
+ 	}
+
+ 	private function __exec($url, $opt = null)
+ 	{
+ 		$ch = curl_init($url);
+ 		$__opt = [
+ 			CURLOPT_RETURNTRANSFER => true,
+ 			CURLOPT_SSL_VERIFYPEER => false,
+ 			CURLOPT_SSL_VERIFYHOST => false,
+ 			CURLOPT_BINARYTRANSFER => true,
+ 			CURLOPT_HTTPHEADER 	   => [
+ 				"Authorization: Bearer ".CHANNEL_ACCESS_TOKEN,
+ 				"Content-Type: application/json"
+ 			]
+ 		];
+ 		if (is_array($opt)) {
+ 			foreach ($opt as $key => $value) {
+ 				$__opt[$key] = $value;
+ 			}
  		}
- 		$out = $ch->exec();
- 		$err = $ch->error and $out = $err;
+ 		curl_setopt_array($ch, $__opt);
+ 		$out = curl_exec($ch);
+ 		$no = curl_errno($ch) and $out = "Error ({$no}) : ".curl_error($ch);
+ 		$info = curl_getinfo($ch);
+ 		curl_close($ch);
  		return [
  			"content" => $out,
- 			"info" 	  => $ch->info
+ 			"info" => $info
  		];
  	}
  }

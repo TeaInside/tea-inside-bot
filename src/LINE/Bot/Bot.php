@@ -79,7 +79,7 @@ final class Bot
 	private function _run()
 	{
 		if (in_array($this->msgtype, ["text", "photo"])) {
-			$st = new Response();
+			$st = new Response($this);
 			$st->run();
 		}
 	}

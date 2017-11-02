@@ -2,8 +2,15 @@
 
 namespace LINE\Bot;
 
+use LINE;
+
 final class Bot
 {
+
+	/**
+	 * @var array
+	 */
+	private $fullinput = [];
 
 	/**
 	 * @var array
@@ -11,15 +18,68 @@ final class Bot
 	public $input = [];
 
 	/**
+	 * @var string
+	 */
+	public $chattype;
+
+	/**
+	 * @var string
+	 */
+	public $msgtype;
+
+	/**
+	 * @var string
+	 */
+	public $replytoken;
+
+	/**
 	 * @param string $data
 	 */
 	public function __construct($data)
 	{
-		$this->input = json_decode($data, true);
+		$this->fullinput = json_decode($data, true);
 	}
 
 	public function run()
 	{
-		
+		foreach ($this->fullinput['events'] as $val) {
+			$this->buildContext($val);
+			$this->_run();
+		}		
+	}
+
+	private function buildContext($val)
+	{
+		if ($val['type'] === "message") {
+			$this->input = $val;
+			$this->chattype = isset($val['groupId']) ? "group" : "private";
+			$this->chat_id = isset($val['groupId']) ? $val['source']['groupId'] : $val['source']['userId'];
+			if (isset($val['message']['text'])) {
+				$this->msgtype  = "text";
+				$this->replytoken = $val['replyToken'];
+				$this->userid	= $val['source']['userId'];
+				$this->group_id	= isset($val['source']['groupId']) ? $val['source']['groupId'] : null;
+				$this->timestamp = $val['timestamp'];
+				$this->text = $val['message']['text'];
+				$this->msgid = $val['message']['id'];
+			}
+		}
+	}
+
+	private function _run()
+	{
+		if ($this->text == "test") {
+			LINE::push(
+				[
+					"to" => $this->chat_id,
+					"messages" => [
+						[
+							"type" => "text",
+							"text" => "Ok"
+						]
+					]
+				]
+			);
+		}
 	}
 }

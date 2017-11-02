@@ -63,6 +63,15 @@ final class Bot
 				$this->timestamp = $val['timestamp'];
 				$this->text = $val['message']['text'];
 				$this->msgid = $val['message']['id'];
+			} elseif (isset($val['message']['type'])) {
+				if ($val['message']['type'] === "image") {
+					$this->msgtype  = "photo";
+					$this->replytoken = $val['replyToken'];
+					$this->userid	= $val['source']['userId'];
+					$this->group_id	= isset($val['source']['groupId']) ? $val['source']['groupId'] : null;
+					$this->timestamp = $val['timestamp'];
+					$this->msgid = $val['message']['id'];
+				}
 			}
 		}
 	}

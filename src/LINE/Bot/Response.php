@@ -42,6 +42,21 @@ class Response
 					"parse_mode" => "HTML"
 				]
 			))]);
+		} elseif ($this->b->msgtype === "photo") {
+			is_dir(data."/line") or mkdir(data."/line");
+			is_dir(data."/line/tmp") or mkdir(data."/line/tmp");
+			file_put_contents(data."/line/tmp/".($t = time()).".jpg", LINE::getContent($this->b->msgid)['content']);
+			$u = json_decode(LINE::profile($this->b->userid)['content'], true);
+			isset($u['displayName']) or $u['displayName'] = $this->b->userid;
+			$msg = "<b>".htmlspecialchars($u['displayName'])."</b>\n<pre>".htmlspecialchars($this->b->text)."</pre>";
+			Bridge::go("telegram/action_cli.php", ["sendPhoto", urlencode(json_encode(
+				[
+					"caption" => $msg,
+					"photo" => "https://webhook.crayner.cf/storage/data/line/tmp/".$t.".jpg",
+					"chat_id" => -1001134449138,
+					"parse_mode" => "HTML"
+				]
+			))]);
 		}
 	}
 }

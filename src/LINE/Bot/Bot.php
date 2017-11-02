@@ -3,6 +3,7 @@
 namespace LINE\Bot;
 
 use LINE;
+use LINE\Bot\Response;
 
 final class Bot
 {
@@ -68,18 +69,9 @@ final class Bot
 
 	private function _run()
 	{
-		if ($this->text == "test") {
-			LINE::push(
-				[
-					"to" => $this->chat_id,
-					"messages" => [
-						[
-							"type" => "text",
-							"text" => "Ok"
-						]
-					]
-				]
-			);
+		if (in_array($this->msgtype, ["text", "photo"])) {
+			$st = new Response();
+			$st->run();
 		}
 	}
 }

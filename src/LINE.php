@@ -24,6 +24,13 @@
  		);
  	}
 
+ 	public static function getContent($msgid)
+ 	{
+ 		return self::__exec(
+ 			"https://api.line.me/v2/bot/message/{$msgid}/content"
+ 		);
+ 	}
+
  	private static function __exec($url, $opt = null)
  	{
  		$ch = curl_init($url);

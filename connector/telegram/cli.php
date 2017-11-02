@@ -1,5 +1,6 @@
 <?php
 
+require __DIR__."/../../config/telegram.php";
 require __DIR__."/../../autoload.php";
 
 use Bot\Bot;

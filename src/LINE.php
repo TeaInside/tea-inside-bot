@@ -8,14 +8,9 @@
  final class LINE
  {	
  	
- 	/**
- 	 * @param string $method
- 	 * @param array  $param
- 	 * @return string
- 	 */
- 	public static function __callStatic($method, $param)
+ 	public static function profile($userid)
  	{
- 		$ch = curl_exec($param[0]);
+ 		return self::__exec("https://api.line.me/v2/bot/profile/{$userid}");
  	}
 
  	public static function push($data)
@@ -29,7 +24,7 @@
  		);
  	}
 
- 	private function __exec($url, $opt = null)
+ 	private static function __exec($url, $opt = null)
  	{
  		$ch = curl_init($url);
  		$__opt = [

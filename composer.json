@@ -16,9 +16,6 @@
             "LINE": "src/",
             "Bot": "src/",
             "": "src/"
-    	},
-        "files": [
-            "config.php"
-        ]
+    	}
     }
 }

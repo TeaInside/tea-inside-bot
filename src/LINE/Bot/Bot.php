@@ -53,8 +53,8 @@ final class Bot
 	{
 		if ($val['type'] === "message") {
 			$this->input = $val;
-			$this->chattype = isset($val['groupId']) ? "group" : "private";
-			$this->chat_id = isset($val['groupId']) ? $val['source']['groupId'] : $val['source']['userId'];
+			$this->chattype = isset($val['source']['groupId']) ? "group" : "private";
+			$this->chat_id = isset($val['source']['groupId']) ? $val['source']['groupId'] : $val['source']['userId'];
 			if (isset($val['message']['text'])) {
 				$this->msgtype  = "text";
 				$this->replytoken = $val['replyToken'];

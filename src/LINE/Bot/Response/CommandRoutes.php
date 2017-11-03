@@ -31,26 +31,12 @@ trait CommandRoutes
         
         $this->route(
             function () use ($st) {
-                return $st[0] === "/tl";
+                return 
+                        $st[0] === "/tl"    ||
+                        $st[0] === "!tl"    ||
+                        $st[0] === "~tl";
             },
-            function () use ($st) {
-             
-                $st = explode(" ", $st[1], 3);
-                isset($st[1],$st[2]) and
-                $st = new \Plugins\Translator\GoogleTranslate\GoogleTranslate($st[2], $st[0], $st[1]);
-                $st = $st->exec();
-                print LINE::push(
-                    [
-                    "to" => $this->b->chat_id,
-                    "messages" => [
-                    [
-                    "type" => "text",
-                    "text" => $st
-                    ]
-                    ]
-                    ]
-                )['content'];
-            }
+            "Translator@googletranslate"
         );
         
     }

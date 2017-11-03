@@ -5,17 +5,18 @@
             "email": "ammarfaizi2@gmail.com"
         }
     ],
-    "require": {},
     "autoload": {
-    	"psr-0": {
-            "Exceptions": "src/",
-            "Contracts": "src/",
-            "Plugins": "src/",
-            "System": "src/",
-            "Lang": "src/",
-            "LINE": "src/",
-            "Bot": "src/",
-            "": "src/"
-    	}
+    	"psr-4": {
+            "\\": "src/",
+            "LINE\\": "src/LINE/",
+            "System\\": "src/System/",
+            "Plugins\\": "src/Plugins/",
+            "Telegram\\": "src/Telegram/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "tests\\": "tests/"
+        }
     }
 }

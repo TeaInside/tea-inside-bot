@@ -35,42 +35,52 @@ class LINEForwarder extends CommandFoundation
         if ($this->b->msgtype === "text") {
             $__text = [];
             foreach (str_split($this->b->name."\n\n".$this->b->text, 1999) as $val) {
-                $__text = [
+                $__text[] = [
                     "type" => "text",
                     "text" => $val
                 ];
             }
             $data = [
                     "to" => "Ce20228a1f1f98e6cf9d6f6338603e962",
-                    "messages" => [
-                        [
-                            "type" => "text",
-                            "text" => $__text
-                        ]
-                    ]
+                    "messages" => $__text
                 ];
         } elseif ($this->b->msgtype === "photo") {
-            $this->savePhoto();
+            $url = $this->savePhoto();
+            $__data[] = [
+                "type" => "image",
+                "originalContentUrl" => $url,
+                "previewImageUrl" => $url
+            ];
+            if (!empty($this->b->text)) {
+                foreach (str_split($this->b->name."\n\n".$this->b->text, 1999) as $val) {
+                    $__data = [
+                        "type" => "text",
+                        "text" => $val
+                    ];
+                }
+            }
             $data = [
                     "to" => "Ce20228a1f1f98e6cf9d6f6338603e962",
                     "messages" => [
                         [
                             "type" => "text",
-                            "text" => $__text
+                            "text" => $__data
                         ]
                     ]
                 ];
         }
-
+        print Bridge::go("line", ["\"".urlencode(json_encode($data))."\""]);
+        return 1;
         return Bridge::go("line", ["\"".urlencode(json_encode($data))."\""], true);
     }
 
     private function savePhoto()
     {
         $p = end($this->b->photo);
-        $a = B::getFile([
+        $a = json_decode(B::getFile([
             "file_id" => $p['file_id']
-        ]);
-        var_dump($a['content']);
+        ])['content'], true);
+        $url = "https://api.telegram.org/file/bot".TOKEN."/".$a['result']['file_path'];
+        return $url;
     }
 }

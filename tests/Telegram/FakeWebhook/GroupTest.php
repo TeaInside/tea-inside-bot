@@ -2,19 +2,13 @@
 
 namespace tests\Telegram\FakeWebhook;
 
+include_once BASEPATH."/config/telegram.php";
+
 use Telegram\Bot\Bot;
 use PHPUnit\Framework\TestCase;
 
 class GroupTest extends TestCase
 {
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        include_once BASEPATH."/config/telegram.php";
-    }
 
     /**
      * Test webhook 1

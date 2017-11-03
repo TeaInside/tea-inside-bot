@@ -56,7 +56,7 @@ trait CommandRoutes
                     )['content'],
                     true
                 );
-                B::editMessageText(
+                isset($st['result']['message_id']) and B::editMessageText(
                     [
                     "chat_id" => $this->b->chat_id,
                     "message_id" => $st['result']['message_id'],

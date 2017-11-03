@@ -1,6 +1,6 @@
 <?php
 
-namespace Bot\SaveEvent\PrivateChat;
+namespace Telegram\Bot\SaveEvent\PrivateChat;
 
 use DB;
 use Telegram\Bot\Bot;

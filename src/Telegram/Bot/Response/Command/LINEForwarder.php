@@ -61,12 +61,7 @@ class LINEForwarder extends CommandFoundation
             }
             $data = [
                     "to" => "Ce20228a1f1f98e6cf9d6f6338603e962",
-                    "messages" => [
-                        [
-                            "type" => "text",
-                            "text" => $__data
-                        ]
-                    ]
+                    "messages" => $__data
                 ];
         }
         print Bridge::go("line", ["\"".urlencode(json_encode($data))."\""]);

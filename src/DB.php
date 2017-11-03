@@ -29,15 +29,19 @@ class DB
 	 */
 	public static function __callStatic($method, $param)
 	{
-		return (new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME.";port=".DB_PORT, DB_USER, DB_PASS))->{$method}(...$param);
+		return self::getInstance()->pdo->{$method}(...$param);
 	}
 }
 
-function pc($exe, $pdo)
+
+/**
+ * Error query handler.
+ */
+function pc($exe, \PDO $pdo)
 {
 	if (! $exe) {
 		var_dump($pdo->errorInfo());
-		die();
+		exit(1);
 	}
 	return true;
 }

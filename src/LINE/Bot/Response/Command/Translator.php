@@ -7,7 +7,7 @@ use LINE\Bot\Bot;
 use LINE\Bot\Abstraction\CommandFoundation;
 use Plugins\SearchEngine\GoogleSearch\GoogleSearch;
 
-class Translator extends CommandFoudnation
+class Translator extends CommandFoundation
 {
 	/**
 	 * @var \LINE\Bot\Bot

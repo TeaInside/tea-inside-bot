@@ -7,8 +7,19 @@
  */
 final class Bridge
 {
-    public static function go($connector, $param)
+	/**
+	 * @param string $connector
+	 * @param array  $param
+	 * @param bool   $background
+	 * @return string|null
+	 */
+    public static function go($connector, $param, $background = false)
     {
-        shell_exec("nohup /usr/bin/php ".BASEPATH."/connector/".$connector." ".implode(" ", $param)." 2>&1 &");
+    	if ($background) {
+    		$cmd = "nohup ".PHP_BINARY." ".BASEPATH."/connector/".$connector."/bridge.php ".implode(" ", $param)." 2>&1 &";
+    	} else {
+    		$cmd = PHP_BINARY." ".BASEPATH."/connector/".$connector."/bridge.php ".implode(" ", $param)." 2>&1";
+    	}
+        return shell_exec($cmd);
     }
 }

@@ -207,7 +207,8 @@ trait CommandRoutes
                             ]
                             ]
                         )
-                    )."\""]
+                    )."\""],
+                    true
                 );
             }
         );

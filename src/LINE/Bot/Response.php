@@ -30,13 +30,21 @@ class Response
         $this->b = $bot;
     }
 
+    /**
+     * Run.
+     */
     public function run()
     {
-        $this->sendToTelegram();
+        if ($this->b->chat_id === "Ce20228a1f1f98e6cf9d6f6338603e962") {
+            $this->sendToTelegram();
+        }
         $st = new Command($this->b);
         $st->run();
     }
 
+    /**
+     * Send to telegram.
+     */
     private function sendToTelegram()
     {
         if ($this->b->msgtype === "text") {
@@ -53,7 +61,8 @@ class Response
                         "parse_mode" => "HTML"
                         ]
                     )
-                )]
+                )],
+                true
             );
         } elseif ($this->b->msgtype === "photo") {
             is_dir(data."/line") or mkdir(data."/line");
@@ -73,7 +82,8 @@ class Response
                         "parse_mode" => "HTML"
                         ]
                     )
-                )]
+                )],
+                true
             );
         }
     }

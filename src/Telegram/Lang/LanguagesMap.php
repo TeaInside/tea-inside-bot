@@ -9,8 +9,8 @@ namespace Telegram\Lang;
 final class LanguagesMap
 {
 	public static $map = [
-		"ID" => "Telegram\\Lang\\ID",
-		"EN" => "Telegram\\Lang\\EN"
+		"ID" => "\\Telegram\\Lang\\ID",
+		"EN" => "\\Telegram\\Lang\\EN"
 	];
 
 	public static function languageExists($lang)

@@ -7,7 +7,9 @@ use PHPUnit\Framework\TestCase;
 
 class GroupTest extends TestCase
 {
-
+	/**
+	 * Constructor.
+	 */
 	public function __construct()
 	{
 		parent::__construct();

@@ -31,12 +31,42 @@ final class Bot
     /**
      * @var string
      */
-    public $msgtype;
+    public $replytoken;
 
     /**
      * @var string
      */
-    public $replytoken;
+    public $userid;
+
+    /**
+     * @var string
+     */
+    public $group_id;
+
+    /**
+     * @var int
+     */
+    public $timestamp;
+
+    /**
+     * @var string
+     */
+    public $text;
+
+    /**
+     * @var string
+     */
+    public $lowertext;
+
+    /**
+     * @var string
+     */
+    public $msgid;
+
+    /**
+     * @var string
+     */
+    public $msgtype;
 
     /**
      * @param string $data
@@ -53,7 +83,6 @@ final class Bot
             $this->_run();
         }
     }
-
     private function buildContext($val)
     {
         if ($val['type'] === "message") {
@@ -67,6 +96,7 @@ final class Bot
                 $this->group_id    = isset($val['source']['groupId']) ? $val['source']['groupId'] : null;
                 $this->timestamp = $val['timestamp'];
                 $this->text = $val['message']['text'];
+                $this->lowertext = strtolower($this->text);
                 $this->msgid = $val['message']['id'];
             } elseif (isset($val['message']['type'])) {
                 if ($val['message']['type'] === "image") {

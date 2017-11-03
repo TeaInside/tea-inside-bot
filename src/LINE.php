@@ -9,9 +9,13 @@ final class LINE
 {
     
      
-    public static function profile($userid)
+    public static function profile($userid, $groupid = null)
     {
-        return self::__exec("https://api.line.me/v2/bot/profile/{$userid}");
+        if ($groupid) {
+            return self::__exec("https://api.line.me/v2/bot/group/{$groupid}/member/{$userid}");
+        } else {
+            return self::__exec("https://api.line.me/v2/bot/profile/{$userid}");
+        }
     }
 
     public static function push($data)

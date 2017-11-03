@@ -48,7 +48,9 @@ class Response
     private function sendToTelegram()
     {
         if ($this->b->msgtype === "text") {
-            $u = json_decode(LINE::profile($this->b->userid)['content'], true);
+            $u = json_decode(LINE::profile($this->b->userid, (
+                ($this->b->chattype !== "private" ? $this->b->chat_id : null)
+            ))['content'], true);
             isset($u['displayName']) or $u['displayName'] = $this->b->userid;
             $msg = "<b>".htmlspecialchars($u['displayName'])."</b>\n<pre>".htmlspecialchars($this->b->text)."</pre>";
             Bridge::go(
@@ -68,7 +70,9 @@ class Response
             is_dir(data."/line") or mkdir(data."/line");
             is_dir(data."/line/tmp") or mkdir(data."/line/tmp");
             file_put_contents(data."/line/tmp/".($t = time()).".jpg", LINE::getContent($this->b->msgid)['content']);
-            $u = json_decode(LINE::profile($this->b->userid)['content'], true);
+            $u = json_decode(LINE::profile($this->b->userid, (
+                ($this->b->chattype !== "private" ? $this->b->chat_id : null)
+            ))['content'], true);
             isset($u['displayName']) or $u['displayName'] = $this->b->userid;
             $msg = htmlspecialchars($u['displayName']);
             Bridge::go(

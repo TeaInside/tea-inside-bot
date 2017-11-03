@@ -9,7 +9,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="VirtualizorTest">
+        <testsuite name="Tests">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

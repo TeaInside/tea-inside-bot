@@ -10,43 +10,43 @@ use Exception;
 abstract class Compiler
 {
 
-	/**
-	 * @var string
-	 */
-	private $errorMessage;
+    /**
+     * @var string
+     */
+    private $errorMessage;
 
-	/**
-	 * Constructor.
-	 *
-	 * @param string $code
-	 */
-	abstract public function __construct($code);
+    /**
+     * Constructor.
+     *
+     * @param string $code
+     */
+    abstract public function __construct($code);
 
-	/**
-	 * Constructor.
-	 *
-	 * @return string
-	 */
-	abstract public function exec();
+    /**
+     * Constructor.
+     *
+     * @return string
+     */
+    abstract public function exec();
 
-	/**
-	 * @return string
-	 */
-	abstract public function errorInfo();
+    /**
+     * @return string
+     */
+    abstract public function errorInfo();
 
-	/**
-	 * Init code.
-	 */
-	public function init()
-	{
-		throw new Exception("The Compiler::init method must override!");
-	}
+    /**
+     * Init code.
+     */
+    public function init()
+    {
+        throw new Exception("The Compiler::init method must override!");
+    }
 
-	/**
-	 * Compile code.
-	 */
-	public function compile()
-	{
-		throw new Exception("The Compiler::compile method must override!");
-	}
+    /**
+     * Compile code.
+     */
+    public function compile()
+    {
+        throw new Exception("The Compiler::compile method must override!");
+    }
 }

@@ -13,35 +13,35 @@ use Telegram\Plugins\Virtualizor\Bridge;
 class Virtualizor
 {
 
-	/**
-	 * Constructor.
-	 *
-	 * @param \Bot\Bot $bot
-	 */
-	public function __construct(Bot $bot)
-	{
-		$this->b = $bot;
-	}
+    /**
+     * Constructor.
+     *
+     * @param \Bot\Bot $bot
+     */
+    public function __construct(Bot $bot)
+    {
+        $this->b = $bot;
+    }
 
-	private function isVirtualizorAction()
-	{
-		$flag = false;
-		if (substr($this->b->lowertext, 0, 5) === "<?php") {
-			$st = new Bridge($this->b->text, "php");
-			B::sendMessage(
-				[
-					"text" 				  => $st->exec(),
-					"chat_id"			  => $this->b->chat_id,
-					"reply_to_message_id" => $this->b->msgid
-				]
-			);
-			$flag = true;
-		}
-		return $flag;
-	}
+    private function isVirtualizorAction()
+    {
+        $flag = false;
+        if (substr($this->b->lowertext, 0, 5) === "<?php") {
+            $st = new Bridge($this->b->text, "php");
+            B::sendMessage(
+                [
+                "text"                   => $st->exec(),
+                "chat_id"              => $this->b->chat_id,
+                "reply_to_message_id" => $this->b->msgid
+                ]
+            );
+            $flag = true;
+        }
+        return $flag;
+    }
 
-	public function run()
-	{
-		return $this->isVirtualizorAction();
-	}
+    public function run()
+    {
+        return $this->isVirtualizorAction();
+    }
 }

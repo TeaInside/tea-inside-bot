@@ -12,30 +12,30 @@ use Exception;
  */
 abstract class Interpreter
 {
-	/**
-	 * Constructor.
-	 *
-	 * @param string $code
-	 */
-	abstract public function __construct($code);
+    /**
+     * Constructor.
+     *
+     * @param string $code
+     */
+    abstract public function __construct($code);
 
-	/**
-	 * Constructor.
-	 *
-	 * @return string
-	 */
-	abstract public function exec();
+    /**
+     * Constructor.
+     *
+     * @return string
+     */
+    abstract public function exec();
 
-	/**
-	 * @return string
-	 */
-	abstract public function errorInfo();
+    /**
+     * @return string
+     */
+    abstract public function errorInfo();
 
-	/**
-	 * Init code.
-	 */
-	public function init()
-	{
-		throw new Exception("The Intepreter::init method must override!");
-	}
+    /**
+     * Init code.
+     */
+    public function init()
+    {
+        throw new Exception("The Intepreter::init method must override!");
+    }
 }

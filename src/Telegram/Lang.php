@@ -11,98 +11,98 @@ use System\Hub\Singleton;
  */
 final class Lang
 {
-	use Singleton;
+    use Singleton;
 
-	/**
-	 * @var string
-	 */
-	private $lang;
+    /**
+     * @var string
+     */
+    private $lang;
 
-	/**
-	 * @var \Bot\Bot
-	 */
-	private $b;
+    /**
+     * @var \Bot\Bot
+     */
+    private $b;
 
-	/**
-	 * @var array
-	 */
-	private $r1 = [];
+    /**
+     * @var array
+     */
+    private $r1 = [];
 
-	/**
-	 * @var array
-	 */
-	private $r2 = [];
+    /**
+     * @var array
+     */
+    private $r2 = [];
 
-	/**
-	 * Constructor.
-	 *
-	 * @param string $lang
-	 */
-	public function __construct($lang)
-	{
-		$this->lang = $lang;
-	}
+    /**
+     * Constructor.
+     *
+     * @param string $lang
+     */
+    public function __construct($lang)
+    {
+        $this->lang = $lang;
+    }
 
-	/**
-	 * @param string $lang
-	 * @return bool
-	 */
-	public static function init(Bot $bot, $lang = "ID")
-	{
-		$ins = self::getInstance($lang);
-		$ins->saveBotInstance($bot);
-		return true;
-	}
+    /**
+     * @param string $lang
+     * @return bool
+     */
+    public static function init(Bot $bot, $lang = "ID")
+    {
+        $ins = self::getInstance($lang);
+        $ins->saveBotInstance($bot);
+        return true;
+    }
 
-	private function buildContext()
-	{
-		$this->r1 = [
-			"{name}",
-			"{namelink}",			
-			"{username}",
-			"{chattile}",
-			"{chat_id}",
-			"{first_name}",
-			"{last_name}",
-			"{short_namelink}"
-		];
-		$this->r2 = [
-			$this->b->name, 
-			"<a href=\"tg://user?id=".$this->b->user_id."\">".htmlspecialchars($this->b->name)."</a>",
-			(isset($this->b->username) ? $this->b->username : ""),
-			$this->b->chattitle,
-			$this->b->chat_id,
-			$this->b->first_name,
-			$this->b->last_name,
-			"<a href=\"tg://user?id=".$this->b->user_id."\">".htmlspecialchars($this->b->first_name)."</a>",
-		];
-	}
+    private function buildContext()
+    {
+        $this->r1 = [
+        "{name}",
+        "{namelink}",            
+        "{username}",
+        "{chattile}",
+        "{chat_id}",
+        "{first_name}",
+        "{last_name}",
+        "{short_namelink}"
+        ];
+        $this->r2 = [
+        $this->b->name, 
+        "<a href=\"tg://user?id=".$this->b->user_id."\">".htmlspecialchars($this->b->name)."</a>",
+        (isset($this->b->username) ? $this->b->username : ""),
+        $this->b->chattitle,
+        $this->b->chat_id,
+        $this->b->first_name,
+        $this->b->last_name,
+        "<a href=\"tg://user?id=".$this->b->user_id."\">".htmlspecialchars($this->b->first_name)."</a>",
+        ];
+    }
 
-	/**
-	 * @param \Bot\Bot $bot
-	 */
-	public function saveBotInstance($bot)
-	{
-		$this->b = $bot;
-	}
+    /**
+     * @param \Bot\Bot $bot
+     */
+    public function saveBotInstance($bot)
+    {
+        $this->b = $bot;
+    }
 
-	/**
-	 * @param string $what
-	 */
-	public static function get($what)
-	{
+    /**
+     * @param string $what
+     */
+    public static function get($what)
+    {
 
-	}
+    }
 
-	/**
-	 * @param string $str
-	 */
-	public static function bind($str)
-	{
-		$ins = self::getInstance();
-		if (! $ins->r1) {
-			$ins->buildContext();
-		}
-		return str_replace($ins->r1, $ins->r2, $str);
-	}
+    /**
+     * @param string $str
+     */
+    public static function bind($str)
+    {
+        $ins = self::getInstance();
+        if (! $ins->r1) {
+            $ins->buildContext();
+        }
+        return str_replace($ins->r1, $ins->r2, $str);
+    }
 }

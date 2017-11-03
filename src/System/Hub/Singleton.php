@@ -7,27 +7,28 @@ namespace System\Hub;
  * @license MIT
  */
 trait Singleton
-{	
-	/**
-	 * @var self
-	 */
-	private static $instance;
+{
+    
+    /**
+     * @var self
+     */
+    private static $instance;
 
-	/**
-	 * Get instance.
-	 */
-	public function getInstance()
-	{
-		if (self::$instance === null) {
-			self::$instance = new self(...func_get_args());
-		}
-		return self::$instance;
-	}
+    /**
+     * Get instance.
+     */
+    public function getInstance()
+    {
+        if (self::$instance === null) {
+            self::$instance = new self(...func_get_args());
+        }
+        return self::$instance;
+    }
 
-	/**
-	 * Prevent cloning instance.
-	 */
-	final private function __clone()
-	{
-	}
+    /**
+     * Prevent cloning instance.
+     */
+    final private function __clone()
+    {
+    }
 }

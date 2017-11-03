@@ -7,3 +7,4 @@
 /public/virtual
 /test.php
 /.php_cs.cache
+*.tmp

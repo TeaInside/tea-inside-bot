@@ -2,10 +2,28 @@
 
 namespace LINE\Bot\Response\Command;
 
+use LINE;
 use LINE\Bot\Bot;
+use LINE\Bot\Abstraction\CommandFoundation;
+use Plugins\SearchEngine\GoogleSearch\GoogleSearch;
 
 class Translator extends CommandFoudnation
 {
+	/**
+	 * @var \LINE\Bot\Bot
+	 */
+	private $b;
+	
+	/**
+	 * Constructor.
+	 *
+	 * @param \LINE\Bot\Bot $bot
+	 */
+	public function __construct(Bot $bot)
+	{
+		$this->b = $bot;
+	}
+
 	public function googletranslate()
 	{
 		$st = explode(" ", $this->b->text, 4);

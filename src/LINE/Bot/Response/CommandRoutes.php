@@ -13,7 +13,7 @@ trait CommandRoutes
 		$this->route(function() use ($st){
 			return $st[0] === "/google";
 		}, function() {
-			$st = new \Plugins\GoogleSearch\GoogleSearch($a[1]);
+			$st = new \Plugins\SearchEngine\GoogleSearch\GoogleSearch($a[1]);
 			$st = $st->exec();
 			LINE::push(
 				[

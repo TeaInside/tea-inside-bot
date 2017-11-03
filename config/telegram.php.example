@@ -33,7 +33,7 @@ define("PRIVATE_STORAGE", BASEPATH."/storage");
 define("PUBLIC_PATH", BASEPATH."/public");
 define("STORAGE", PUBLIC_PATH."/storage");
 define("data", STORAGE."/data");
-define("LOG_DIR", __DIR__."/logs");
+define("LOG_DIR", BASEPATH."/logs");
 
 /**
  * Virtualizor

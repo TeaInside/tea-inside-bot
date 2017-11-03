@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__."/../../config/line.php";
 require __DIR__."/../../autoload.php";
+require __DIR__."/../../config/line.php";
 
 $a = file_get_contents("php://input");
 /*$a = '{

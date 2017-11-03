@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__."/../../config/telegram.php";
 require __DIR__."/../../autoload.php";
+require __DIR__."/../../config/telegram.php";
 
 $input = file_get_contents("php://input");
 

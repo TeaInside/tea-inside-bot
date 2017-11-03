@@ -48,6 +48,8 @@ class PrivateTest extends TestCase
         } catch (\Error $e) {
             var_dump($e->getMessage());
             $action = false;
+        } catch (\PDOException $e) {
+            $action = true;
         }
         $this->assertTrue($action);
     }

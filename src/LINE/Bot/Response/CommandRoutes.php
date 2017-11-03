@@ -19,7 +19,13 @@ trait CommandRoutes
             function () use ($st) {
                 var_dump($st);
                 $st[0] = strtolower($st[0]);
-                return $st[0] === "/google" or $st[0] === "/g";
+                return 
+                        $st[0] === "/google" ||
+                        $st[0] === "!google" ||
+                        $st[0] === "~google" ||
+                        $st[0] === "/g"      ||
+                        $st[0] === "!g"      ||
+                        $st[0] === "~g";
             },
             "SearchEngine@googleSearch"
         );

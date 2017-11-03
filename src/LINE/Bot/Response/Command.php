@@ -50,10 +50,15 @@ class Command
     private function _route()
     {
         foreach ($this->routes as $val) {
-            var_dump("fr");
             if ($val[0]()) {
-                var_dump("ok");
-                return $val[1]();
+                if ($val[1] instanceof Closure) {
+                    return $val[1]();
+                } else {
+                    $a = explode("@", $val[1]);
+                    $a[0] = "\\LINE\\Bot\\Response\\Command\\".$a[0];
+                    $st = new $a[0]($this->b);
+                    return $st->{$a[1]}();
+                }
             }
         }
     }

@@ -22,7 +22,9 @@ class Command
 	private function _route()
 	{
 		foreach ($this->routes as $val) {
+			var_dump("fr");
 			if ($val[0]()) {
+				var_dump("ok");
 				return $val[1]();
 			}
 		}

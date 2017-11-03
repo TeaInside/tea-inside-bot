@@ -16,6 +16,7 @@ trait CommandRoutes
 		}, function() use ($st) {
 			$st = new \Plugins\SearchEngine\GoogleSearch\GoogleSearch($st[1]);
 			$st = $st->exec();
+			var_dump($st);
 			LINE::push(
 				[
 					"to" => $this->b->chat_id,

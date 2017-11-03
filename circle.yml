@@ -9,12 +9,13 @@ machine:
 
 dependencies: 
   pre:
-    - cp config.php.example config.php
+    - cp config/line.php.example config/line.php
+    - cp config/telegram.php.example config/telegram.php
   override: 
     - composer install --prefer-source --no-interaction -vvv
 
 test:
   post: 
-    - phpunit
+    - vendor/bin/phpunit
     - php build
     - php tests/manual/circle.php

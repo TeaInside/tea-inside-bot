@@ -51,7 +51,6 @@ class SaveEvent
 				throw new \Exception("Unknown event", 1);
 				break;
 		}
-		var_dump($ns);
 		$st = new $ns($this->b);
 		$st->save();
 	}

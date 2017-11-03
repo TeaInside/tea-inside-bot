@@ -2,6 +2,7 @@
 
 namespace Telegram\Bot\Response\Command;
 
+use Curl;
 use Bridge;
 use Telegram as B;
 use Telegram\Bot\Bot;
@@ -75,7 +76,8 @@ class LINEForwarder extends CommandFoundation
         $a = json_decode(B::getFile([
             "file_id" => $p['file_id']
         ])['content'], true);
-        $url = "https://api.telegram.org/file/bot".TOKEN."/".$a['result']['file_path'];
-        return $url;
+        $st = new Curl("https://api.telegram.org/file/bot".TOKEN."/".$a['result']['file_path']);
+        file_put_contents(data."/line/tmp/".($t = time()).".jpg", $st->exec());
+        return "https://webhook.crayner.cf/storage/data/line/tmp/".$t.".jpg";
     }
 }

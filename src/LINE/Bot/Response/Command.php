@@ -2,6 +2,7 @@
 
 namespace LINE\Bot\Response;
 
+use Closure;
 use LINE\Bot\Bot;
 
 class Command

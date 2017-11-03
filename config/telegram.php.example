@@ -21,9 +21,9 @@ define("GLOBAL_ADMIN", [243692601]);
  * Database.
  */
 define("DB_HOST", "localhost");
-define("DB_USER", "debian-sys-maint");
+define("DB_USER", "root");
 define("DB_PASS", "");
-define("DB_NAME", "pgice");
+define("DB_NAME", "pg2ice");
 define("DB_PORT", "3306");
 
 /**
@@ -39,10 +39,10 @@ define("LOG_DIR", __DIR__."/logs");
  * Virtualizor
  */
 define("VIRTUALIZOR_DIR", PUBLIC_PATH."/virtual");
-define("VIRTUALIZOR_URL", "http://localhost:8000/virtual");
+define("VIRTUALIZOR_URL", "http://localhost/virtual");
 
 /**
  * MyAnimeList
  */
-define("MAL_USER", "username");
-define("MAL_PASS", "password");
+define("MAL_USER", "ammarfaizi2");
+define("MAL_PASS", "triosemut123");

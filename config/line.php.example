@@ -4,9 +4,7 @@
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @license MIT
  */
-
-
-define("SUDOERS", []);
+define("SUDOERS", ["U547ba62dc793c6557abbb42ab347f15f"]);
 define("CHANNEL_ACCESS_TOKEN", "");
 
 
@@ -15,7 +13,7 @@ define("CHANNEL_ACCESS_TOKEN", "");
  */
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
-define("DB_PASS", "858869123icetea");
+define("DB_PASS", "");
 define("DB_NAME", "pg2ice");
 define("DB_PORT", "3306");
 
@@ -26,5 +24,4 @@ define("PRIVATE_STORAGE", BASEPATH."/storage");
 define("PUBLIC_PATH", BASEPATH."/public");
 define("STORAGE", PUBLIC_PATH."/storage");
 define("data", STORAGE."/data");
-define("LOG_DIR", __DIR__."/logs");
-
+define("LOG_DIR", __DIR__."/../logs");

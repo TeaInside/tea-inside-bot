@@ -52,14 +52,14 @@ class LINEForwarder extends CommandFoundation
                 "originalContentUrl" => $url,
                 "previewImageUrl" => $url
             ];
-            if (!empty($this->b->text)) {
+            /*if (!empty($this->b->text)) {
                 foreach (str_split($this->b->name."\n\n".$this->b->text, 1999) as $val) {
-                    $__data = [
+                    $__data[] = [
                         "type" => "text",
                         "text" => $val
                     ];
                 }
-            }
+            }*/
             $data = [
                     "to" => "Ce20228a1f1f98e6cf9d6f6338603e962",
                     "messages" => $__data

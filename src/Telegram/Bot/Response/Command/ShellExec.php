@@ -1,6 +1,6 @@
 <?php
 
-namespace Bot\Response\Command;
+namespace Telegram\Bot\Response\Command;
 
 use Telegram as B;
 use Telegram\Lang;

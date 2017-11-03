@@ -1,4 +1,4 @@
-<?pbp
+<?php
 
 namespace LINE\Bot\Response;
 

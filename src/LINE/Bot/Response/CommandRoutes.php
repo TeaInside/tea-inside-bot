@@ -22,16 +22,16 @@ trait CommandRoutes
 			}
 			var_dump($r);
 			$r = trim($r);
+			foreach(str_split($r, 1999) as $q)
+			 $msg[] = [
+			 		"type" => "text",
+			 	  "text" => $q
+			 ];
 			$r = empty($r)?"Not found!":$r;
 			print LINE::push(
 				[
 					"to" => $this->b->chat_id,
-					"messages" => [
-						[
-							"type" => "text",
-							"text" => $r
-						]
-					]
+					"messages" => $msg
 				]
 			)['content'];
 		});
@@ -56,5 +56,6 @@ print LINE::push(
 				]
 			)['content'];
 		});
+		$
 	}
 }

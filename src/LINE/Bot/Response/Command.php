@@ -24,7 +24,7 @@ class Command
 		foreach ($this->routes as $val) {
 			var_dump("fr");
 			if ($val[0]()) {
-				var_dump("ok");
+				var_dump("ok");		1	1							
 				return $val[1]();
 			}
 		}

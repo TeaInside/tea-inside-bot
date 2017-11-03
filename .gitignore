@@ -6,3 +6,4 @@
 /public/.well-known
 /public/virtual
 /test.php
+/.php_cs.cache

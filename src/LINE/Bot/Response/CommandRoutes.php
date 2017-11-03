@@ -27,7 +27,7 @@ trait CommandRoutes
 					"messages" => [
 						[
 							"type" => "text",
-							"text" => $r
+							"text" => trim($r)
 						]
 					]
 				]

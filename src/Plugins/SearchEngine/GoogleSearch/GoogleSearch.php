@@ -200,7 +200,7 @@ final class GoogleSearch
 				if (isset($c[1])) {
 					$c = explode(">", $c[1], 2);
 					$c = explode("<", $c[1], 2);
-					$d = explode("<div class=\"_H1m _kup\">", $val);
+					$d = explode("<div>", $val, 2);
 					if (isset($d[1])) {
 						$d = explode("</div>", $d[1]);
 						$d[0] = trim(strip_tags($d[0]));

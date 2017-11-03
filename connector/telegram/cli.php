@@ -3,7 +3,7 @@
 require __DIR__."/../../config/telegram.php";
 require __DIR__."/../../autoload.php";
 
-use Bot\Bot;
+use Telegram\Bot\Bot;
 
 if (isset($argv[1])) {
     $app = new Bot(urldecode($argv[1]));

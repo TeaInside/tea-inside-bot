@@ -17,7 +17,6 @@ trait CommandRoutes
         
         $this->route(
             function () use ($st) {
-                var_dump($st);
                 $st[0] = strtolower($st[0]);
                 return 
                         $st[0] === "/google" ||

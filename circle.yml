@@ -16,6 +16,4 @@ dependencies:
 
 test:
   post: 
-    - vendor/bin/phpunit
     - php build
-    - php tests/manual/circle.php

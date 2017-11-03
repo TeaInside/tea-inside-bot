@@ -7,6 +7,11 @@ use Bridge;
 use LINE\Bot\Bot;
 use LINE\Bot\Response\Command;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @version 0.0.1
+ * @license MIT
+ */
 class Response
 {
 

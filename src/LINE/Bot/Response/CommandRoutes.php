@@ -4,6 +4,11 @@ namespace LINE\Bot\Response;
 
 use LINE;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @version 0.0.1
+ * @license MIT
+ */
 trait CommandRoutes
 {
 	private function writeRoutes()

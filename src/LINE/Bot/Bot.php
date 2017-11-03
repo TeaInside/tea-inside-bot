@@ -5,6 +5,11 @@ namespace LINE\Bot;
 use LINE;
 use LINE\Bot\Response;
 
+/**
+ * @author Ammar Faizi <ammarfaizi2@gmail.com>
+ * @version 0.0.1
+ * @license MIT
+ */
 final class Bot
 {
 

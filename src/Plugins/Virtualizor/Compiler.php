@@ -39,7 +39,7 @@ abstract class Compiler
 	 */
 	public function init()
 	{
-		throw new Exception("The Compiler::init method must override!",);
+		throw new Exception("The Compiler::init method must override!");
 	}
 
 	/**
@@ -47,6 +47,6 @@ abstract class Compiler
 	 */
 	public function compile()
 	{
-		throw new Exception("The Compiler::compile method must override!",);
+		throw new Exception("The Compiler::compile method must override!");
 	}
 }

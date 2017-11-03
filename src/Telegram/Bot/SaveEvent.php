@@ -39,7 +39,6 @@ class SaveEvent
 		} else {
 			$ns = "\\Telegram\\Bot\\SaveEvent\\GroupChat\\";
 		}
-
 		switch ($this->b->msgtype) {
 			case 'text':
 				$ns.= "Text";

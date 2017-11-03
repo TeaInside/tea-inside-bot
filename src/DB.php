@@ -37,7 +37,7 @@ class DB
 /**
  * Error query handler.
  */
-function pc($exe, \PDO $pdo)
+function pc($exe, \PDOStatement $pdo)
 {
 	if (! $exe) {
 		var_dump($pdo->errorInfo());

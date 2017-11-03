@@ -35,9 +35,9 @@ class SaveEvent
 			$st->run();
 		}
 		if ($this->b->chattype === "private") {
-			$ns = "\\Bot\\SaveEvent\\PrivateChat\\";
+			$ns = "\\Telegram\\Bot\\SaveEvent\\PrivateChat\\";
 		} else {
-			$ns = "\\Bot\\SaveEvent\\GroupChat\\";
+			$ns = "\\Telegram\\Bot\\SaveEvent\\GroupChat\\";
 		}
 
 		switch ($this->b->msgtype) {

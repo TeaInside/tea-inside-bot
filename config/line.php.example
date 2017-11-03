@@ -5,8 +5,6 @@
  * @license MIT
  */
 
-define("BASEPATH", __DIR__."/..");
-
 
 define("SUDOERS", []);
 define("CHANNEL_ACCESS_TOKEN", "");

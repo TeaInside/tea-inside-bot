@@ -1,8 +1,8 @@
 <?php
 
-namespace Bot\Abstraction;
+namespace Telegram\Bot\Abstraction;
 
-use Bot\Bot;
+use Telegram\Bot\Bot;
 use Exception;
 
 abstract class EventFoundation

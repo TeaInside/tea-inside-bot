@@ -1,5 +1,7 @@
 <?php
 
+namespace Telegram;
+
 use Telegram\Bot\Bot;
 use System\Hub\Singleton;
 

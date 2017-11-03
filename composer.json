@@ -6,13 +6,18 @@
         }
     ],
     "autoload": {
+        "psr-0": {
+            "": "src/"
+        },
     	"psr-4": {
-            "\\": "src/",
             "LINE\\": "src/LINE/",
             "System\\": "src/System/",
             "Plugins\\": "src/Plugins/",
             "Telegram\\": "src/Telegram/"
-        }
+        },
+        "files": [
+            "config/init.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

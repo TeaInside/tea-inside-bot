@@ -1,10 +1,10 @@
 <?php
 
-namespace Bot\Response;
+namespace Telegram\Bot\Response;
 
-use Bot\Bot;
 use Telegram as B;
-use Plugins\Virtualizor\Bridge;
+use Telegram\Bot\Bot;
+use Telegram\Plugins\Virtualizor\Bridge;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

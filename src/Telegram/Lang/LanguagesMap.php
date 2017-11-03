@@ -1,6 +1,6 @@
 <?php
 
-namespace Lang;
+namespace Telegram\Lang;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
@@ -9,8 +9,8 @@ namespace Lang;
 final class LanguagesMap
 {
 	public static $map = [
-		"ID" => "Lang\\ID",
-		"EN" => "Lang\\EN"
+		"ID" => "Telegram\\Lang\\ID",
+		"EN" => "Telegram\\Lang\\EN"
 	];
 
 	public static function languageExists($lang)

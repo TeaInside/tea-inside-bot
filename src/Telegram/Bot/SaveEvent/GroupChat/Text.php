@@ -1,10 +1,10 @@
 <?php
 
-namespace Bot\SaveEvent\GroupChat;
+namespace Telegram\Bot\SaveEvent\GroupChat;
 
 use DB;
-use Bot\Bot;
-use Contracts\SaveEvent;
+use Telegram\Bot\Bot;
+use Telegram\Contracts\SaveEvent;
 
 class Text implements SaveEvent
 {

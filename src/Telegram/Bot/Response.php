@@ -1,10 +1,10 @@
 <?php
 
-namespace Bot;
+namespace Telegram\Bot;
 
-use Lang;
-use Bot\Response\Command;
-use Bot\Response\Virtualizor;
+use Telegram\Lang;
+use Telegram\Bot\Response\Command;
+use Telegram\Bot\Response\Virtualizor;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

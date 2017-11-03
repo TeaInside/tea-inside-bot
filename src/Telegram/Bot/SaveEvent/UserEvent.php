@@ -1,13 +1,13 @@
 <?php
 
-namespace Bot\SaveEvent;
+namespace Telegram\Bot\SaveEvent;
 
 use DB;
 use PDO;
-use Lang;
-use Bot\Bot;
+use Telegram\Lang;
+use Telegram\Bot\Bot;
 use Telegram as B;
-use Bot\Abstraction\EventFoundation;
+use Telegram\Bot\Abstraction\EventFoundation;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

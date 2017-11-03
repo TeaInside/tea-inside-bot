@@ -1,6 +1,6 @@
 <?php
 
-namespace Bot\Response;
+namespace Telegram\Bot\Response;
 
 use Telegram as B;
 

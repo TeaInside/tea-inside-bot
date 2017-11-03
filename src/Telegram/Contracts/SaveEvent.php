@@ -1,8 +1,8 @@
 <?php
 
-namespace Contracts;
+namespace Telegram\Contracts;
 
-use Bot\Bot;
+use Telegram\Bot\Bot;
 
 interface SaveEvent
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Bot\Response\Command;
+namespace Telegram\Bot\Response\Command;
 
-use Lang;
-use Bot\Bot;
 use Telegram as B;
-use Bot\Abstraction\CommandFoundation;
-use Plugins\SearchEngine\GoogleSearch\GoogleSearch;
+use Telegram\Lang;
+use Telegram\Bot\Bot;
+use Telegram\Bot\Abstraction\CommandFoundation;
+use Telegram\Plugins\SearchEngine\GoogleSearch\GoogleSearch;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

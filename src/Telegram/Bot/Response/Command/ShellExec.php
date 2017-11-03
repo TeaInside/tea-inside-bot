@@ -2,10 +2,10 @@
 
 namespace Bot\Response\Command;
 
-use Lang;
-use Bot\Bot;
 use Telegram as B;
-use Bot\Abstraction\CommandFoundation;
+use Telegram\Lang;
+use Telegram\Bot\Bot;
+use Telegram\Bot\Abstraction\CommandFoundation;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Contracts\Plugins\Virtualizor;
+namespace Telegram\Contracts\Plugins\Virtualizor;
 
 interface Executable
 {

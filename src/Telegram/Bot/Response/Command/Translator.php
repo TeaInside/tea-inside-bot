@@ -1,11 +1,11 @@
 <?php
 
-namespace Bot\Response\Command;
+namespace Telegram\Bot\Response\Command;
 
-use Bot\Bot;
 use Telegram as B;
-use Bot\Abstraction\CommandFoundation;
-use Plugins\Translator\GoogleTranslate\GoogleTranslate;
+use Telegram\Bot\Bot;
+use Telegram\Bot\Abstraction\CommandFoundation;
+use Telegram\Plugins\Translator\GoogleTranslate\GoogleTranslate;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

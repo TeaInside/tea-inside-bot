@@ -1,9 +1,9 @@
 <?php
 
-namespace Bot;
+namespace Telegram\Bot;
 
-use Bot\SaveEvent\UserEvent;
-use Bot\SaveEvent\GroupEvent;
+use Telegram\Bot\SaveEvent\UserEvent;
+use Telegram\Bot\SaveEvent\GroupEvent;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

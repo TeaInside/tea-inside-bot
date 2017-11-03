@@ -1,6 +1,6 @@
 <?php
 
-use Bot\Bot;
+use Telegram\Bot\Bot;
 use System\Hub\Singleton;
 
 /**

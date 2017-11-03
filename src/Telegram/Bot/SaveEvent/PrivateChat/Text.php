@@ -3,8 +3,8 @@
 namespace Bot\SaveEvent\PrivateChat;
 
 use DB;
-use Bot\Bot;
-use Contracts\SaveEvent;
+use Telegram\Bot\Bot;
+use Telegram\Contracts\SaveEvent;
 
 class Text implements SaveEvent
 {

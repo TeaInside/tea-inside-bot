@@ -1,9 +1,9 @@
 <?php
 
-namespace Bot;
+namespace Telegram\Bot;
 
-use Bot\Response;
-use Bot\SaveEvent;
+use Telegram\Bot\Response;
+use Telegram\Bot\SaveEvent;
 use Telegram as B;
 
 /**

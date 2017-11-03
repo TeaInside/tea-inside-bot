@@ -1,6 +1,6 @@
 <?php
 
-namespace Exceptions;
+namespace Telegram\Exceptions;
 
 use Exception;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Bot\Response\Command;
+namespace Telegram\Bot\Response\Command;
 
-use Bot\Bot;
 use Telegram as B;
-use Bot\Abstraction\CommandFoundation;
+use Telegram\Bot\Bot;
+use Telegram\Bot\Abstraction\CommandFoundation;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

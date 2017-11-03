@@ -22,7 +22,7 @@ class Start extends KulgramWriterFoundation
                     "chat_id" => $this->b->chat_id
                     ]
                 );
-            }        
+            }
         }
         return false;
     }

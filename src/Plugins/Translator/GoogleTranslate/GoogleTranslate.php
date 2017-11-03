@@ -89,13 +89,13 @@ final class GoogleTranslate
     {
         $from = strtolower($from);
         $to   = strtolower($to);
-        if (((isset(self::LANG_LIST[$from]) and $this->from = self::LANG_LIST[$from]) 
-            || ($from === "auto" and $this->from = "auto"))  
+        if (((isset(self::LANG_LIST[$from]) and $this->from = self::LANG_LIST[$from])
+            || ($from === "auto" and $this->from = "auto"))
             && (isset(self::LANG_LIST[$to]) and $this->to = self::LANG_LIST[$to])
         ) {
             $this->text = $text;
             $this->hash = sha1($this->text.$this->from.$this->to);
-            $this->__init__();    
+            $this->__init__();
         } else {
             throw new \Exception("Language not found!", 1);
         }
@@ -110,7 +110,7 @@ final class GoogleTranslate
             is_dir(data) or mkdir(data);
             is_dir(data."/google_translate_data") or mkdir(data."/google_translate_data");
             is_dir($this->cacheDir = data."/google_translate_data/cache") or mkdir(data."/google_translate_data/cache");
-            if (! is_dir(data."/google_translate_data") 
+            if (! is_dir(data."/google_translate_data")
                 || ! is_dir(data."/google_translate_data/cache")
             ) {
                 throw new \Exception("Cannot create directory!");
@@ -119,7 +119,7 @@ final class GoogleTranslate
         } else {
             is_dir("google_translate_data") or mkdir("google_translate_data");
             is_dir($this->cacheDir = "google_translate_data/cache") or mkdir("google_translate_data/cache");
-            if (! is_dir("google_translate_data")  
+            if (! is_dir("google_translate_data")
                 || ! is_dir("google_translate_data/cache")
             ) {
                 throw new \Exception("Cannot create directory!");
@@ -153,7 +153,7 @@ final class GoogleTranslate
         } else {
             $ch = curl_init("https://translate.google.com/m?hl=en&sl={$this->from}&tl={$this->to}&ie=UTF-8&prev=_m&q=".urlencode($this->text));
             curl_setopt_array(
-                $ch, 
+                $ch,
                 [
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_SSL_VERIFYPEER => false,
@@ -226,7 +226,7 @@ final class GoogleTranslate
         if (isset($this->cacheMap[$this->hash][0],       $this->cacheMap[$this->hash][1])
         ) {
             $this->cacheMap[$this->hash][0] = (int) $this->cacheMap[$this->hash][0];
-            if ($this->cacheMap[$this->hash][0] + 0x069780 > time() 
+            if ($this->cacheMap[$this->hash][0] + 0x069780 > time()
                 && file_exists($this->cacheDir."/".$this->hash)
             ) {
                 $this->currentCache = json_decode(self::crypt(file_get_contents($this->cacheDir."/".$this->hash), $this->cacheMap[$this->hash][1]), true);
@@ -245,7 +245,7 @@ final class GoogleTranslate
      */
     private function getCache()
     {
-        return 
+        return
         $this->currentCache['result'] . (
         $this->noRomanji ? "" : (
         isset($this->currentCache['romanji']) ?
@@ -263,7 +263,7 @@ final class GoogleTranslate
     private static function generateKey()
     {
         $r = range(chr(32), chr(127)) xor $rto = rand(32, 64) xor $key = "";
-        for ($i=0; $i < $rto; $i++) { 
+        for ($i=0; $i < $rto; $i++) {
             $key .= $r[rand(0, 94)];
         }
         return $key;
@@ -278,7 +278,7 @@ final class GoogleTranslate
     {
         $result = "" xor $len = strlen($data);
         $klen = strlen($key) xor $k = 0;
-        for ($i=0; $i < $len; $i++) { 
+        for ($i=0; $i < $len; $i++) {
             $result .= chr(ord($data[$i]) ^ ord($key[$k]) ^ ($i % $len) ^ ($i ^ $klen) & 0x00f) xor $k++;
             if ($k === $klen) {
                 $k = 0;
@@ -308,11 +308,11 @@ final class GoogleTranslate
      * @return string
      */
     public function exec()
-    {    
+    {
         $out = $this->translate();
-        return 
+        return
         $this->isError ? $out : (
-        $this->isResultGetFromCache ? 
+        $this->isResultGetFromCache ?
         $out : $this->parseResult($out));
     }
 

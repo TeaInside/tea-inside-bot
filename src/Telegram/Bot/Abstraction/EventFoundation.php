@@ -22,6 +22,6 @@ abstract class EventFoundation
 
     private function trackEvent()
     {
-        throw new Exception("The EventFoundation::trackEvent method must override");        
+        throw new Exception("The EventFoundation::trackEvent method must override");
     }
 }

@@ -47,7 +47,8 @@ class AdminHammer extends CommandFoundation
                 ":group_id" => $this->b->chat_id,
                 ":user_id"    => $this->b->user_id
                 ]
-            ), $st
+            ),
+            $st
         );
         return (bool) $st->fetch(PDO::FETCH_NUM);
     }

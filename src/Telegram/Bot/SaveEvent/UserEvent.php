@@ -48,7 +48,7 @@ class UserEvent extends EventFoundation
         if (! $st) {
             return false;
         }
-        if ($st['username'] !== $this->b->username 
+        if ($st['username'] !== $this->b->username
             || $st['name']     !== $this->b->name
         ) {
             $this->oldIdentity = $st;
@@ -72,7 +72,8 @@ class UserEvent extends EventFoundation
                 ":updated_at"    => date("Y-m-d H:i:s"),
                 ":user_id"         => $this->b->user_id
                 ]
-            ), $st
+            ),
+            $st
         );
         $this->b->chattype !== "private" and $this->notify();
         $this->writeUserHistory();
@@ -100,7 +101,7 @@ class UserEvent extends EventFoundation
                 if ($this->b->username != $this->oldIdentity['username']) {
                     if (empty($this->oldIdentity['username'])) {
                         $msg = Lang::bind("{namelink} create new username @".$this->b->username);
-                    } elseif(empty($this->b->username)) {
+                    } elseif (empty($this->b->username)) {
                         $msg = Lang::bind("{namelink} removed username");
                     } else {
                         $msg = Lang::bind("{namelink} changes username from @".$this->oldIdentity['username']." to @{username}");
@@ -130,7 +131,8 @@ class UserEvent extends EventFoundation
                 ":user_id"         => $this->b->user_id,
                 ":updated_at"    => date("Y-m-d H:i:s")
                 ]
-            ), $st
+            ),
+            $st
         );
         return true;
     }
@@ -151,7 +153,8 @@ class UserEvent extends EventFoundation
                 ":name"            => $this->b->name,
                 ":created_at"    => date("Y-m-d H:i:s")
                 ]
-            ), $st
+            ),
+            $st
         );
         $this->writeUserHistory();
         return true;
@@ -171,7 +174,8 @@ class UserEvent extends EventFoundation
                 ":name"            => $this->b->name,
                 ":created_at"    => date("Y-m-d H:i:s")
                 ]
-            ), $st
+            ),
+            $st
         );
         return true;
     }

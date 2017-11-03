@@ -41,7 +41,8 @@ class Text implements SaveEvent
                 ":type"            => "text",
                 ":created_at"    => date("Y-m-d H:i:s")
                 ]
-            ), $st
+            ),
+            $st
         );
         $st = DB::prepare("INSERT INTO `group_messages_data` (`msg_uniq`, `text`, `file`) VALUES (:msg_uniq, :txt, NULL);");
         pc(
@@ -50,8 +51,8 @@ class Text implements SaveEvent
                 ":msg_uniq" => $uniq,
                 ":txt"        => $this->b->text
                 ]
-            ), $st
+            ),
+            $st
         );
     }
 }
-

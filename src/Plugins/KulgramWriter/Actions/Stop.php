@@ -37,7 +37,7 @@ class Stop extends KulgramWriterFoundation
                     "chat_id" => $this->b->chat_id
                     ]
                 );
-            }        
+            }
         }
         return false;
     }
@@ -53,7 +53,8 @@ class Stop extends KulgramWriterFoundation
                 [
                 ":group_id" => $this->b->chat_id
                 ]
-            ), $st
+            ),
+            $st
         );
         $this->infodata['list'][$this->infodata['count'] - 1]['data'] = $st->fetchAll(PDO::FETCH_ASSOC);
         file_put_contents($this->tmpdir."/data.json", json_encode($this->infodata['list'][$this->infodata['count'] - 1]), LOCK_EX);

@@ -7,7 +7,7 @@ interface Executable
     /**
      * Constructor.
      *
-     * @param string $code    
+     * @param string $code
      */
     public function __construct($code);
 

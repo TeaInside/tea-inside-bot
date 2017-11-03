@@ -8,7 +8,7 @@ use Plugins\Virtualizor\Interpreter;
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @license MIT
- * 
+ *
  * Virtualizor brigde.
  */
 final class Bridge
@@ -71,5 +71,5 @@ final class Bridge
         } else {
             return "Plugin not found!";
         }
-    }    
+    }
 }

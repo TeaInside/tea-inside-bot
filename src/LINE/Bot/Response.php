@@ -44,7 +44,8 @@ class Response
             isset($u['displayName']) or $u['displayName'] = $this->b->userid;
             $msg = "<b>".htmlspecialchars($u['displayName'])."</b>\n<pre>".htmlspecialchars($this->b->text)."</pre>";
             Bridge::go(
-                "telegram/action_cli.php", ["sendMessage", urlencode(
+                "telegram/action_cli.php",
+                ["sendMessage", urlencode(
                     json_encode(
                         [
                         "text" => $msg,
@@ -62,7 +63,8 @@ class Response
             isset($u['displayName']) or $u['displayName'] = $this->b->userid;
             $msg = htmlspecialchars($u['displayName']);
             Bridge::go(
-                "telegram/action_cli.php", ["sendPhoto", urlencode(
+                "telegram/action_cli.php",
+                ["sendPhoto", urlencode(
                     json_encode(
                         [
                         "caption" => $msg,

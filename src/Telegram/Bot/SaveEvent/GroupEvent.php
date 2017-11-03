@@ -40,7 +40,7 @@ class GroupEvent extends EventFoundation
             return false;
         }
 
-        if ($st['username'] !== $this->b->chatuname 
+        if ($st['username'] !== $this->b->chatuname
             || $st['name']        !== $this->b->chattitle
         ) {
             return "update";
@@ -59,7 +59,8 @@ class GroupEvent extends EventFoundation
                 ":updated_at"    => date("Y-m-d H:i:s"),
                 ":group_id"        => $this->b->chat_id
                 ]
-            ), $st
+            ),
+            $st
         );
         $this->writeGroupHistory();
         return true;
@@ -83,7 +84,8 @@ class GroupEvent extends EventFoundation
                 ":username"        => $this->b->chatuname,
                 ":created_at"    => date("Y-m-d H:i:s")
                 ]
-            ), $st
+            ),
+            $st
         );
         $st = DB::prepare("INSERT INTO `groups_setting` (`group_id`, `max_warn`, `welcome_message`) VALUES (:group_id, 3, NULL)");
         pc($st->execute([":group_id" => $this->b->chat_id]), $st);
@@ -99,7 +101,8 @@ class GroupEvent extends EventFoundation
                 [
                 "chat_id" => $this->b->chat_id
                 ]
-            )['content'], true
+            )['content'],
+            true
         ) xor $admin = [];
         if (isset($st['result'])) {
             $i = 1;
@@ -126,7 +129,8 @@ class GroupEvent extends EventFoundation
                             ":name"            => $val['user']['first_name'] . (isset($val['user']['last_name']) ? " ".$val['user']['last_name'] : ""),
                             ":created_at"    => date("Y-m-d H:i:s")
                             ]
-                        ), $st
+                        ),
+                        $st
                     );
                 }
                 $admin[":status_{$i}"] = $val['status'];
@@ -153,7 +157,8 @@ class GroupEvent extends EventFoundation
                 ":name"            => $this->b->chattitle,
                 ":created_at"    => date("Y-m-d H:i:s")
                 ]
-            ), $st
+            ),
+            $st
         );
         return true;
     }

@@ -147,7 +147,7 @@ final class Bot
             $this->replyto   = isset($this->input['message']['reply_to_message']) ? $this->input['message']['reply_to_message'] : [];
             $this->first_name = $this->input['message']['from']['first_name'];
             $this->last_name  = isset($this->input['message']['from']['last_name']) ? $this->input['message']['from']['last_name'] : "";
-        } else if (isset($this->input['message']['photo'])) {
+        } elseif (isset($this->input['message']['photo'])) {
             $this->photo = $this->input['message']['photo'];
             $this->msgtype   = "photo";
             $this->update_id = $this->input['update_id'];

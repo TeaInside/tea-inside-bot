@@ -37,7 +37,7 @@ class Translator extends CommandFoundation
             try {
                 $msg = new GoogleTranslate($segment[3], $segment[1], $segment[2]);
                 $msg = htmlspecialchars($msg->exec());
-                $msg = $msg==="" ? "~" : $msg;    
+                $msg = $msg==="" ? "~" : $msg;
             } catch (\Exception $e) {
                 $msg = "Language not found!";
             }
@@ -61,7 +61,7 @@ class Translator extends CommandFoundation
             try {
                 $msg = new GoogleTranslate($this->b->replyto['text'], $segment[1], $segment[2]);
                 $msg = htmlspecialchars($msg->exec());
-                $msg = $msg==="" ? "~" : $msg;    
+                $msg = $msg==="" ? "~" : $msg;
             } catch (\Exception $e) {
                 $msg = "Language not found!";
             }
@@ -73,6 +73,6 @@ class Translator extends CommandFoundation
                 "parse_mode" => "HTML"
                 ]
             );
-        }         
+        }
     }
 }

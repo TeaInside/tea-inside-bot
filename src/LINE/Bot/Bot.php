@@ -51,7 +51,7 @@ final class Bot
         foreach ($this->fullinput['events'] as $val) {
             $this->buildContext($val);
             $this->_run();
-        }        
+        }
     }
 
     private function buildContext($val)

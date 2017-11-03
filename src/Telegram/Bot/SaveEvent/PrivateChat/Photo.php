@@ -40,7 +40,8 @@ class Photo implements SaveEvent
                 ":type"            => "photo",
                 ":created_at"    => date("Y-m-d H:i:s")
                 ]
-            ), $st
+            ),
+            $st
         );
         $st = DB::prepare("INSERT INTO `private_messages_data` (`msg_uniq`, `text`, `file`) VALUES (:msg_uniq, :txt, :file)");
         $e = end($this->b->photo);
@@ -51,7 +52,8 @@ class Photo implements SaveEvent
                 ":txt"        => $this->b->text,
                 ":file" => $e['file_id']
                 ]
-            ), $st
+            ),
+            $st
         );
     }
 }

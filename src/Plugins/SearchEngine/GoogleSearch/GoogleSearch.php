@@ -112,7 +112,7 @@ final class GoogleSearch
         } else {
             $ch = curl_init("https://www.google.com/search?client=ubuntu&channel=fs&q=".urlencode($this->query)."&ie=utf-8&oe=utf-8");
             curl_setopt_array(
-                $ch, 
+                $ch,
                 [
                 CURLOPT_RETURNTRANSFER     => true,
                 CURLOPT_SSL_VERIFYPEER     => false,
@@ -144,8 +144,8 @@ final class GoogleSearch
      */
     private function isPerfectCache()
     {
-        if (! file_exists($this->cacheFile) 
-            or ! isset($this->cacheMap[$this->hash][0])  
+        if (! file_exists($this->cacheFile)
+            or ! isset($this->cacheMap[$this->hash][0])
             or ! isset($this->cacheMap[$this->hash][1])
         ) {
             return false;
@@ -157,9 +157,10 @@ final class GoogleSearch
 
         $cache = json_decode(
             self::crypt(
-                file_get_contents($this->cacheFile), 
+                file_get_contents($this->cacheFile),
                 $this->cacheMap[$this->hash][1]
-            ), true
+            ),
+            true
         );
 
         if (! is_array($cache)) {
@@ -242,7 +243,7 @@ final class GoogleSearch
     {
         $result = "" xor $len = strlen($data);
         $klen = strlen($key) xor $k = 0;
-        for ($i=0; $i < $len; $i++) { 
+        for ($i=0; $i < $len; $i++) {
             $result .= chr(ord($data[$i]) ^ ord($key[$k]) ^ ($i % $len) ^ ($i ^ $klen) & 0x00f) xor $k++;
             if ($k === $klen) {
                 $k = 0;
@@ -259,25 +260,25 @@ final class GoogleSearch
     private static function generateKey()
     {
         $a = range(32, 127) xor $r = "" xor $l = rand(32, 64);
-        for ($i=0; $i < $l; $i++) { 
+        for ($i=0; $i < $l; $i++) {
             $r .= chr($a[rand(0, 94)]);
         }
         return $r;
-    }        
+    }
 
     /**
      * Exec
-     * 
+     *
      * @return string
      */
     public function exec()
     {
         $out = $this->search();
-        return 
-        $this->errorInfo ? 
-        $this->errorInfo : 
+        return
+        $this->errorInfo ?
+        $this->errorInfo :
         ($this->isCachedPerfectly ?
-         $out : 
+         $out :
           $this->parseOutput($out));
     }
 }

@@ -18,16 +18,17 @@ trait CommandRoutes
         $this->set(
             function () use ($st) {
         
-                return 
+                return
                 $st[0] === "/sh"       ||
                 $st[0] === "!sh"      ||
                 $st[0] === "~sh"      ||
                 $st[0] === "sh"       ||
-                $st[0] === "/shexec" || 
+                $st[0] === "/shexec" ||
                 $st[0] === "!shexec" ||
                 $st[0] === "~shexec" ||
                 $st[0] === "shexec";
-            }, "ShellExec@run"
+            },
+            "ShellExec@run"
         );
 
 
@@ -37,12 +38,13 @@ trait CommandRoutes
         $this->set(
             function () use ($st) {
         
-                return 
+                return
                 $st[0] === "/ping"   ||
                 $st[0] === "!ping"      ||
                 $st[0] === "~ping"      ||
                 $st[0] === "ping";
-            }, function () {
+            },
+            function () {
                 $start = microtime(true);
                 $st = json_decode(
                     B::sendMessage(
@@ -51,13 +53,14 @@ trait CommandRoutes
                         "chat_id"               => $this->b->chat_id,
                         "reply_to_message_id" => $this->b->msgid
                         ]
-                    )['content'], true
+                    )['content'],
+                    true
                 );
                 B::editMessageText(
                     [
                     "chat_id" => $this->b->chat_id,
                     "message_id" => $st['result']['message_id'],
-                    "text" => "Pong!\n".((time() - $this->b->date) + round(microtime(true) - $start,  2))." s"
+                    "text" => "Pong!\n".((time() - $this->b->date) + round(microtime(true) - $start, 2))." s"
                     ]
                 );
             }
@@ -70,11 +73,12 @@ trait CommandRoutes
         $this->set(
             function () use ($st) {
         
-                return 
+                return
                 $st[0] === "/ban"    ||
                 $st[0] === "!ban"      ||
                 $st[0] === "~ban";
-            }, "AdminHammer@ban"
+            },
+            "AdminHammer@ban"
         );
 
 
@@ -84,11 +88,12 @@ trait CommandRoutes
         $this->set(
             function () use ($st) {
         
-                return 
+                return
                 $st[0] === "/google" ||
                 $st[0] === "!google" ||
                 $st[0] === "~google";
-            }, "SearchEngine@googleSearch"
+            },
+            "SearchEngine@googleSearch"
         );
 
 
@@ -105,7 +110,8 @@ trait CommandRoutes
                 $st[0] === "/translate"    ||
                 $st[0] === "!translate" ||
                 $st[0] === "~translate";
-            }, "Translator@googleTranslate"
+            },
+            "Translator@googleTranslate"
         );
         
 
@@ -122,7 +128,8 @@ trait CommandRoutes
                 $st[0] === "/trl"        ||
                 $st[0] === "!trl"         ||
                 $st[0] === "~trl";
-            }, "Translator@rgoogleTranslate"
+            },
+            "Translator@rgoogleTranslate"
         );
 
         /**
@@ -137,7 +144,8 @@ trait CommandRoutes
                 strpos($this->b->lowertext, "materi hari ini") !== false ||
                 strpos($this->b->lowertext, "materi kulgram hari ini") !== false ||
                 strpos($this->b->lowertext, "topik kulgram hari ini") !== false;
-            }, "KulgramWriter@init"
+            },
+            "KulgramWriter@init"
         );
 
         /**
@@ -149,8 +157,9 @@ trait CommandRoutes
                 return
                 strpos($this->b->lowertext, "mulai nyatet") !== false ||
                 strpos($this->b->lowertext, "mulai catatan") !== false ||
-                strpos($this->b->lowertext, "mulai nyatat") !== false;                
-            }, "KulgramWriter@start"
+                strpos($this->b->lowertext, "mulai nyatat") !== false;
+            },
+            "KulgramWriter@start"
         );
 
         /**
@@ -162,8 +171,9 @@ trait CommandRoutes
                 return
                 strpos($this->b->lowertext, "berhenti nyatat") !== false ||
                 strpos($this->b->lowertext, "berhenti nyatet") !== false ||
-                strpos($this->b->lowertext, "hentikan catatan") !== false;                
-            }, "KulgramWriter@stop"
+                strpos($this->b->lowertext, "hentikan catatan") !== false;
+            },
+            "KulgramWriter@stop"
         );
 
         $this->set(
@@ -172,17 +182,20 @@ trait CommandRoutes
                 return
                 strpos($this->b->lowertext, "berhenti nyatat") !== false ||
                 strpos($this->b->lowertext, "berhenti nyatet") !== false ||
-                strpos($this->b->lowertext, "hentikan catatan") !== false;                
-            }, "KulgramWriter@stop"
+                strpos($this->b->lowertext, "hentikan catatan") !== false;
+            },
+            "KulgramWriter@stop"
         );
 
         $this->set(
             function () use ($st) {
         
                 return $this->b->chattitle == "SOLID SQUARE";
-            }, function () {
+            },
+            function () {
                 \Bridge::go(
-                    "line/push_cli.php", ["\"".urlencode(
+                    "line/push_cli.php",
+                    ["\"".urlencode(
                         json_encode(
                             [
                             "to" => "Ce20228a1f1f98e6cf9d6f6338603e962",

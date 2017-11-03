@@ -16,14 +16,17 @@ trait CommandRoutes
 		}, function() use ($st) {
 			$st = new \Plugins\SearchEngine\GoogleSearch\GoogleSearch($st[1]);
 			$st = $st->exec();
-			var_dump($st);
+			$r = ""; $i=1;
+			foreach($st as $z) {
+				$r.= ($i++).". ".$z['heading']."\n".$z['url']."\n".$z['description']."\n\n";
+			}
 			LINE::push(
 				[
 					"to" => $this->b->chat_id,
 					"messages" => [
 						[
 							"type" => "text",
-							"text" => $st
+							"text" => $r
 						]
 					]
 				]

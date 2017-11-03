@@ -21,13 +21,15 @@ trait CommandRoutes
 				$r.= ($i++).". ".$z['heading']."\n".$z['url']."\n".$z['description']."\n\n";
 			}
 			var_dump($r);
+			$r = trim($r);
+			$r = empty($r)?"Not found!":$r;
 			print LINE::push(
 				[
 					"to" => $this->b->chat_id,
 					"messages" => [
 						[
 							"type" => "text",
-							"text" => trim($r)
+							"text" => $r
 						]
 					]
 				]

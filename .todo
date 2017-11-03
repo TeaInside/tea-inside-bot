@@ -3,10 +3,10 @@
     <note priority="high" time="1506962721" done="1507183912">
         Create translate plugin
         <comment>
-            Fix 
+            Fix
         </comment>
     </note>
-    <note priority="veryhigh" time="1507014868">
+    <note priority="veryhigh" time="1507014868" done="1509707904">
         Create command handler
     </note>
     <note priority="medium" time="1506962807">

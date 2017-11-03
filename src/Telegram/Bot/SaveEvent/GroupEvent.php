@@ -54,8 +54,8 @@ class GroupEvent extends EventFoundation
         pc(
             $st->execute(
                 [
-                ":username"     => $this->b->username,
-                ":name"            => $this->b->name,
+                ":username"     => $this->b->chatuname,
+                ":name"            => $this->b->chattitle,
                 ":updated_at"    => date("Y-m-d H:i:s"),
                 ":group_id"        => $this->b->chat_id
                 ]

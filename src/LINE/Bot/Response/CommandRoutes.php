@@ -1,6 +1,6 @@
 <?php
 
-namespace LINE\Bot\Bot;
+namespace LINE\Bot\Response;
 
 use LINE;
 

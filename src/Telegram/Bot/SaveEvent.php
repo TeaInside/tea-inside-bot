@@ -41,14 +41,14 @@ class SaveEvent
             $ns = "\\Telegram\\Bot\\SaveEvent\\GroupChat\\";
         }
         switch ($this->b->msgtype) {
-            case 'text':
-                $ns.= "Text";
-                break;
-            case 'photo':
-                $ns.="Photo";
-                break;
-            default:
-                throw new \Exception("Unknown event", 1);
+        case 'text':
+            $ns.= "Text";
+            break;
+        case 'photo':
+            $ns.="Photo";
+            break;
+        default:
+            throw new \Exception("Unknown event", 1);
             break;
         }
         $st = new $ns($this->b);

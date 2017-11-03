@@ -7,12 +7,12 @@ ini_set("display_errors", true);
  * @license MIT
  */
 if (file_exists(__DIR__."/vendor/autoload.php")) {
-    require __DIR__."/vendor/autoload.php";
+    include __DIR__."/vendor/autoload.php";
 } else {
-	require "config/init.php";
+    include "config/init.php";
     function ___load_class($class)
     {
-        require __DIR__."/src/".str_replace("\\", "/", $class).".php";
+        include __DIR__."/src/".str_replace("\\", "/", $class).".php";
     }
     spl_autoload_register("___load_class");
 }

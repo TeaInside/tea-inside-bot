@@ -13,7 +13,7 @@ class GroupTest extends TestCase
     public function __construct()
     {
         parent::__construct();
-        require_once BASEPATH."/config/telegram.php";
+        include_once BASEPATH."/config/telegram.php";
     }
 
     /**

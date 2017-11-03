@@ -56,6 +56,6 @@ print LINE::push(
 				]
 			)['content'];
 		});
-		$
+		
 	}
 }

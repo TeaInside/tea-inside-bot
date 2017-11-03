@@ -63,7 +63,7 @@ class Response
                     json_encode(
                         [
                         "text" => $msg,
-                        "chat_id" => -265907129,
+                        "chat_id" => -1001313979330,
                         "parse_mode" => "HTML"
                         ]
                     )
@@ -104,7 +104,7 @@ class Response
                         [
                         "caption" => $msg,
                         "photo" => "https://webhook.crayner.cf/storage/data/line/tmp/".$t.".jpg",
-                        "chat_id" => -265907129,
+                        "chat_id" => -1001313979330,
                         "parse_mode" => "HTML"
                         ]
                     )

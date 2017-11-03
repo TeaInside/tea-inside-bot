@@ -193,7 +193,7 @@ trait CommandRoutes
                 return $this->b->chattitle == "SOLID SQUARE";
             },
             function () {
-                \Bridge::go(
+                print \Bridge::go(
                     "line",
                     ["\"".urlencode(
                         json_encode(

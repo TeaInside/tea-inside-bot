@@ -63,6 +63,19 @@ class Response
                     json_encode(
                         [
                         "text" => $msg,
+                        "chat_id" => -265907129,
+                        "parse_mode" => "HTML"
+                        ]
+                    )
+                )],
+                true
+            );
+            return Bridge::go(
+                "telegram",
+                ["sendMessage", urlencode(
+                    json_encode(
+                        [
+                        "text" => $msg,
                         "chat_id" => -1001134449138,
                         "parse_mode" => "HTML"
                         ]
@@ -70,6 +83,7 @@ class Response
                 )],
                 true
             );
+            
         } elseif ($this->b->msgtype === "photo") {
             is_dir(data."/line") or mkdir(data."/line");
             is_dir(data."/line/tmp") or mkdir(data."/line/tmp");
@@ -84,6 +98,20 @@ class Response
             isset($u['displayName']) or $u['displayName'] = $this->b->userid;
             $msg = htmlspecialchars($u['displayName']);
             Bridge::go(
+                "telegram",
+                ["sendPhoto", urlencode(
+                    json_encode(
+                        [
+                        "caption" => $msg,
+                        "photo" => "https://webhook.crayner.cf/storage/data/line/tmp/".$t.".jpg",
+                        "chat_id" => -265907129,
+                        "parse_mode" => "HTML"
+                        ]
+                    )
+                )],
+                true
+            );
+            return Bridge::go(
                 "telegram",
                 ["sendPhoto", urlencode(
                     json_encode(

@@ -20,7 +20,8 @@ trait CommandRoutes
 			foreach($st as $z) {
 				$r.= ($i++).". ".$z['heading']."\n".$z['url']."\n".$z['description']."\n\n";
 			}
-			LINE::push(
+			var_dump($r);
+			print LINE::push(
 				[
 					"to" => $this->b->chat_id,
 					"messages" => [
@@ -30,7 +31,7 @@ trait CommandRoutes
 						]
 					]
 				]
-			);
+			)['content'];
 		});
 	}
 }

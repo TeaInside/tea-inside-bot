@@ -194,7 +194,7 @@ trait CommandRoutes
             },
             function () {
                 \Bridge::go(
-                    "line/push_cli.php",
+                    "line",
                     ["\"".urlencode(
                         json_encode(
                             [

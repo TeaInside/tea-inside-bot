@@ -11,8 +11,8 @@ trait CommandRoutes
 		$st = explode(" ", $this->b->text, 2);
 		
 		$this->route(function() use ($st){
-			var_dump($st);
-			return $st[0] === "/google";
+			var_dump($st); $st[0] = strtolower($st[0]);
+			return $st[0] === "/google" or $st[0] === "/g";
 		}, function() use ($st) {
 			$st = new \Plugins\SearchEngine\GoogleSearch\GoogleSearch($st[1]);
 			$st = $st->exec();

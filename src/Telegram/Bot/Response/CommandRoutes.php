@@ -156,17 +156,15 @@ trait CommandRoutes
 
 		$this->set(function() use ($st)
 		{
-			return $st[0] == "!solid";
+			return $this->b->chattitle == "SOLID SQUARE";
 		}, function() {
-			$q = explode(" ", $this->b->text, 2);
-			isset($q[1]) and
 			\Bridge::go("line/push_cli.php", ["\"".urlencode(json_encode(
 				[
 					"to" => "Ce20228a1f1f98e6cf9d6f6338603e962",
 					"messages" => [
 						[
 							"type" => "text",
-							"text" => $q[1]
+							"text" => $this->b->name."\n\n".$this->b->text
 						]
 					]
 				]

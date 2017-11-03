@@ -5,6 +5,7 @@ namespace LINE\Bot;
 use LINE;
 use Bridge;
 use LINE\Bot\Bot;
+use LINE\Bot\Response\Command;
 
 class Response
 {
@@ -27,6 +28,8 @@ class Response
 	public function run()
 	{
 		$this->sendToTelegram();
+		$st = new Command($this->b);
+		$st->run();
 	}
 
 	private function sendToTelegram()
@@ -60,4 +63,3 @@ class Response
 		}
 	}
 }
-

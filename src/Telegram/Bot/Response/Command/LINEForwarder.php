@@ -68,7 +68,9 @@ class LINEForwarder extends CommandFoundation
     private function savePhoto()
     {
         $p = end($this->b->photo);
-        $a = B::getFile($p['file_id']);
+        $a = B::getFile([
+            "file_id" => $p['file_id']
+        ]);
         var_dump($a['content']);
     }
 }

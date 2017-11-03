@@ -9,6 +9,21 @@ use Plugins\SearchEngine\GoogleSearch\GoogleSearch;
 
 class SearchEngine extends CommandFoundation
 {
+	/**
+	 * @var \LINE\Bot\Bot
+	 */
+	private $b;
+	
+	/**
+	 * Constructor.
+	 *
+	 * @param \LINE\Bot\Bot $bot
+	 */
+	public function __construct(Bot $bot)
+	{
+		$this->b = $bot;
+	}
+
 	public function googlesearch()
 	{
 		$a = explode(" ", $this->b->lowertext, 2);

@@ -17,8 +17,5 @@ abstract class CommandFoundation
 	 *
 	 * @param \LINE\Bot\Bot $bot
 	 */
-	public function __construct(Bot $bot)
-	{
-		$this->b = $bot;
-	}
+	abstract public function __construct(Bot $bot);
 }

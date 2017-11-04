@@ -26,7 +26,7 @@ class Brainly extends CommandFoundation
 
 	public function ask()
 	{
-		$st = explode(" ", $this->lowertext, 2);
+		$st = explode(" ", $this->b->lowertext, 2);
 		if (isset($st[1])) {
 			$st = new BrainlyPlugin(
 					trim($st[1])

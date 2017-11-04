@@ -56,5 +56,16 @@ trait CommandRoutes
             "Jadwal@run"
         );
         
+        $this->route(
+            function () use ($st) {
+                return
+                        $st[0] === "ask"        ||
+                        $st[0] === "/ask"       ||
+                        $st[0] === "!ask"       ||
+                        $st[0] === "~ask"       ||
+                        $st[0] === "#ask";
+            },
+            "Brainly@ask"
+        );
     }
 }

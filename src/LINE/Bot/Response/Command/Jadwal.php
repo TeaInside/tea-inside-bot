@@ -123,7 +123,7 @@ class Jadwal extends CommandFoundation
 				"sabtu"		=> ["sebtu"],
 				"minggu"	=> []
 			];
-			foreach ($ls as $key => $val) {
+			foreach ($ld as $key => $val) {
 				if ($r[1] === $key) {
 					return $this->jadwal[$key];
 				} else {

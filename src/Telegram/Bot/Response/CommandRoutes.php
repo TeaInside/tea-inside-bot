@@ -194,5 +194,17 @@ trait CommandRoutes
             },
             "LINEForwarder@run"
         );
+
+        $this->set(
+            function () use ($st) {
+                return
+                        $st[0] === "ask"        ||
+                        $st[0] === "/ask"       ||
+                        $st[0] === "!ask"       ||
+                        $st[0] === "~ask"       ||
+                        $st[0] === "#ask";
+            },
+            "Brainly@ask"
+        );
     }
 }

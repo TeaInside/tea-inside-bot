@@ -4,7 +4,7 @@ namespace Telegram\Bot\Response;
 
 use Telegram as B;
 use Telegram\Bot\Bot;
-use Telegram\Plugins\Virtualizor\Bridge;
+use Plugins\Virtualizor\Bridge;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

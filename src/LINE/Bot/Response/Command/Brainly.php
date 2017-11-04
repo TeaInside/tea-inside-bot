@@ -4,7 +4,7 @@ namespace LINE\Bot\Response\Command;
 
 use LINE;
 use LINE\Bot\Bot;
-use Plugins\Brainly\Brainly;
+use Plugins\Brainly\Brainly as BrainlyPlugin;
 use LINE\Bot\Abstraction\CommandFoundation;
 
 class Brainly extends CommandFoundation
@@ -28,7 +28,7 @@ class Brainly extends CommandFoundation
 	{
 		$st = explode(" ", $this->lowertext, 2);
 		if (isset($st[1])) {
-			$st = new Brainly(
+			$st = new BrainlyPlugin(
 					trim($st[1])
 				);
 			$st->limit(10);

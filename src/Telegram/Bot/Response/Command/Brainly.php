@@ -14,7 +14,7 @@ use Telegram\Bot\Abstraction\CommandFoundation;
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
  * @license MIT
  */
-class AdminHammer extends CommandFoundation
+class Brainly extends CommandFoundation
 {
     
 

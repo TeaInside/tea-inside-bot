@@ -117,7 +117,7 @@ class Jadwal extends CommandFoundation
 			$ld = [
 				"senin" 	=> ["senen"],
 				"selasa"	=> ["seloso"],
-				"rabu"		=> ["rebo"],
+				"rabu"		=> ["rebo","rebu"],
 				"kamis"		=> ["kemis"],
 				"jumat"		=> ["jum'at","jum\"at"],
 				"sabtu"		=> ["sebtu"],

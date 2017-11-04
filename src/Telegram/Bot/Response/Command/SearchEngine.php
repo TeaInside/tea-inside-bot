@@ -6,7 +6,7 @@ use Telegram as B;
 use Telegram\Lang;
 use Telegram\Bot\Bot;
 use Telegram\Bot\Abstraction\CommandFoundation;
-use Telegram\Plugins\SearchEngine\GoogleSearch\GoogleSearch;
+use Plugins\SearchEngine\GoogleSearch\GoogleSearch;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

@@ -4,7 +4,7 @@ namespace Plugins\Virtualizor\Lang;
 
 use Curl;
 use Plugins\Virtualizor\Interpreter;
-use Contracts\Plugins\Virtualizor\Executable;
+use Telegram\Contracts\Plugins\Virtualizor\Executable;
 
 final class PHP extends Interpreter implements Executable
 {

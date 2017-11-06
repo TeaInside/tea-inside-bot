@@ -47,6 +47,9 @@ class SaveEvent
         case 'photo':
             $ns.="Photo";
             break;
+        case 'video':
+        			$ns.="Audio";
+       		   break;
         default:
             throw new \Exception("Unknown event", 1);
             break;

@@ -67,7 +67,7 @@ class LINEForwarder extends CommandFoundation
         } elseif ($this->b->msgtype === "audio"){
         	 $url = $this->saveAudio();
             $__data[] = [
-                "type" => "image",
+                "type" => "audio",
                 "originalContentUrl" => $url,
                 "duration" => 1000*30
             ];

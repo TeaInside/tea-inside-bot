@@ -47,7 +47,7 @@ class SaveEvent
         case 'photo':
             $ns.="Photo";
             break;
-        case 'video':
+        case 'audio':
         			$ns.="Audio";
        		   break;
         default:

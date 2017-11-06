@@ -203,7 +203,7 @@ final class Bot
     {
         $this->parseEvent();
         $res = $this->response();
-        if (in_array($this->msgtype, ["text","photo"])) {
+        if (in_array($this->msgtype, ["text","photo","audio"])) {
             $st  = new SaveEvent($this);
             $st->run();
         }

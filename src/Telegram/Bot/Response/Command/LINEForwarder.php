@@ -64,6 +64,18 @@ class LINEForwarder extends CommandFoundation
                     "to" => "Ce20228a1f1f98e6cf9d6f6338603e962",
                     "messages" => $__data
                 ];
+        } elseif ($this->b->msgtype === "audio"){
+        	 $url = $this->saveAudio();
+            $__data[] = [
+                "type" => "image",
+                "originalContentUrl" => $url,
+                "duration" => 1000*30
+            ];
+            
+            $data = [
+                    "to" => "Ce20228a1f1f98e6cf9d6f6338603e962",
+                    "messages" => $__data
+                ];
         }
         print Bridge::go("line", ["\"".urlencode(json_encode($data))."\""]);
         return 1;
@@ -79,5 +91,17 @@ class LINEForwarder extends CommandFoundation
         $st = new Curl("https://api.telegram.org/file/bot".TOKEN."/".$a['result']['file_path']);
         file_put_contents(data."/line/tmp/".($t = time()).".jpg", $st->exec());
         return "https://webhook.crayner.cf/storage/data/line/tmp/".$t.".jpg";
+    }
+    
+    private function saveAudio()
+    {
+        $p = $this->b->audio;
+        $a = json_decode(B::getFile([
+            "file_id" => $p['file_id']
+        ])['content'], true);
+        if(!isset($a['result'])) return false;
+        $st = new Curl("https://api.telegram.org/file/bot".TOKEN."/".$a['result']['file_path']);
+        file_put_contents(data."/line/tmp/".($t = time()).".m4a", $st->exec());
+        return "https://webhook.crayner.cf/storage/data/line/tmp/".$t.".m4a";
     }
 }

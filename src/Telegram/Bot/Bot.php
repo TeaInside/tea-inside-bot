@@ -167,7 +167,7 @@ final class Bot
             $this->last_name  = isset($this->input['message']['from']['last_name']) ? $this->input['message']['from']['last_name'] : "";
         } elseif (isset($this->input['message']['audio'])) {
         	$this->audio = $this->input['message']['audio'];
-            $this->msgtype   = "photo";
+            $this->msgtype   = "audio";
             $this->update_id = $this->input['update_id'];
             $this->name         = $this->input['message']['from']['first_name'] . (isset($this->input['message']['from']['last_name']) ? " ".$this->input['message']['from']['last_name'] : "");
             $this->username  = isset($this->input['message']['from']['username']) ? $this->input['message']['from']['username'] : null;

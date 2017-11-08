@@ -5,7 +5,7 @@ namespace Telegram\Bot\Response\Command;
 use Telegram as B;
 use Telegram\Bot\Bot;
 use Telegram\Bot\Abstraction\CommandFoundation;
-use Telegram\Plugins\Translator\GoogleTranslate\GoogleTranslate;
+use Plugins\Translator\GoogleTranslate\GoogleTranslate;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

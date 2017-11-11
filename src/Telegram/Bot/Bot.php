@@ -208,8 +208,10 @@ final class Bot
             $st  = new SaveEvent($this);
             $st->run();
         }
-        $res = new Notification($this);
-        $res->run();
+        if ($this->chattype !== "private") {
+            $res = new Notification($this);
+            $res->run();
+        }
         return $res;
     }
 }

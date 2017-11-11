@@ -48,6 +48,10 @@ class Notification
 			$v =  $this->isKnownUser($v, "user_id");
 			$v and $this->buildReply("mention", $v);
 		}
+		if (isset($this->b->replyto)) {
+			$v =  $this->isKnownUser($this->b->replyto['from']['id'], "user_id");
+			$v and $this->buildReply("reply", $v);
+		}
 		return sizeof($this->ndata);
 	}
 
@@ -73,7 +77,9 @@ class Notification
 			case 'mention':
 				return "{$name} tagged you in {$chatroom}\n\n<pre>".htmlspecialchars($this->b->text)."</pre>";
 				break;
-			
+			case 'reply':
+				return "{$name} replied to your message in {$chatroom}\n\n<pre>".htmlspecialchars($this->b->text)."</pre>";
+				break;
 			default:
 				break;
 		}

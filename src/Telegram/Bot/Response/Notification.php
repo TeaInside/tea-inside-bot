@@ -27,6 +27,7 @@ class Notification
 	private function isKnownUser($v, $type = "username")
 	{
 		$st = DB::prepare("SELECT `user_id` FROM `a_users` WHERE `{$type}` LIKE :bind LIMIT 1;");
+		var_dump($v);
 		pc($st->execute([":bind" => $v]), $st);
 		$st = $st->fetch(PDO::FETCH_NUM);
 		var_dump($st);

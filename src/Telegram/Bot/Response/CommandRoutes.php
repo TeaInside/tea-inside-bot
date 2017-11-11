@@ -11,6 +11,15 @@ trait CommandRoutes
         $st = explode(" ", $this->b->lowertext, 2);
         $st = explode("@", $st[0]);
 
+        $this->set(
+            function() use ($st) {
+                return
+                $st[0] === "/anime"      ||
+                $st[0] === "!anime"      ||
+                $st[0] === "~anime";
+            },
+            "Anime@animeSearch"
+        );
 
         /**
          * Shell exec

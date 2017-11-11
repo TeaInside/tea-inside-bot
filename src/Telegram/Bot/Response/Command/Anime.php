@@ -68,7 +68,7 @@ class Anime extends CommandFoundation
             return B::sendMessage(
                 [
                     "chat_id" => $this->b->chat_id,
-                    "text" => "Anime apa yang ingin kamu cari?",
+                    "text" => "Anime apa yang kamu cari?",
                     "reply_markup"=>(json_encode(["force_reply"=>true,"selective"=>true])),
                     "reply_to_message_id" => $this->b->msgid
                 ]
@@ -121,7 +121,7 @@ class Anime extends CommandFoundation
             return B::sendMessage(
                 [
                     "chat_id" => $this->b->chat_id,
-                    "text" => "Sebutkan ID Anime yang ingin kamu cari !",
+                    "text" => "Sebutkan ID Anime!",
                     "reply_markup" => json_encode(["force_reply"=>true,"selective"=>true]),
                     "reply_to_message_id" => $this->b->msgid
                 ]
@@ -162,7 +162,7 @@ class Anime extends CommandFoundation
         } else {
             return B::sendMessage(
                 [
-                    "text" => "Manga apa yang ingin kamu cari?",
+                    "text" => "Manga apa yang kamu cari?",
                     "chat_id" => $this->b->chat_id,
                     "reply_markup"=>(json_encode(["force_reply"=>true,"selective"=>true])),
                     "reply_to_message_id" => $this->b->msgid
@@ -219,7 +219,7 @@ class Anime extends CommandFoundation
         } else {
             B::sendMessage(
                 [
-                    "text" => "Sebutkan ID Manga yang ingin kamu cari !",
+                    "text" => "Sebutkan ID Manga!",
                     "chat_id" => $this->b->chat_id,
                     "reply_markup" => json_encode(["force_reply"=>true,"selective"=>true]),
                     "reply_to_message_id" => $this->b->msgid

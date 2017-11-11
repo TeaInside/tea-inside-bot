@@ -48,7 +48,7 @@ class Notification
 			$v =  $this->isKnownUser($v, "user_id");
 			$v and $this->buildReply("mention", $v);
 		}
-		if (isset($this->b->replyto)) {
+		if (isset($this->b->replyto['from']['id'])) {
 			$v =  $this->isKnownUser($this->b->replyto['from']['id'], "user_id");
 			$v and $this->buildReply("reply", $v);
 		}

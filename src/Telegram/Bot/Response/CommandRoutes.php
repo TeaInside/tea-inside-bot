@@ -212,7 +212,7 @@ trait CommandRoutes
                 $st[0] === "/anime"      ||
                 $st[0] === "!anime"      ||
                 $st[0] === "~anime"      ||
-                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Anime apa yang kamu cari?")
+                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Anime apa yang kamu cari?");
             },
             "Anime@animeSearch"
         );

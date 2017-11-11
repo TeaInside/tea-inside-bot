@@ -37,6 +37,7 @@ class Notification
 
 	private function shouldReport()
 	{
+		var_dump($this->mention);
 		foreach ($this->mention as $val) {
 			foreach ($val['username'] as $v) {
 				$v =  $this->isKnownUser($v);

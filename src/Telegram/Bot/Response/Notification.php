@@ -84,7 +84,7 @@ class Notification
 		$getUsername = []; $getId = [];
 		foreach ($this->b->entities as $val) {
 			if ($val['type'] === "mention") {
-				$getUsername[] = substr($this->lowertext, $val['offset'], $val['length']);
+				$getUsername[] = substr($this->b->lowertext, $val['offset'], $val['length']);
 			} elseif ($val['type'] === "text_mention" && $val['user']['is_bot'] === false) {
 				$getID[] = $val['user']['id'];
 			}

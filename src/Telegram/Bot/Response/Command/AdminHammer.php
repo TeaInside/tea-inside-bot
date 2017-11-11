@@ -90,25 +90,6 @@ class AdminHammer extends CommandFoundation
     /**
      *
      */
-    public function kick()
-    {
-        if ($this->isAdmin()) {
-            $msg = "Ok";
-        } else {
-            $msg = "You're not allowed to use this command!";
-        }
-        B::sendMessage(
-            [
-            "text"             => $msg,
-            "chat_id"        => $this->b->chat_id,
-            "parse_mode"    => "HTML"
-            ]
-        );
-    }
-
-    /**
-     *
-     */
     public function warn()
     {
         if ($this->isAdmin()) {

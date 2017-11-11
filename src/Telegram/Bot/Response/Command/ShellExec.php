@@ -37,7 +37,7 @@ class ShellExec extends CommandFoundation
     
     private function securityCheck()
     {
-       return 1; 
+       
     }
     
     public function run()

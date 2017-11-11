@@ -225,5 +225,27 @@ trait CommandRoutes
             },
             "Anime@animeInfo"
         );
+
+        $this->set(
+            function() use ($st) {
+                return
+                $st[0] === "/manga"      ||
+                $st[0] === "!manga"      ||
+                $st[0] === "~manga"      ||
+                (isset($this->b->replyto) and $this->b->replyto['text'] === "Manga apa yang ingin kamu cari?");
+            },
+            "Anime@mangaSearch"
+        );
+
+        $this->set(
+            function() use ($st) {
+                return
+                $st[0] === "/idma"      ||
+                $st[0] === "!idma"      ||
+                $st[0] === "~idma"      ||
+                (isset($this->b->replyto) and $this->b->replyto['text'] === "Sebutkan ID Manga!");
+            },
+            "Anime@mangaInfo"
+        );
     }
 }

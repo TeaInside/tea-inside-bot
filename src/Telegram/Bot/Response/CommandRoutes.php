@@ -11,16 +11,6 @@ trait CommandRoutes
         $st = explode(" ", $this->b->lowertext, 2);
         $st = explode("@", $st[0]);
 
-        $this->set(
-            function() use ($st) {
-                return
-                $st[0] === "/anime"      ||
-                $st[0] === "!anime"      ||
-                $st[0] === "~anime";
-            },
-            "Anime@animeSearch"
-        );
-
         /**
          * Shell exec
          */
@@ -214,6 +204,26 @@ trait CommandRoutes
                         $st[0] === "#ask";
             },
             "Brainly@ask"
+        );
+
+        $this->set(
+            function() use ($st) {
+                return
+                $st[0] === "/anime"      ||
+                $st[0] === "!anime"      ||
+                $st[0] === "~anime";
+            },
+            "Anime@animeSearch"
+        );
+
+        $this->set(
+            function() use ($st) {
+                return
+                $st[0] === "/idan"      ||
+                $st[0] === "!idan"      ||
+                $st[0] === "~idan";
+            },
+            "Anime@animeInfo"
         );
     }
 }

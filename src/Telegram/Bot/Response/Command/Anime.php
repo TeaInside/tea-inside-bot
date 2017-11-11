@@ -164,7 +164,8 @@ class Anime extends CommandFoundation
                 [
                     "text" => "Manga apa yang ingin kamu cari?",
                     "chat_id" => $this->b->chat_id,
-                    "reply_markup" => json_encode(["force_reply"=>true,"selective"=>true])
+                    "reply_markup"=>(json_encode(["force_reply"=>true,"selective"=>true])),
+                    "reply_to_message_id" => $this->b->msgid
                 ]
             );
         }
@@ -220,6 +221,7 @@ class Anime extends CommandFoundation
                 [
                     "text" => "Sebutkan ID Manga yang ingin kamu cari !",
                     "chat_id" => $this->b->chat_id,
+                    "reply_markup" => json_encode(["force_reply"=>true,"selective"=>true]),
                     "reply_to_message_id" => $this->b->msgid
                 ]
             );

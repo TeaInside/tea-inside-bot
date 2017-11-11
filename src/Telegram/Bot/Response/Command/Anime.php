@@ -129,7 +129,7 @@ class Anime extends CommandFoundation
         }
     }
 
-    public function managaSearch()
+    public function mangaSearch()
     {
     	$query = explode(" ", $this->b->lowertext, 2);
     	$query = isset($query[1]) ? trim($query[1]) : "";

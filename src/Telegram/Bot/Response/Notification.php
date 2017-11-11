@@ -82,7 +82,7 @@ class Notification
 	private function buildContext()
 	{
 		$getUsername = []; $getId = [];
-		foreach ($entities as $val) {
+		foreach ($this->b->entities as $val) {
 			if ($val['type'] === "mention") {
 				$getUsername[] = substr($this->lowertext, $val['offset'], $val['length']);
 			} elseif ($val['type'] === "text_mention" && $val['user']['is_bot'] === false) {
@@ -91,7 +91,7 @@ class Notification
 		}
 		$this->mention = [
 			"username" => $getUsername,
-			"user_id" => $getID
+			"user_id" => $getId
 		];
 		$this->replyto = [
 

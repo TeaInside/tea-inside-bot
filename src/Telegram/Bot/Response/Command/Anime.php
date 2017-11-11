@@ -4,8 +4,10 @@ namespace Telegram\Bot\Response\Command;
 
 use DB;
 use PDO;
+use Telegram as B;
 use Telegram\Lang;
 use Plugins\MyAnimeList\MyAnimeList;
+use Telegram\Bot\Abstraction\CommandFoundation;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>

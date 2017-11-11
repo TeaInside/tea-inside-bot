@@ -44,7 +44,7 @@ class Anime extends CommandFoundation
             $st = $st->get_result();
             if (isset($st['entry']['id'])) {
                 $rep = "";
-                $rep.="Hasil pencarian anime :\n<b>{$st['entry']['id']}</b> : {$st['entry']['title']}\n\nBerikut ini adalah anime yang cocok dengan <b>{$query}</b>.\n\nKetik /idan [spasi] [id_anime] atau balas dengan id anime untuk menampilkan info anime lebih lengkap.";
+                $rep.="Hasil pencarian anime :\n<b>{$st['entry']['id']}</b> : {$st['entry']['title']}\n\nBerikut ini adalah anime yang cocok dengan <b>{$query}</b>.\n\nKetik /idan [spasi] [id_anime].";
             } elseif (is_array($st) and $xz = count($st['entry'])) {
                 $rep = "Hasil pencarian anime :\n";
                 foreach ($st['entry'] as $vz) {
@@ -140,7 +140,7 @@ class Anime extends CommandFoundation
             $st = $st->get_result();
             if (isset($st['entry']['id'])) {
                 $rep = "";
-                $rep.="Hasil pencarian manga :\n<b>{$st['entry']['id']}</b> : {$st['entry']['title']}\n\nBerikut ini adalah manga yang cocok dengan <b>{$query}</b>.\n\nKetik /idma [spasi] [id_anime] atau balas dengan id manga untuk menampilkan info manga lebih lengkap.";
+                $rep.="Hasil pencarian manga :\n<b>{$st['entry']['id']}</b> : {$st['entry']['title']}\n\nBerikut ini adalah manga yang cocok dengan <b>{$query}</b>.\n\nKetik /idma [spasi] [id_anime].";
             } elseif (is_array($st) and $xz = count($st['entry'])) {
                 $rep = "Hasil pencarian manga :\n";
                 foreach ($st['entry'] as $vz) {

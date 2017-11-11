@@ -236,7 +236,7 @@ trait CommandRoutes
             },
             "Anime@mangaSearch"
         );
-        var_dump($this->replyto);
+        var_dump($this->b->replyto);
         $this->set(
             function() use ($st) {
                 return

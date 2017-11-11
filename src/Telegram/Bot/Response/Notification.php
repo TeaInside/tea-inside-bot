@@ -37,16 +37,13 @@ class Notification
 
 	private function shouldReport()
 	{
-		var_dump($this->mention);
-		foreach ($this->mention as $val) {
-			foreach ($val['username'] as $v) {
-				$v =  $this->isKnownUser($v);
-				$v and $this->buildReply("mention", $v);
-			}
-			foreach ($val['user_id'] as $v) {
-				$v =  $this->isKnownUser($v, "user_id");
-				$v and $this->buildReply("mention", $v);
-			}
+		foreach ($this->mention['username'] as $v) {
+			$v =  $this->isKnownUser($v);
+			$v and $this->buildReply("mention", $v);
+		}
+		foreach ($this->mention['user_id'] as $v) {
+			$v =  $this->isKnownUser($v, "user_id");
+			$v and $this->buildReply("mention", $v);
 		}
 		return sizeof($this->ndata);
 	}

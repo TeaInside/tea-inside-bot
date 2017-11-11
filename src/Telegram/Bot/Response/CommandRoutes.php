@@ -232,18 +232,18 @@ trait CommandRoutes
                 $st[0] === "/manga"      ||
                 $st[0] === "!manga"      ||
                 $st[0] === "~manga"      ||
-                (isset($this->b->replyto) and $this->b->replyto['text'] === "Manga apa yang ingin kamu cari?");
+                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Manga apa yang ingin kamu cari?");
             },
             "Anime@mangaSearch"
         );
-
+        var_dump($this->replyto);
         $this->set(
             function() use ($st) {
                 return
                 $st[0] === "/idma"      ||
                 $st[0] === "!idma"      ||
                 $st[0] === "~idma"      ||
-                (isset($this->b->replyto) and $this->b->replyto['text'] === "Sebutkan ID Manga!");
+                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Sebutkan ID Manga!");
             },
             "Anime@mangaInfo"
         );

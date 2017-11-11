@@ -234,7 +234,7 @@ trait CommandRoutes
                 $st[0] === "/manga"      ||
                 $st[0] === "!manga"      ||
                 $st[0] === "~manga"      ||
-                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Manga apa yang ingin kamu cari?");
+                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Manga apa yang kamu cari?");
             },
             "Anime@mangaSearch"
         );

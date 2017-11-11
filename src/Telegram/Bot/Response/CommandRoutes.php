@@ -212,7 +212,7 @@ trait CommandRoutes
                 $st[0] === "/anime"      ||
                 $st[0] === "!anime"      ||
                 $st[0] === "~anime"      ||
-                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Anime apa yang kamu cari?");
+                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Anime apa yang kamu cari?" and $this->b->lowertext = "/anime ".$this->b->lowertext);
             },
             "Anime@animeSearch"
         );
@@ -223,7 +223,7 @@ trait CommandRoutes
                 $st[0] === "/idan"      ||
                 $st[0] === "!idan"      ||
                 $st[0] === "~idan"      ||
-                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Sebutkan ID Anime!");
+                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Sebutkan ID Anime!" and $this->b->lowertext = "/idan ".$this->b->lowertext);
             },
             "Anime@animeInfo"
         );
@@ -234,7 +234,7 @@ trait CommandRoutes
                 $st[0] === "/manga"      ||
                 $st[0] === "!manga"      ||
                 $st[0] === "~manga"      ||
-                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Manga apa yang kamu cari?");
+                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Manga apa yang kamu cari?" and $this->b->lowertext = "/manga ".$this->b->lowertext);
             },
             "Anime@mangaSearch"
         );
@@ -245,7 +245,7 @@ trait CommandRoutes
                 $st[0] === "/idma"      ||
                 $st[0] === "!idma"      ||
                 $st[0] === "~idma"      ||
-                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Sebutkan ID Manga!");
+                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Sebutkan ID Manga!" and $this->b->lowertext = "/idma ".$this->b->lowertext);
             },
             "Anime@mangaInfo"
         );

@@ -75,4 +75,57 @@ class Anime extends CommandFoundation
             );
         }
     }
+
+    public function animeInfo()
+    {
+    	$id = explode(" ", $this->b->lowertext, 2);
+    	$id = isset($id[1]) ? trim($id[1]) : "";
+    	if (!empty($id)) {
+            $fx = function ($str) {
+                if (is_array($str)) {
+                    return trim(str_replace(array("[i]", "[/i]","<br />"), array("<i>", "</i>","\n"), html_entity_decode(implode($str))));
+                }
+                return trim(str_replace(array("[i]", "[/i]","<br />"), array("<i>", "</i>","\n"), html_entity_decode($str, ENT_QUOTES, 'UTF-8')));
+            };
+            $st = new MyAnimeList(MAL_USER, MAL_PASS);
+            $st = $st->get_info($id);
+            $st = isset($st['entry']) ? $st['entry'] : $st;
+            if (is_array($st) and count($st)) {
+                $img = $st['image'];
+                unset($st['image']);
+                $rep = "";
+                foreach ($st as $key => $value) {
+                    $ve = $fx($value);
+                    !empty($ve) and $rep .= "<b>".ucwords($key)."</b> : ".($ve)."\n";
+                }
+                $rep = str_replace("\n\n", "\n", $rep);
+            } else {
+                $rep = "Mohon maaf, anime dengan id \"{$id}\" tidak ditemukan !";
+            }
+            isset($img) and B::sendPhoto(
+                [
+                    "chat_id" => $this->b->chat_id,
+                    "photo" => $img,
+                    "reply_to_message_id" => $this->b->msgid
+                ]
+            );
+            return B::sendMessage(
+                [
+                    "chat_id" => $this->b->chat_id,
+                    "text" => $rep,
+                    "reply_to_message_id" => $this->b->msgid,
+                    "parse_mode" => "HTML"
+                ]
+            );
+        } else {
+            return B::sendMessage(
+                [
+                    "chat_id" => $this->b->chat_id,
+                    "text" => "Sebutkan ID Anime yang ingin kamu cari !",
+                    "reply_markup" => json_encode(["force_reply"=>true,"selective"=>true]),
+                    "reply_to_message_id" => $this->b->msgid
+                ]
+            );
+        }
+    }
 }

@@ -6,6 +6,7 @@ use DB;
 use PDO;
 use Telegram as B;
 use Telegram\Lang;
+use Telegram\Bot\Bot;
 use Plugins\MyAnimeList\MyAnimeList;
 use Telegram\Bot\Abstraction\CommandFoundation;
 

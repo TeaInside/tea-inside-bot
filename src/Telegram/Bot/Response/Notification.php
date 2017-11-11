@@ -3,6 +3,7 @@
 namespace Telegram\Bot\Response;
 
 use DB;
+use PDO;
 use Telegram as B;
 use Telegram\Bot\Bot;
 

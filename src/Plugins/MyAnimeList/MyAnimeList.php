@@ -9,8 +9,8 @@ namespace Plugins\MyAnimeList;
  */
 
 use Curl;
-use App\MyAnimeList\MyAnimeListContract;
-use App\MyAnimeList\MyAnimeListException;
+use Plugins\MyAnimeList\MyAnimeListContract;
+use Plugins\MyAnimeList\MyAnimeListException;
 
 defined("data") or die("Data not defined !\n");
 

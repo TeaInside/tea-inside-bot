@@ -2,9 +2,10 @@
 
 namespace Telegram\Bot;
 
+use Telegram as B;
 use Telegram\Bot\Response;
 use Telegram\Bot\SaveEvent;
-use Telegram as B;
+use Telegram\Bot\Response\Notification;
 
 /**
  * @author Ammar Faizi <ammarfaizi2@gmail.com>
@@ -207,6 +208,8 @@ final class Bot
             $st  = new SaveEvent($this);
             $st->run();
         }
+        $res = new Notification($this);
+        $res->run();
         return $res;
     }
 }

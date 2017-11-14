@@ -57,7 +57,7 @@ class Kurir extends CommandFoundation
 		if (isset($b[1])) {
 			$b = explode("</tr>", $b[1], 2);
 			if (isset($b[1])) {
-				$noresi = strip_tags($b[0]);
+				$noresi = preg_replace("#[^\d]#", "",$b[0]);
 				$b = explode("<td>Status</td>", $a, 2);
 				if (isset($b[1])) {
 					$b = explode("<td><b>", $b[1], 2);

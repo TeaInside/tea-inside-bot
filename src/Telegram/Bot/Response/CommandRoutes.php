@@ -209,6 +209,15 @@ trait CommandRoutes
         $this->set(
             function() use ($st) {
                 return
+                    $st[0] === "jne" ||
+                    $st[0] === "jnt";
+            },
+            "Kurir@check"
+        );
+
+        $this->set(
+            function() use ($st) {
+                return
                 $st[0] === "/anime"      ||
                 $st[0] === "!anime"      ||
                 $st[0] === "~anime"      ||

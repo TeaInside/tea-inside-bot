@@ -51,7 +51,7 @@ class Kurir extends CommandFoundation
 				CURLOPT_USERAGENT => "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:56.0) Gecko/20100101 Firefox/56.0"
 			]
 		);
-		$out = curl_exec($ch);
+		$a = curl_exec($ch);
 		curl_close($ch);
 		var_dump($out);
     	$b = explode("<td width=\"130\">No Resi</td>", $out, 2);

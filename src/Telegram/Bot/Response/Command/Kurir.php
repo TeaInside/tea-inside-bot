@@ -36,6 +36,7 @@ class Kurir extends CommandFoundation
     public function check()
     {
     	$a = explode(" ", $this->b->lowertext, 2);
+    	var_dump($a);
     	$ch = curl_init("http://api4.cekresi.co.id/allcnote.php");
 		curl_setopt_array($ch, 
 			[

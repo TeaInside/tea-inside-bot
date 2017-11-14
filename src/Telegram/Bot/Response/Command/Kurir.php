@@ -143,7 +143,8 @@ class Kurir extends CommandFoundation
 		B::sendMessage(
 			[
 				"chat_id" => $this->b->chat_id,
-				"text" => json_encode($data, 128)
+				"text" => json_encode($data, 128),
+				"reply_to_message_id" => $this->b->msgid
 			]
 		);
     }

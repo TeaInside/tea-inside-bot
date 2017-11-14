@@ -52,7 +52,7 @@ class Kurir extends CommandFoundation
 		);
 		$out = curl_exec($ch);
 		curl_close($ch);
-    	$b = explode("<td width=\"130\">No Resi</td>", $a, 2);
+    	$b = explode("<td width=\"130\">No Resi</td>", $out, 2);
 		if (isset($b[1])) {
 			$b = explode("</tr>", $b[1], 2);
 			if (isset($b[1])) {

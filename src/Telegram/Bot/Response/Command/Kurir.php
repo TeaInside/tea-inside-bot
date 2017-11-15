@@ -153,12 +153,12 @@ class Kurir extends CommandFoundation
 				}
 			}
 		}
-		isset($data) and B::sendMessage(
+		isset($data) and var_dump(B::sendMessage(
 			[
 				"chat_id" => $this->b->chat_id,
 				"text" => json_encode($data, 128),
 				"reply_to_message_id" => $this->b->msgid
 			]
-		);
+		));
     }
 }

@@ -157,7 +157,8 @@ class Kurir extends CommandFoundation
 			[
 				"chat_id" => $this->b->chat_id,
 				"text" => $text,
-				"reply_to_message_id" => $this->b->msgid
+				"reply_to_message_id" => $this->b->msgid,
+				"parse_mode"=>"HTML"
 			]
 		));
     }

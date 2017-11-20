@@ -36,7 +36,8 @@ class Kurir extends CommandFoundation
     public function check()
     {
     	$a = explode(" ", $this->b->lowertext, 2);
-    	var_dump($a);
+    	$i=0;
+    	do{
     	$ch = curl_init("http://api4.cekresi.co.id/allcnote.php");
 		curl_setopt_array($ch, 
 			[
@@ -53,6 +54,7 @@ class Kurir extends CommandFoundation
 		);
 		$a = curl_exec($ch);
 		curl_close($ch);
+		} while (trim($a)==="Error" && $i++ < 3);
     	$b = explode("<td width=\"130\">No Resi</td>", $a, 2);
 		if (isset($b[1])) {
 			$b = explode("</tr>", $b[1], 2);
@@ -134,18 +136,30 @@ class Kurir extends CommandFoundation
 										"pod_detail" => $pod
 									]
 								];
+								$text = "<b>Informasi Pengiriman :</b>";
+								foreach($data['informasi_pengiriman'] as $k => $v){
+									$text .= "\n<b>".ucwords(str_replace("_"," ",$k))."</b> : ".htmlspecialchars($v);
+								}
+								$text .= "\n\n<b>Status Pengiriman :</b>";
+								foreach($data['status_pengiriman'] as $k => $v){
+									$text.="\n<b>".ucwords(str_replace("_"," ",$k))." : </b>";
+									foreach($v as $kk => $vv){
+										$text.="\n".$kk."\n".$vv;
+									}
+								}
 							}
 						}
 					}
 				}
 			}
 		}
-		B::sendMessage(
+		isset($data) and var_dump(B::sendMessage(
 			[
 				"chat_id" => $this->b->chat_id,
-				"text" => json_encode($data, 128),
-				"reply_to_message_id" => $this->b->msgid
+				"text" => $text,
+				"reply_to_message_id" => $this->b->msgid,
+				"parse_mode"=>"HTML"
 			]
-		);
+		));
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Plugins\KulgramWriter;
 
-use Bot\Bot;
+use Telegram\Bot\Bot;
 
 abstract class KulgramWriterFoundation
 {

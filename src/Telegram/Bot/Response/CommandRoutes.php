@@ -91,7 +91,7 @@ trait CommandRoutes
                 $st[0] === "!kick"      ||
                 $st[0] === "~kick";
             },
-            "AdminHammer@ban"
+            "AdminHammer@kick"
         );
 
 

@@ -80,6 +80,20 @@ trait CommandRoutes
             "AdminHammer@ban"
         );
 
+        /**
+         * Ban user
+         */
+        $this->set(
+            function () use ($st) {
+        
+                return
+                $st[0] === "/kick"    ||
+                $st[0] === "!kick"      ||
+                $st[0] === "~kick";
+            },
+            "AdminHammer@ban"
+        );
+
 
         /**
          * Google search.
@@ -93,7 +107,7 @@ trait CommandRoutes
                 $st[0] === "~google";
             },
             "SearchEngine@googleSearch"
-        );
+        ); 
 
 
         /**
@@ -221,7 +235,7 @@ trait CommandRoutes
                 $st[0] === "/anime"      ||
                 $st[0] === "!anime"      ||
                 $st[0] === "~anime"      ||
-                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Anime apa yang kamu cari?" and $this->b->lowertext = "/anime ".$this->b->lowertext);
+                (!empty($this->b->replyto['text']) and $this->b->replyto['text'] === "Anime apa yang kamu cari?" and $this->b->lowertext = "/anime ".$this->b->lowertext);
             },
             "Anime@animeSearch"
         );
@@ -243,7 +257,7 @@ trait CommandRoutes
                 $st[0] === "/manga"      ||
                 $st[0] === "!manga"      ||
                 $st[0] === "~manga"      ||
-                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Manga apa yang kamu cari?" and $this->b->lowertext = "/manga ".$this->b->lowertext);
+                (!empty($this->b->replyto['text']) and $this->b->replyto['text'] === "Manga apa yang kamu cari?" and $this->b->lowertext = "/manga ".$this->b->lowertext);
             },
             "Anime@mangaSearch"
         );
@@ -254,7 +268,7 @@ trait CommandRoutes
                 $st[0] === "/idma"      ||
                 $st[0] === "!idma"      ||
                 $st[0] === "~idma"      ||
-                (!empty($this->b->replyto) and $this->b->replyto['text'] === "Sebutkan ID Manga!" and $this->b->lowertext = "/idma ".$this->b->lowertext);
+                (!empty($this->b->replyto['text']) and $this->b->replyto['text'] === "Sebutkan ID Manga!" and $this->b->lowertext = "/idma ".$this->b->lowertext);
             },
             "Anime@mangaInfo"
         );

@@ -106,7 +106,6 @@ class Notification
 
 	private function notify()
 	{
-		var_dump($this->ndata);
 		foreach ($this->ndata as $val) {
 			B::sendMessage($val);
 		}

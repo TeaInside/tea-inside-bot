@@ -54,8 +54,9 @@ class Kurir extends CommandFoundation
 		);
 		$a = curl_exec($ch);
 		curl_close($ch);
-		} while (trim($a)==="Error" && $i++ < 3);
-    	$b = explode("<td width=\"130\">No Resi</td>", $a, 2);
+		$b = explode("<td width=\"130\">No Resi</td>", $a, 2);
+		} while (!isset($b[1]) && $i++ < 5);
+    	
 		if (isset($b[1])) {
 			$b = explode("</tr>", $b[1], 2);
 			if (isset($b[1])) {
